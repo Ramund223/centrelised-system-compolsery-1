@@ -5,43 +5,35 @@
  */
 package Be;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 /**
  *
  * @author Nicolai
  */
 public class Student 
 {
-    private final StringProperty name = new SimpleStringProperty();
+    private String name;
     private int id;
-    private final StringProperty classroom = new SimpleStringProperty();
-    private final StringProperty username = new SimpleStringProperty();
-    private final StringProperty password = new SimpleStringProperty();
+    private String classroom;
+    private String username;
+    private String password;
 
     public Student(String name, int id, String classroom, String username, String password) 
     {
-        this.name.set(name);
+        this.name = name;
         this.id = id;
-        this.classroom.set(classroom);
-        this.username.set(username);
-        this.password.set(password);
+        this.classroom = classroom;
+        this.username = username;
+        this.password = password;
     }
     
     public String getName() 
     {
-        return name.get();
+        return name;
     }
     
-    public void setName(String value) 
+    public void setName(String name) 
     {
-        name.set(value);
-    }
-
-    public StringProperty nameProperty() 
-    {
-        return name;
+        this.name = name;
     }
 
     public int getId() 
@@ -56,55 +48,31 @@ public class Student
     
     public String getClassroom() 
     {
-        return classroom.get();
+        return classroom;
     }
     
-    public void setClassroom(String value) 
+    public void setClassroom(String classroom) 
     {
-        classroom.set(value);
-    }
-
-    public StringProperty classroomProperty() 
-    {
-        return classroom;
+        this.classroom = classroom;
     }
     
     public String getUsername() 
     {
-        return username.get();
+        return username;
     }
     
-    public void setUsername(String value) 
+    public void setUsername(String username) 
     {
-        username.set(value);
-    }
-
-    public StringProperty nameUsername() 
-    {
-        return username;
+        this.username = username;
     }
     
     public String getPassword() 
     {
-        return password.get();
-    }
-    
-    public void setPassword(String value) 
-    {
-        password.set(value);
-    }
-
-    public StringProperty passwordProperty() 
-    {
         return password;
     }
     
-    @Override
-    public String toString() 
+    public void setPassword(String password) 
     {
-        return name.get();
-        return classroom.get();
-        return username.get();
-        return password.get();
+        this.password = password;
     }
 }
