@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.UserViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.UserViewController">
    <bottom>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -33,7 +33,7 @@
    <left>
       <ImageView fx:id="Mogshot" fitHeight="193.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../Pictures/stockphoto.jpg" />
+            <Image url="@../../Pictures/stockphoto.jpg" />
          </image>
       </ImageView>
    </left>
@@ -66,7 +66,7 @@
    <top>
       <ImageView fx:id="Logo" fitHeight="86.0" fitWidth="451.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../Pictures/EASV-logo1.jpg" />
+            <Image url="@../../Pictures/EASV-logo1.jpg" />
          </image>
       </ImageView>
    </top>

@@ -11,12 +11,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.MainViewController">
    <top>
       <ImageView fx:id="Logo" fitHeight="47.0" fitWidth="278.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../../../../../Desktop/pathfinder/EASV-logo1.jpg" />
+            <Image url="@../../Pictures/EASV-logo1.jpg" />
          </image>
       </ImageView>
    </top>
@@ -42,4 +41,7 @@
    <bottom>
       <Button fx:id="SignIn" mnemonicParsing="false" onAction="#signin" prefHeight="0.0" prefWidth="66.0" text="Sign In" BorderPane.alignment="CENTER" />
    </bottom>
+   <left>
+      <Button mnemonicParsing="false" onAction="#testButton" text="Test Button" BorderPane.alignment="CENTER" />
+   </left>
 </BorderPane>
