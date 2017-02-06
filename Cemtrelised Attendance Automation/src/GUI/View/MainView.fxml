@@ -13,7 +13,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.MainViewController">
    <top>
-      <ImageView fx:id="Logo" fitHeight="47.0" fitWidth="278.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <ImageView fx:id="logoView" fitHeight="47.0" fitWidth="278.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@../../Pictures/EASV-logo1.jpg" />
          </image>
@@ -31,15 +31,15 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField maxHeight="-Infinity" prefHeight="31.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="userNameField" maxHeight="-Infinity" prefHeight="31.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Password" GridPane.rowIndex="2" />
             <Label text="Username" GridPane.rowIndex="1" />
-            <PasswordField fx:id="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </center>
    <bottom>
-      <Button fx:id="SignIn" mnemonicParsing="false" onAction="#signin" prefHeight="0.0" prefWidth="66.0" text="Sign In" BorderPane.alignment="CENTER" />
+      <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signin" prefHeight="0.0" prefWidth="66.0" text="Sign In" BorderPane.alignment="CENTER" />
    </bottom>
    <left>
       <Button mnemonicParsing="false" onAction="#testButton" text="Test Button" BorderPane.alignment="CENTER" />

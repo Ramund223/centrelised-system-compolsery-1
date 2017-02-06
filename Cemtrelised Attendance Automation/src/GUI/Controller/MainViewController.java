@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 /**
@@ -26,44 +27,57 @@ import javafx.scene.image.ImageView;
 public class MainViewController implements Initializable {
 
     @FXML
-    private ImageView Logo;
+    private ImageView logoView;
     @FXML
-    private Button SignIn;
+    private Button signInButton;
     @FXML
-    private PasswordField Password;
+    private PasswordField passwordField;
     @FXML
     private Button testButton;
+    @FXML
+    private TextField userNameField;
 
-    ArrayList<String> list = new ArrayList<String>();
+    private int position = 0;
+    
+    ArrayList<String> userList = new ArrayList<String>();
     
     public MainViewController() throws FileNotFoundException
     {
-//        try (Scanner s = new Scanner(new File("user.home")+"\\Documents\\GitHub\\centrelised-system-compolsery-1\\Cemtrelised Attendance Automation\\src\\DAL\\UserNames.txt")) 
-//        try (Scanner s = new Scanner(new File("user.home")+"\\Documents\\GitHub\\centrelised-system-compolsery-1\\Cemtrelised Attendance Automation\\src\\DAL\\UserNames.txt")) 
-//        {
-//            while (s.hasNext())
-//            {
-//                list.add(s.next());
-//            }   
-//        }
-//    }
-//        try (Scanner scanner = new Scanner(new File("C:\\Users\\EmilArentoft\\Documents\\GitHub\\centrelised-system-compolsery-1\\Cemtrelised Attendance Automation\\src\\DAL\\UserNames.txt"))) {
-        try (Scanner scanner = new Scanner(new File((System.getProperty("user.home"))+"\\Documents\\GitHub\\centrelised-system-compolsery-1\\Cemtrelised Attendance Automation\\src\\DAL\\UserNames.txt"))) {
+        try (Scanner scanner = new Scanner(new File((System.getProperty("user.home"))+"\\Documents\\GitHub\\centrelised-system-compolsery-1\\Cemtrelised Attendance Automation\\src\\DAL\\UserNames.txt"))) 
+        {
 
             while (scanner.hasNext())
             {
-                list.add(scanner.next());
+                userList.add(scanner.next());
             }
 
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
-    }
+        } 
+        catch (FileNotFoundException e) 
+        {
+            e.printStackTrace();
+        }
  }
+    String nameField = null;
+    
+    String passwordInputField = null;
+    
+    String password = null;
     
     @FXML
     private void testButton(ActionEvent event) 
     {
-        System.out.println(list);
+//        System.out.println(userList);
+//        position = userList.indexOf("MagicMike");
+        System.out.println(position);
+//        userNameField.getText();
+        
+         nameField = userNameField.getText();
+         position = userList.indexOf(nameField);
+//         System.out.println(userList.get(position+1));
+        if (passwordInputField == userList.get(position+1))
+        {
+            //TODO
+        }
     } 
     
     /**
