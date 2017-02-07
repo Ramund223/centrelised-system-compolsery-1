@@ -112,10 +112,17 @@ public class MainViewController implements Initializable {
         {
             publicMessageLabel.setText("No Password Input!");
         }
-//        else if (!userNameField.equals(userList))
+        else if (!userList.contains(userNameField.getText() + ""))
+        {
+            publicMessageLabel.setText("No such user in the database!");
+        }
+        else if (userList.contains(userNameField.getText() + ""))
+        {
+            publicMessageLabel.setText("Wrong Password!");
+        }
         else
         {
-            publicMessageLabel.setText("No such user!");
+            publicMessageLabel.setText("U BROKE IT DIDNT U?");
         }
     }
     
