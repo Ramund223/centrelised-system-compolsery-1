@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -19,29 +20,33 @@
          </image>
       </ImageView>
    </top>
-   <center>
-      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <TextField fx:id="userNameField" maxHeight="-Infinity" prefHeight="31.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Password" GridPane.rowIndex="2" />
-            <Label text="Username" GridPane.rowIndex="1" />
-            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         </children>
-      </GridPane>
-   </center>
    <bottom>
-      <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signin" prefHeight="0.0" prefWidth="66.0" text="Sign In" BorderPane.alignment="CENTER" />
+      <Button mnemonicParsing="false" onAction="#signInButton" onKeyPressed="#handleEnterPressed" prefHeight="0.0" prefWidth="66.0" text="Sign In" BorderPane.alignment="CENTER" />
    </bottom>
    <left>
       <Button mnemonicParsing="false" onAction="#testButton" text="Test Button" BorderPane.alignment="CENTER" />
    </left>
+   <center>
+      <AnchorPane prefHeight="169.0" prefWidth="396.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutX="14.0" layoutY="62.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="userNameField" maxHeight="-Infinity" onKeyPressed="#handleEnterPressed" prefHeight="31.0" prefWidth="149.0" GridPane.columnIndex="1" />
+                  <Label text="Password" GridPane.rowIndex="1" />
+                  <Label text="Username" />
+                  <PasswordField fx:id="passwordField" onKeyPressed="#handleEnterPressed" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <Label fx:id="publicMessageLabel" layoutX="97.0" layoutY="24.0" text="       " />
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>

@@ -16,9 +16,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+
 
 /**
  * FXML Controller class
@@ -37,7 +41,15 @@ public class MainViewController implements Initializable {
     private Button testButton;
     @FXML
     private TextField userNameField;
-
+    @FXML
+    private Label publicMessageLabel;
+    
+    private String nameField = null;
+    
+    private String passwordInputField = null;
+    
+    private String password = null;
+    
     private int position = 0;
     
     ArrayList<String> userList = new ArrayList<String>();
@@ -57,16 +69,31 @@ public class MainViewController implements Initializable {
         {
             e.printStackTrace();
         }
- }
-    String nameField = null;
+    }
     
-    String passwordInputField = null;
-    
-    String password = null;
+    @FXML
+    public void handleEnterPressed(KeyEvent event)
+    {
+        if (event.getCode() == KeyCode.ENTER) 
+        {
+            signIn();
+        }
+    }
             
     @FXML
     private void testButton(ActionEvent event) 
     {   
+        
+    } 
+    
+    @FXML
+    private void signInButton(ActionEvent event) 
+    {
+       signIn();
+    }
+    
+    private void signIn()
+    {
         nameField = userNameField.getText();
         passwordInputField = passwordField.getText();
         position = userList.indexOf(nameField);
@@ -77,14 +104,19 @@ public class MainViewController implements Initializable {
         {
             System.out.println("Logged in!");
         }
+        else if (userNameField.getText().isEmpty()) 
+        {
+            publicMessageLabel.setText("No Username Input!");
+        }
+        else if (passwordField.getText().isEmpty()) 
+        {
+            publicMessageLabel.setText("No Password Input!");
+        }
+//        else if (!userNameField.equals(userList))
         else
         {
-            System.out.println("No such user!");
+            publicMessageLabel.setText("No such user!");
         }
-    } 
-    
-    @FXML
-    private void signin(ActionEvent event) {
     }
     
     /**
