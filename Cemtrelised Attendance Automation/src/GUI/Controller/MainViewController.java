@@ -113,10 +113,14 @@ public class MainViewController implements Initializable {
             stage.setTitle("Logged in as " + userNameField.getText());
             stage.setScene(scene);
             stage.show();
+            userNameField.clear();
+            passwordField.clear();
         }
         else if (userNameField.getText().isEmpty()) 
         {
             publicMessageLabel.setText("No Username Input!");
+            userNameField.clear();
+            passwordField.clear();
         }
         else if (passwordField.getText().isEmpty()) 
         {
@@ -125,10 +129,13 @@ public class MainViewController implements Initializable {
         else if (!userList.contains(userNameField.getText() + ""))
         {
             publicMessageLabel.setText("No such user in the database!");
+            userNameField.clear();
+            passwordField.clear();
         }
         else if (userList.contains(userNameField.getText() + ""))
         {
             publicMessageLabel.setText("Wrong Password!");
+            passwordField.clear();
         }
         else
         {
