@@ -96,6 +96,11 @@ public class MainViewController implements Initializable {
        signIn();
     }
     
+    public String getUserName()
+    {
+        return nameField;
+    }
+    
     private void signIn()throws IOException
     {
         nameField = userNameField.getText();

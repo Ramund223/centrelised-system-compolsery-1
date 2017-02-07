@@ -19,11 +19,13 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="306.0" text="Sign Out" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="372.0" text="See Absence" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="306.0" text="Sign Out" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="372.0" text="See Absence" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="testButton" mnemonicParsing="false" onAction="#testButton" text="Test Button" />
          </children>
       </GridPane>
    </bottom>
