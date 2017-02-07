@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,8 +43,8 @@ public class MainViewController implements Initializable {
     ArrayList<String> userList = new ArrayList<String>();
     
     public MainViewController() throws FileNotFoundException
-    {
-        try (Scanner scanner = new Scanner(new File((System.getProperty("user.home"))+"\\Documents\\GitHub\\centrelised-system-compolsery-1\\Cemtrelised Attendance Automation\\src\\DAL\\UserNames.txt"))) 
+    {   
+        try (Scanner scanner = new Scanner(new File((System.getProperty("user.home"))+"\\Documents\\GitHub\\centrelised-system-compolsery-1\\Cemtrelised Attendance Automation\\src\\DAL\\Users.txt"))) 
         {
 
             while (scanner.hasNext())
@@ -62,23 +63,29 @@ public class MainViewController implements Initializable {
     String passwordInputField = null;
     
     String password = null;
-    
+            
     @FXML
     private void testButton(ActionEvent event) 
-    {
-//        System.out.println(userList);
-//        position = userList.indexOf("MagicMike");
+    {   
+        nameField = userNameField.getText();
+        passwordInputField = passwordField.getText();
+        position = userList.indexOf(nameField);
         System.out.println(position);
-//        userNameField.getText();
+        password = userList.get(position+1);
         
-         nameField = userNameField.getText();
-         position = userList.indexOf(nameField);
-//         System.out.println(userList.get(position+1));
-        if (passwordInputField == userList.get(position+1))
+        if (password.equals(passwordInputField) & !passwordInputField.equals("-") & !nameField.equals("-"))
         {
-            //TODO
+            System.out.println("Logged in!");
+        }
+        else
+        {
+            System.out.println("No such user!");
         }
     } 
+    
+    @FXML
+    private void signin(ActionEvent event) {
+    }
     
     /**
      * Initializes the controller class.
@@ -87,9 +94,4 @@ public class MainViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }   
-
-    @FXML
-    private void signin(ActionEvent event) {
-    }
-    
 }
