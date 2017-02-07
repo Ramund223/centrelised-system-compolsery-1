@@ -15,14 +15,14 @@ import javafx.stage.Stage;
  *
  * @author skole
  */
-public class CemtrelisedAttendanceAutomation extends Application {
+public class CentralisedAttendanceAutomation extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("GUI/View/MainView.fxml"));
         
         Scene scene = new Scene(root);
-        
+        stage.setTitle("AttendanceSYS");
         stage.setScene(scene);
         stage.show();
     }
