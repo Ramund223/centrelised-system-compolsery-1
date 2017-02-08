@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
  *
  * @author Emil
  */
+
 public class UserModel 
 {
 private static UserModel INSTANCE;
@@ -23,11 +24,9 @@ private static UserModel INSTANCE;
     {
         studentList = FXCollections.observableArrayList();
     }
-//    Student(String name, int id, String classroom, String username, String password) 
-    //This method create the teams and add the team to the team observablelist.
+
     public void createStudent(int id, String classroom, String username, String password, String name)
     {
-//        ublic Team(int id, int goals, int points, String name) 
         Student student = new Student(name, id, classroom, username, password);
         studentList.add(student);
     }
@@ -41,9 +40,8 @@ private static UserModel INSTANCE;
         return INSTANCE;
     }
     
-    public ObservableList<Student> getTeam()
+    public ObservableList<Student> getStudents()
     {
         return studentList;
     }
-    
 }

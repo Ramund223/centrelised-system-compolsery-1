@@ -5,13 +5,17 @@
  */
 package GUI.Controller;
 
+import Be.Student;
+import GUI.Model.UserModel;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,10 +60,19 @@ public class MainViewController implements Initializable {
     
     private int position = 0;
     
+    private UserModel userModel;
+    
+    private Student student;
+    
     ArrayList<String> userList = new ArrayList<String>();
+    
+    ObservableList<Student> listStudents;
     
     public MainViewController() throws FileNotFoundException
     {   
+         userModel = UserModel.getInstance();
+         listStudents = UserModel.getInstance().getStudents();
+        
         try (Scanner scanner = new Scanner(new File((System.getProperty("user.home"))+"\\Documents\\GitHub\\centrelised-system-compolsery-1\\Cemtrelised Attendance Automation\\src\\DAL\\Users.txt"))) 
         {
 
@@ -87,7 +100,12 @@ public class MainViewController implements Initializable {
     @FXML
     private void testButton(ActionEvent event) 
     {   
-        
+//        userModel.getStudents().add(new Student(nameField, position, password, nameField, password)
+        userModel.getStudents().add(new Student("Carlos", 1, "21C", "Carlos99", "mango123"));
+        System.out.println(listStudents.get(0));
+        userModel.createStudent(1, "C20", "Carlos99", "password", "Carlos Abukat");
+        System.out.println(listStudents.toString());
+//        System.out.println(student.getName());
     } 
     
     @FXML
