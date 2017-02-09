@@ -9,6 +9,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import GUI.Controller.MainViewController;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,7 +26,7 @@ public class UserViewController implements Initializable {
     @FXML
     private Button testButton;
     
-    private MainViewController MainViewController;
+    private MainViewController mainViewController;
     
     public UserViewController()
     {
@@ -33,12 +36,18 @@ public class UserViewController implements Initializable {
     @FXML
     private void testButton(ActionEvent event) 
     {   
-        System.out.println("LOl");
-//        System.out.println(MainViewController.getUserName().toString());
-//        if (MainViewController.getUserName().isEmpty())
+//        try {
+            //        System.out.println("LOl");
+//        System.out.println(mainViewController.getUserName().toString());
+//        if (mainViewController.getUserName().isEmpty())
 //        {
 //            System.out.println("WOLOLO");
 //        }
+//    mainViewController = new MainViewController();
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(UserViewController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        System.out.println(mainViewController.getUserName());
     }
     
     /**

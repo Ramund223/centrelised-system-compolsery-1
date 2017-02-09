@@ -12,9 +12,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,11 +25,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import GUI.Model.UserModel;
 
 
 /**
@@ -42,23 +45,19 @@ public class MainViewController implements Initializable {
     @FXML
     private ImageView logoView;
     @FXML
-    private Button signInButton;
-    @FXML
     private PasswordField passwordField;
-    @FXML
-    private Button testButton;
     @FXML
     private TextField userNameField;
     @FXML
     private Label publicMessageLabel;
     
-    private String nameField = null;
+//    private String nameField = null;
     
-    private String passwordInputField = null;
+//    private String passwordInputField = null;
     
-    private String password = null;
+//    private String password = null;
     
-    private int position = 0;
+//    private int position = 0;
     
     private UserModel userModel;
     
@@ -68,8 +67,21 @@ public class MainViewController implements Initializable {
     
     ObservableList<Student> listStudents;
     
+    @FXML
+    private TableView<Student> tableView;
+    
+//    public String getUserName()
+//    {
+//        return nameField;
+//    }
+    
+    @FXML
+    private TableColumn<Student ,String> studentView;
+    
+    
     public MainViewController() throws FileNotFoundException
     {   
+        
          userModel = UserModel.getInstance();
          listStudents = UserModel.getInstance().getStudents();
         
@@ -98,13 +110,13 @@ public class MainViewController implements Initializable {
     }
             
     @FXML
-    private void testButton(ActionEvent event) 
+    private void testButton(ActionEvent event) throws IOException 
     {   
 //        userModel.getStudents().add(new Student(nameField, position, password, nameField, password)
-        userModel.getStudents().add(new Student("Carlos", 1, "21C", "Carlos99", "mango123"));
-        System.out.println(listStudents.get(0));
-        userModel.createStudent(1, "C20", "Carlos99", "password", "Carlos Abukat");
-        System.out.println(listStudents.toString());
+//        userModel.getStudents().add(new Student("Carlos", 1, "21C", "Carlos99", "mango123"));
+//        System.out.println(listStudents.get(0));
+//        userModel.c
+//        System.out.println(listStudents.toString());
 //        System.out.println(student.getName());
     } 
     
@@ -114,21 +126,18 @@ public class MainViewController implements Initializable {
        signIn();
     }
     
-    public String getUserName()
-    {
-        return nameField;
-    }
-    
     private void signIn()throws IOException
     {
-        nameField = userNameField.getText();
-        passwordInputField = passwordField.getText();
-        position = userList.indexOf(nameField);
-        System.out.println(position);
-        password = userList.get(position+1);
+//        nameField = userNameField.getText();
+//        passwordInputField = passwordField.getText();
+//        position = userList.indexOf(nameField);
+//        System.out.println(position);
+//        password = userList.get(position+1);
         
-        if (password.equals(passwordInputField) & !passwordInputField.equals("-") & !nameField.equals("-"))
+        for (Student s : listStudents)
         {
+            if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
+            {
             System.out.println("Logged in!");
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));
@@ -136,33 +145,34 @@ public class MainViewController implements Initializable {
             stage.setTitle("Logged in as " + userNameField.getText());
             stage.setScene(scene);
             stage.show();
-            userNameField.clear();
-            passwordField.clear();
-        }
-        else if (userNameField.getText().isEmpty()) 
-        {
+//            userNameField.clear();
+//            passwordField.clear();
+            publicMessageLabel.setText("");
+            break;
+            }
+            else if (userNameField.getText().isEmpty()) 
+            {
             publicMessageLabel.setText("No Username Input!");
-            userNameField.clear();
-            passwordField.clear();
-        }
-        else if (passwordField.getText().isEmpty()) 
-        {
+            break;
+            }
+            else if (passwordField.getText().isEmpty()) 
+            {
             publicMessageLabel.setText("No Password Input!");
-        }
-        else if (!userList.contains(userNameField.getText() + ""))
-        {
-            publicMessageLabel.setText("No such user in the database!");
-            userNameField.clear();
-            passwordField.clear();
-        }
-        else if (userList.contains(userNameField.getText() + ""))
-        {
+            break;
+            }
+            else if (s.getUsername().equals(userNameField.getText()) && !s.getPassword().equals(passwordField.getText()))
+            {
             publicMessageLabel.setText("Wrong Password!");
-            passwordField.clear();
-        }
-        else
-        {
-            publicMessageLabel.setText("U BROKE IT DIDNT U?");
+            break;
+            }
+            else if (!s.getUsername().equals(userNameField.getText()))
+            {
+            publicMessageLabel.setText("No such user in the database!");
+            }
+            else
+            {
+                //DidNothing
+            }
         }
     }
     
@@ -172,5 +182,14 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        studentView.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getName()));
+        tableView.setItems(userModel.getStudents());
+        
+        userModel.createStudent(6, "C20", "a", "a", "test");
+        userModel.createStudent(1, "C20", "Carlos93", "password", "Carlos Abukat");
+        userModel.createStudent(2, "C20", "MagicMike99", "password", "Magic Mike");
+        userModel.createStudent(3, "C20", "IceFrog29", "password", "Ice Frog");
+        userModel.createStudent(4, "C20", "LøgDregen99", "password", "Løg Dregen");
+        userModel.createStudent(5, "C20", "Treant6", "password", "Treant Six");
     }   
 }
