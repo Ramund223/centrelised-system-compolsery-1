@@ -33,7 +33,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import GUI.Model.UserModel;
-
+import DAL.Users;
 
 /**
  * FXML Controller class
@@ -61,6 +61,8 @@ public class MainViewController implements Initializable {
     
     private UserModel userModel;
     
+    private Users createUsers = new Users();
+    
     private Student student;
     
     ArrayList<String> userList = new ArrayList<String>();
@@ -81,6 +83,7 @@ public class MainViewController implements Initializable {
     
     public MainViewController() throws FileNotFoundException
     {   
+//        createUsers.createUsers();
         
          userModel = UserModel.getInstance();
          listStudents = UserModel.getInstance().getStudents();
@@ -185,11 +188,14 @@ public class MainViewController implements Initializable {
         studentView.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getName()));
         tableView.setItems(userModel.getStudents());
         
-        userModel.createStudent(6, "C20", "a", "a", "test");
-        userModel.createStudent(1, "C20", "Carlos93", "password", "Carlos Abukat");
-        userModel.createStudent(2, "C20", "MagicMike99", "password", "Magic Mike");
-        userModel.createStudent(3, "C20", "IceFrog29", "password", "Ice Frog");
-        userModel.createStudent(4, "C20", "LøgDregen99", "password", "Løg Dregen");
-        userModel.createStudent(5, "C20", "Treant6", "password", "Treant Six");
+//        userModel.createStudent(6, "C20", "a", "a", "test");
+//        userModel.createStudent(1, "C20", "Carlos93", "password", "Carlos Abukat");
+//        userModel.createStudent(2, "C20", "MagicMike99", "password", "Magic Mike");
+//        userModel.createStudent(3, "C20", "IceFrog29", "password", "Ice Frog");
+//        userModel.createStudent(4, "C20", "LøgDrengen99", "password", "Løg Drengen");
+//        userModel.createStudent(5, "C20", "Treant6", "password", "Treant Six");
+
+        createUsers.createUsers();
+        
     }   
 }

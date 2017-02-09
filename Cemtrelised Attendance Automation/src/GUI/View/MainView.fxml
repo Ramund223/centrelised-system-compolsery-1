@@ -48,7 +48,7 @@
                </children>
             </GridPane>
             <Label fx:id="publicMessageLabel" layoutX="97.0" layoutY="24.0" text="       " />
-            <TableView fx:id="tableView" layoutX="188.0" layoutY="-38.0" opacity="0.0" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tableView" layoutX="188.0" layoutY="-38.0" prefHeight="200.0" prefWidth="200.0">
               <columns>
                 <TableColumn fx:id="studentView" prefWidth="199.0" text="C1" />
               </columns>
