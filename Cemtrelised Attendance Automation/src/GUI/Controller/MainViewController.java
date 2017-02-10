@@ -5,7 +5,9 @@
  */
 package GUI.Controller;
 
+import BLL.AuthenticationCheck;
 import Be.Student;
+import DAL.Users;
 import GUI.Model.UserModel;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,11 +20,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
@@ -31,9 +29,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
-import GUI.Model.UserModel;
-import DAL.Users;
 
 /**
  * FXML Controller class
@@ -65,9 +60,9 @@ public class MainViewController implements Initializable {
     
     private Student student;
     
-    ArrayList<String> userList = new ArrayList<String>();
+    private ArrayList<String> userList = new ArrayList<String>();
     
-    ObservableList<Student> listStudents;
+    private ObservableList<Student> listStudents;
     
     @FXML
     private TableView<Student> tableView;
@@ -76,6 +71,8 @@ public class MainViewController implements Initializable {
 //    {
 //        return nameField;
 //    }
+    
+    private AuthenticationCheck authenticationCheck;
     
     @FXML
     private TableColumn<Student ,String> studentView;
@@ -103,12 +100,32 @@ public class MainViewController implements Initializable {
         }
     }
     
+    public ObservableList<Student> getListStudents()
+    {
+        return listStudents;
+    }
+    
+    public PasswordField getPasswordField()
+    {
+        return passwordField;
+    }
+    
+    public TextField getUserNameField()
+    {
+        return userNameField;
+    }
+    
+    public Label getPublicMessageLabel()
+    {
+        return publicMessageLabel;
+    }
+    
     @FXML
     public void handleEnterPressed(KeyEvent event) throws IOException
     {
         if (event.getCode() == KeyCode.ENTER) 
         {
-            signIn();
+            authenticationCheck.signIn();
         }
     }
             
@@ -126,58 +143,58 @@ public class MainViewController implements Initializable {
     @FXML
     private void signInButton(ActionEvent event) throws IOException 
     {
-       signIn();
+       authenticationCheck.signIn();
     }
     
-    private void signIn()throws IOException
-    {
-//        nameField = userNameField.getText();
-//        passwordInputField = passwordField.getText();
-//        position = userList.indexOf(nameField);
-//        System.out.println(position);
-//        password = userList.get(position+1);
-        
-        for (Student s : listStudents)
-        {
-            if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
-            {
-            System.out.println("Logged in!");
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setTitle("Logged in as " + userNameField.getText());
-            stage.setScene(scene);
-            stage.show();
-//            userNameField.clear();
-//            passwordField.clear();
-            publicMessageLabel.setText("");
-            break;
-            }
-            else if (userNameField.getText().isEmpty()) 
-            {
-            publicMessageLabel.setText("No Username Input!");
-            break;
-            }
-            else if (passwordField.getText().isEmpty()) 
-            {
-            publicMessageLabel.setText("No Password Input!");
-            break;
-            }
-            else if (s.getUsername().equals(userNameField.getText()) && !s.getPassword().equals(passwordField.getText()))
-            {
-            publicMessageLabel.setText("Wrong Password!");
-            break;
-            }
-            else if (!s.getUsername().equals(userNameField.getText()))
-            {
-            publicMessageLabel.setText("No such user in the database!");
-            }
-            else
-            {
-                //DidNothing
-            }
-        }
-    }
+//    private void signIn()throws IOException
+//    {
+////        nameField = userNameField.getText();
+////        passwordInputField = passwordField.getText();
+////        position = userList.indexOf(nameField);
+////        System.out.println(position);
+////        password = userList.get(position+1);
+//        
+//        for (Student s : listStudents)
+//        {
+//            if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
+//            {
+//            System.out.println("Logged in!");
+//            Stage stage = new Stage();
+//            Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));
+//            Scene scene = new Scene(root);
+//            stage.setTitle("Logged in as " + userNameField.getText());
+//            stage.setScene(scene);
+//            stage.show();
+////            userNameField.clear();
+////            passwordField.clear();
+//            publicMessageLabel.setText("");
+//            break;
+//            }
+//            else if (userNameField.getText().isEmpty()) 
+//            {
+//            publicMessageLabel.setText("No Username Input!");
+//            break;
+//            }
+//            else if (passwordField.getText().isEmpty()) 
+//            {
+//            publicMessageLabel.setText("No Password Input!");
+//            break;
+//            }
+//            else if (s.getUsername().equals(userNameField.getText()) && !s.getPassword().equals(passwordField.getText()))
+//            {
+//            publicMessageLabel.setText("Wrong Password!");
+//            break;
+//            }
+//            else if (!s.getUsername().equals(userNameField.getText()))
+//            {
+//            publicMessageLabel.setText("No such user in the database!");
+//            }
+//            else
+//            {
+//                //DidNothing
+//            }
+//        }
+//    }
     
     /**
      * Initializes the controller class.
