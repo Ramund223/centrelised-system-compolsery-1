@@ -72,7 +72,7 @@ public class MainViewController implements Initializable {
 //        return nameField;
 //    }
     
-    private AuthenticationCheck authenticationCheck;
+    private AuthenticationCheck authenticationCheck  = new AuthenticationCheck();
     
     @FXML
     private TableColumn<Student ,String> studentView;
@@ -98,6 +98,11 @@ public class MainViewController implements Initializable {
         {
             e.printStackTrace();
         }
+    }
+    
+    public void ping()
+    {
+        
     }
     
     public ObservableList<Student> getListStudents()
@@ -138,6 +143,7 @@ public class MainViewController implements Initializable {
 //        userModel.c
 //        System.out.println(listStudents.toString());
 //        System.out.println(student.getName());
+        authenticationCheck.mango();
     } 
     
     @FXML
