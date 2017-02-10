@@ -35,6 +35,12 @@ public class AuthenticationCheck
         System.out.println("YOU GOT ME!");
     }
     
+    public void pong()
+    {
+        System.out.println("PONG");
+        mainViewController.ping();
+    }
+    
     public static synchronized MainViewController getInstance() throws FileNotFoundException
         {
             if(mainViewController == null)

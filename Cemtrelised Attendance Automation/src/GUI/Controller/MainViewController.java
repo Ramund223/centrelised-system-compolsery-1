@@ -64,6 +64,8 @@ public class MainViewController implements Initializable {
     
     private ObservableList<Student> listStudents;
     
+    private String userName;
+    
     @FXML
     private TableView<Student> tableView;
     
@@ -84,6 +86,7 @@ public class MainViewController implements Initializable {
         
          userModel = UserModel.getInstance();
          listStudents = UserModel.getInstance().getStudents();
+         userName = UserModel.getInstance().getUserName();
         
         try (Scanner scanner = new Scanner(new File((System.getProperty("user.home"))+"\\Documents\\GitHub\\centrelised-system-compolsery-1\\Cemtrelised Attendance Automation\\src\\DAL\\Users.txt"))) 
         {
@@ -102,7 +105,7 @@ public class MainViewController implements Initializable {
     
     public void ping()
     {
-        
+        System.out.println("PING");
     }
     
     public ObservableList<Student> getListStudents()
@@ -143,13 +146,23 @@ public class MainViewController implements Initializable {
 //        userModel.c
 //        System.out.println(listStudents.toString());
 //        System.out.println(student.getName());
-        authenticationCheck.mango();
+//        authenticationCheck.mango();
+//        authenticationCheck.pong();
+        
+        System.out.println(userModel.getUserName());
     } 
     
     @FXML
     private void signInButton(ActionEvent event) throws IOException 
     {
-       authenticationCheck.signIn();
+        userName = userNameField.getText();
+//        nameField = userNameField.getText();
+        userModel.setUserName(userName);
+        
+//        userModel.setPassword(passwordField.getText());
+        
+        
+//       authenticationCheck.signIn();
     }
     
 //    private void signIn()throws IOException

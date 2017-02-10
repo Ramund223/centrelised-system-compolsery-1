@@ -16,6 +16,10 @@ import javafx.collections.ObservableList;
 
 public class UserModel 
 {
+    
+    public String userName;
+    public String password;
+    
 private static UserModel INSTANCE;
     
     private final ObservableList<Student> studentList;
@@ -44,4 +48,25 @@ private static UserModel INSTANCE;
     {
         return studentList;
     }
+    
+    public void setUserName(String username) 
+    {
+        this.userName = userName;
+    }
+    
+    public void setPassword(String password) 
+    {
+        this.password = password;
+    }
+    
+    public String getUserName() 
+    {
+        return userName;
+    }
+    
+    public String getPassword() 
+    {
+        return password;
+    }
+ 
 }
