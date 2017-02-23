@@ -53,7 +53,7 @@ public class AuthenticationCheck
     //if((userField.getText(), passwprdField.getText()) != null)
     public void signIn()throws IOException
     {
-        System.out.println("LOL");
+//        System.out.println("LOL");
 //        nameField = userNameField.getText();
 //        passwordInputField = passwordField.getText();
 //        position = userList.indexOf(nameField);
@@ -72,8 +72,8 @@ public class AuthenticationCheck
 //            stage.setTitle("Logged in as " + mainViewController.getUserNameField().getText());
 //            stage.setScene(scene);
 //            stage.show();
-////            userNameField.clear();
-////            passwordField.clear();
+//            userNameField.clear();
+//            passwordField.clear();
 //            mainViewController.getPublicMessageLabel().setText("");
 //            break;
 //            }
