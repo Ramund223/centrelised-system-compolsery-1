@@ -237,6 +237,5 @@ public class MainViewController implements Initializable {
 //        userModel.createStudent(5, "C20", "Treant6", "password", "Treant Six");
 
         createUsers.createUsers();
-        
     }   
 }
