@@ -16,9 +16,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.MainViewController">
-   <stylesheets>      
-       <URL value="@css/Style.css" />
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="451.0" stylesheets="@CSS/Style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.MainViewController">
+    <stylesheets>      
        <URL value="https://fonts.googleapis.com/css?family=Shadows+Into+Light" />   
    </stylesheets>
     <top>
