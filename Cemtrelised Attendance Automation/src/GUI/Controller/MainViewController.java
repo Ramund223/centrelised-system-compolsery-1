@@ -5,18 +5,14 @@
  */
 package GUI.Controller;
 
-import BLL.AuthenticationCheck;
 import Be.Student;
 import DAL.Users;
 import GUI.Model.UserModel;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Scanner;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +22,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -50,8 +45,6 @@ public class MainViewController implements Initializable {
     @FXML
     private Label publicMessageLabel;
     
-    private UserModel userModel;
-    
     private Users createUsers = new Users();
     
     private Student student;
@@ -60,41 +53,12 @@ public class MainViewController implements Initializable {
     
     private ObservableList<Student> listStudents;
     
-    private String userName;
-    
     @FXML
     private TableView<Student> tableView;
     
-    private AuthenticationCheck authenticationCheck  = new AuthenticationCheck();
-    
-    @FXML
-    private TableColumn<Student ,String> studentView;
-    
-    
     public MainViewController() throws FileNotFoundException
     {      
-         userModel = UserModel.getInstance();
          listStudents = UserModel.getInstance().getStudents();
-         userName = UserModel.getInstance().getUserName();
-        
-        try (Scanner scanner = new Scanner(new File((System.getProperty("user.home"))+"\\Documents\\GitHub\\centrelised-system-compolsery-1\\Cemtrelised Attendance Automation\\src\\DAL\\Users.txt"))) 
-        {
-
-            while (scanner.hasNext())
-            {
-                userList.add(scanner.next());
-            }
-
-        } 
-        catch (FileNotFoundException e) 
-        {
-            e.printStackTrace();
-        }
-    }
-    
-    public void ping()
-    {
-        System.out.println("PING");
     }
     
     public ObservableList<Student> getListStudents()
@@ -122,21 +86,13 @@ public class MainViewController implements Initializable {
     {
         if (event.getCode() == KeyCode.ENTER) 
         {
-            authenticationCheck.signIn();
+            signIn();
         }
     }
-            
-    @FXML
-    private void testButton(ActionEvent event) throws IOException 
-    {        
-        System.out.println(userModel.getUserName());
-    } 
     
     @FXML
     private void signInButton(ActionEvent event) throws IOException 
     {
-        userName = userNameField.getText();
-        userModel.setUserName(userName);
         signIn();
     }
     
@@ -189,8 +145,6 @@ public class MainViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        studentView.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getName()));
-        tableView.setItems(userModel.getStudents());
         createUsers.createUsers();
     }   
 }

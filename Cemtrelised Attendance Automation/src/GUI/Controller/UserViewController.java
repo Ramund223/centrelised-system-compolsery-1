@@ -5,48 +5,18 @@
  */
 package GUI.Controller;
 
-import Be.Student;
-import GUI.Model.UserModel;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
  *
  * @author skole
  */
-public class UserViewController implements Initializable {
+public class UserViewController implements Initializable 
+{
     
-    @FXML
-    private Button testButton;
-    
-    private MainViewController mainViewController;
-    @FXML
-    private Label TestButton;
-    @FXML
-    private ImageView Logo;
-    @FXML
-    private ImageView Mogshot;
-    
-    private final ObservableList<Student> studentList;
-    
-    public UserViewController()
-    {
-        studentList = UserModel.getInstance().getStudents();
-    }
-
-    @FXML
-    private void testButton(ActionEvent event) 
-    {   
-
-    }
     
     /**
      * Initializes the controller class.
@@ -54,7 +24,6 @@ public class UserViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        TestButton.setText(studentList.get(1).getName());
+        
     }    
-
 }

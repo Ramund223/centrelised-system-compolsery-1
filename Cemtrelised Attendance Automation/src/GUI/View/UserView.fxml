@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -11,7 +12,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import java.net.URL?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@CSS/Style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.UserViewController">
    <stylesheets>      
@@ -24,18 +24,16 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="306.0" text="Sign Out" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="372.0" text="See Absence" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="testButton" mnemonicParsing="false" onAction="#testButton" text="Test Button" />
+            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="306.0" text="Sign Out" />
+            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="372.0" text="See Absence" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </bottom>
    <left>
-      <ImageView fx:id="Mogshot" fitHeight="193.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <ImageView fitHeight="193.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@../../Pictures/stockphoto.jpg" />
          </image>
@@ -62,12 +60,11 @@
          <children>
             <Label text="Name:" />
             <Label text="Class:" GridPane.rowIndex="1" />
-            <Label fx:id="TestButton" text="Test" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </center>
    <top>
-      <ImageView fx:id="Logo" fitHeight="86.0" fitWidth="451.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <ImageView fitHeight="86.0" fitWidth="451.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@../../Pictures/EASV-logo1.jpg" />
          </image>
