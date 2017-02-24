@@ -27,7 +27,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="306.0" text="Sign Out" />
+            <Button fx:id="closeUser" mnemonicParsing="false" onAction="#userClose" prefHeight="31.0" prefWidth="306.0" text="Sign Out" />
             <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="372.0" text="See Absence" GridPane.columnIndex="1" />
          </children>
       </GridPane>

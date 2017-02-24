@@ -7,7 +7,11 @@ package GUI.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -16,6 +20,16 @@ import javafx.fxml.Initializable;
  */
 public class UserViewController implements Initializable 
 {
+    @FXML
+    private Button closeUser;
+    
+    
+    @FXML
+    private void userClose(ActionEvent event) 
+    {
+        Stage stage = (Stage) closeUser.getScene().getWindow();
+        stage.close();
+    }
     
     
     /**
