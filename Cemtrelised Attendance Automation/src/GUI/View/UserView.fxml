@@ -48,8 +48,8 @@
    <center>
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="140.0" prefWidth="261.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="45.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" prefWidth="216.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="48.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" prefWidth="213.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -58,6 +58,7 @@
          <children>
             <Label text="Name:" />
             <Label text="Class:" GridPane.rowIndex="1" />
+            <Label fx:id="TestButton" text="Test" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </center>
