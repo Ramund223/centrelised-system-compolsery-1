@@ -50,14 +50,6 @@ public class MainViewController implements Initializable {
     @FXML
     private Label publicMessageLabel;
     
-//    private String nameField = null;
-    
-//    private String passwordInputField = null;
-    
-//    private String password = null;
-    
-//    private int position = 0;
-    
     private UserModel userModel;
     
     private Users createUsers = new Users();
@@ -73,11 +65,6 @@ public class MainViewController implements Initializable {
     @FXML
     private TableView<Student> tableView;
     
-//    public String getUserName()
-//    {
-//        return nameField;
-//    }
-    
     private AuthenticationCheck authenticationCheck  = new AuthenticationCheck();
     
     @FXML
@@ -85,9 +72,7 @@ public class MainViewController implements Initializable {
     
     
     public MainViewController() throws FileNotFoundException
-    {   
-//        createUsers.createUsers();
-        
+    {      
          userModel = UserModel.getInstance();
          listStudents = UserModel.getInstance().getStudents();
          userName = UserModel.getInstance().getUserName();
@@ -143,16 +128,7 @@ public class MainViewController implements Initializable {
             
     @FXML
     private void testButton(ActionEvent event) throws IOException 
-    {   
-//        userModel.getStudents().add(new Student(nameField, position, password, nameField, password)
-//        userModel.getStudents().add(new Student("Carlos", 1, "21C", "Carlos99", "mango123"));
-//        System.out.println(listStudents.get(0));
-//        userModel.c
-//        System.out.println(listStudents.toString());
-//        System.out.println(student.getName());
-//        authenticationCheck.mango();
-//        authenticationCheck.pong();
-        
+    {        
         System.out.println(userModel.getUserName());
     } 
     
@@ -160,24 +136,12 @@ public class MainViewController implements Initializable {
     private void signInButton(ActionEvent event) throws IOException 
     {
         userName = userNameField.getText();
-//        nameField = userNameField.getText();
         userModel.setUserName(userName);
-        
-//        userModel.setPassword(passwordField.getText());
-        
-        
-//       authenticationCheck.signIn();
         signIn();
     }
     
     private void signIn()throws IOException
-    {
-//        nameField = userNameField.getText();
-//        passwordInputField = passwordField.getText();
-//        position = userList.indexOf(nameField);
-//        System.out.println(position);
-//        password = userList.get(position+1);
-        
+    {   
         for (Student s : listStudents)
         {
             if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
@@ -189,8 +153,8 @@ public class MainViewController implements Initializable {
             stage.setTitle("Logged in as " + userNameField.getText());
             stage.setScene(scene);
             stage.show();
-//            userNameField.clear();
-//            passwordField.clear();
+            userNameField.clear();
+            passwordField.clear();
             publicMessageLabel.setText("");
             break;
             }
@@ -225,17 +189,8 @@ public class MainViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         studentView.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getName()));
         tableView.setItems(userModel.getStudents());
-        
-//        userModel.createStudent(6, "C20", "a", "a", "test");
-//        userModel.createStudent(1, "C20", "Carlos93", "password", "Carlos Abukat");
-//        userModel.createStudent(2, "C20", "MagicMike99", "password", "Magic Mike");
-//        userModel.createStudent(3, "C20", "IceFrog29", "password", "Ice Frog");
-//        userModel.createStudent(4, "C20", "LøgDrengen99", "password", "Løg Drengen");
-//        userModel.createStudent(5, "C20", "Treant6", "password", "Treant Six");
-
         createUsers.createUsers();
     }   
 }

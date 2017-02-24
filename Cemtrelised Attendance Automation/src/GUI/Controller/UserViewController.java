@@ -45,18 +45,7 @@ public class UserViewController implements Initializable {
     @FXML
     private void testButton(ActionEvent event) 
     {   
-//        try {
-            //        System.out.println("LOl");
-//        System.out.println(mainViewController.getUserName().toString());
-//        if (mainViewController.getUserName().isEmpty())
-//        {
-//            System.out.println("WOLOLO");
-//        }
-//    mainViewController = new MainViewController();
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(UserViewController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        System.out.println(mainViewController.getUserName());
+
     }
     
     /**
@@ -65,7 +54,7 @@ public class UserViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        TestButton.setText(studentList.get(5).getName());
+        TestButton.setText(studentList.get(1).getName());
     }    
 
 }
