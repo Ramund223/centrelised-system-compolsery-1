@@ -20,6 +20,7 @@ public class Users
     
     private UserModel userModel;
     
+    //This method creates the students.
     public void createUsers()
     {
         userModel.createStudent(6, "C20", "a", "a", "test");

@@ -44,6 +44,8 @@ public class MainViewController implements Initializable {
     private TextField userNameField;
     @FXML
     private Label publicMessageLabel;
+    @FXML
+    private TableView<Student> tableView;
     
     private Users createUsers = new Users();
     
@@ -52,9 +54,6 @@ public class MainViewController implements Initializable {
     private ArrayList<String> userList = new ArrayList<String>();
     
     private ObservableList<Student> listStudents;
-    
-    @FXML
-    private TableView<Student> tableView;
     
     public MainViewController() throws FileNotFoundException
     {      
@@ -81,6 +80,7 @@ public class MainViewController implements Initializable {
         return publicMessageLabel;
     }
     
+    //This method use the signIn method when you press the "Enter" key.
     @FXML
     public void handleEnterPressed(KeyEvent event) throws IOException
     {
@@ -96,42 +96,45 @@ public class MainViewController implements Initializable {
         signIn();
     }
     
+    //This method is our signIn method which checks if there is user with the
+    //user and password combination, and if there is it opens a new window for 
+    //students.
     private void signIn()throws IOException
     {   
         for (Student s : listStudents)
         {
             if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
             {
-            System.out.println("Logged in!");
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));
-            Scene scene = new Scene(root);
-            stage.setTitle("Logged in as " + userNameField.getText());
-            stage.setScene(scene);
-            stage.show();
-            userNameField.clear();
-            passwordField.clear();
-            publicMessageLabel.setText("");
-            break;
+                System.out.println("Logged in!");
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));
+                Scene scene = new Scene(root);
+                stage.setTitle("Logged in as " + userNameField.getText());
+                stage.setScene(scene);
+                stage.show();
+                userNameField.clear();
+                passwordField.clear();
+                publicMessageLabel.setText("");
+                break;
             }
-            else if (userNameField.getText().isEmpty()) 
+                else if (userNameField.getText().isEmpty()) 
             {
-            publicMessageLabel.setText("No Username Input!");
-            break;
+                publicMessageLabel.setText("No Username Input!");
+                break;
             }
-            else if (passwordField.getText().isEmpty()) 
+                else if (passwordField.getText().isEmpty()) 
             {
-            publicMessageLabel.setText("No Password Input!");
-            break;
+                publicMessageLabel.setText("No Password Input!");
+                break;
             }
-            else if (s.getUsername().equals(userNameField.getText()) && !s.getPassword().equals(passwordField.getText()))
+                else if (s.getUsername().equals(userNameField.getText()) && !s.getPassword().equals(passwordField.getText()))
             {
-            publicMessageLabel.setText("Wrong Password!");
-            break;
+                publicMessageLabel.setText("Wrong Password!");
+                break;
             }
-            else if (!s.getUsername().equals(userNameField.getText()))
+                else if (!s.getUsername().equals(userNameField.getText()))
             {
-            publicMessageLabel.setText("No such user in the database!");
+                publicMessageLabel.setText("No such user in the database!");
             }
             else
             {

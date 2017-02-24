@@ -60,6 +60,8 @@
          <children>
             <Label text="Name:" />
             <Label text="Class:" GridPane.rowIndex="1" />
+            <Label fx:id="nameLabel" text="       " GridPane.columnIndex="1" />
+            <Label fx:id="className" text="       " GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </center>
