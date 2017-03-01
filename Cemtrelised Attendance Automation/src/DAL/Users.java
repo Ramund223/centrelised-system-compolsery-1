@@ -13,6 +13,17 @@ import GUI.Model.UserModel;
  */
 public class Users 
 {
+    private static Users INSTANCE;
+    
+    public static synchronized Users getInstance()
+    {
+        if(INSTANCE == null)
+        {
+            INSTANCE = new Users();
+        }
+        return INSTANCE;
+    }
+    
     public Users()
     {
         userModel = UserModel.getInstance();

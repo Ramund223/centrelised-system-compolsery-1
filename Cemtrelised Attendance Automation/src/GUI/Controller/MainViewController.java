@@ -7,6 +7,7 @@ package GUI.Controller;
 
 import Be.Student;
 import DAL.Users;
+import BLL.AuthenticationCheck;
 import GUI.Model.UserModel;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -47,7 +48,7 @@ public class MainViewController implements Initializable {
     @FXML
     private TableView<Student> tableView;
     
-    private Users createUsers = new Users();
+    private AuthenticationCheck authenticationCheck;
     
     private Student student;
     
@@ -58,6 +59,8 @@ public class MainViewController implements Initializable {
     public MainViewController() throws FileNotFoundException
     {      
          listStudents = UserModel.getInstance().getStudents();
+         authenticationCheck = AuthenticationCheck.getInstance();
+         authenticationCheck.createUsers();
     }
     
     public ObservableList<Student> getListStudents()
@@ -165,6 +168,6 @@ public class MainViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        createUsers.createUsers();
+        authenticationCheck.createUsers();
     }   
 }
