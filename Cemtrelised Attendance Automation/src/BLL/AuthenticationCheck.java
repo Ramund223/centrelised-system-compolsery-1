@@ -5,36 +5,10 @@
  */
 package BLL;
 
-import DAL.Users;
-
 /**
  *
  * @author Emil
  */
-
-public class AuthenticationCheck 
-{
-    private Users createUsers;
-    
-    private static AuthenticationCheck INSTANCE;
-    
-    public AuthenticationCheck()
-    {
-        createUsers = Users.getInstance();
-    }
-    
-    public static synchronized AuthenticationCheck getInstance()
-    {
-        if(INSTANCE == null)
-        {
-            INSTANCE = new AuthenticationCheck();
-        }
-        return INSTANCE;
-    }
-    
-    public void createUsers()
-    {
-        createUsers.createUsers();
-    }
-    
+public class AuthenticationCheck {
+    // MAKE Authcingthign thoudh this to Main viwn contorller -> AucnChenk it check for auth and takes that data from mainview ctrol
 }

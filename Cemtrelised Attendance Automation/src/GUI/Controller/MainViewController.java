@@ -7,7 +7,7 @@ package GUI.Controller;
 
 import Be.Student;
 import DAL.Users;
-import BLL.AuthenticationCheck;
+import BLL.CreateUsers;
 import GUI.Model.UserModel;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -44,11 +44,11 @@ public class MainViewController implements Initializable {
     @FXML
     private TextField userNameField;
     @FXML
-    private Label publicMessageLabel;
+    public Label publicMessageLabel;
     @FXML
     private TableView<Student> tableView;
     
-    private AuthenticationCheck authenticationCheck;
+    private CreateUsers createUsers;
     
     private Student student;
     
@@ -56,11 +56,26 @@ public class MainViewController implements Initializable {
     
     private ObservableList<Student> listStudents;
     
-    public MainViewController() throws FileNotFoundException
+    private static MainViewController INSTANCE;
+    
+    private String userNameFieldName;
+    
+    private String passwordFieldName;
+    
+    public MainViewController()
     {      
          listStudents = UserModel.getInstance().getStudents();
-         authenticationCheck = AuthenticationCheck.getInstance();
-         authenticationCheck.createUsers();
+         createUsers = CreateUsers.getInstance();
+         createUsers.createUsers();
+    }
+    
+    public static synchronized MainViewController getInstance()
+    {
+        if(INSTANCE == null)
+        {
+            INSTANCE = new MainViewController();
+        }
+        return INSTANCE;
     }
     
     public ObservableList<Student> getListStudents()
@@ -99,11 +114,24 @@ public class MainViewController implements Initializable {
         signIn();
     }
     
+    public String getUserName()
+    {
+        return userNameFieldName;
+    }
+    
+    public String getPassword()
+    {
+        return passwordFieldName;
+    }
+    
     //This method is our signIn method which checks if there is user with the
     //user and password combination, and if there is it opens a new window for 
     //students.
     private void signIn()throws IOException
     {   
+        userNameFieldName = userNameField.getText();
+        passwordFieldName = passwordField.getText();
+        
         for (Student s : listStudents)
         {
             if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())) && ("Teacher".equals(userNameField.getText())))
@@ -168,6 +196,6 @@ public class MainViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        authenticationCheck.createUsers();
+        createUsers.createUsers();
     }   
 }
