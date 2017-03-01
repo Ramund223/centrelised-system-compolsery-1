@@ -111,6 +111,7 @@ public class MainViewController implements Initializable {
                 Scene scene = new Scene(root);
                 stage.setTitle("Logged in as " + userNameField.getText());
                 stage.setScene(scene);
+                stage.setResizable(false);
                 stage.show();
                 userNameField.clear();
                 passwordField.clear();

@@ -23,6 +23,7 @@ public class CentralisedAttendanceAutomation extends Application {
         
         Scene scene = new Scene(root);
         stage.setTitle("AttendanceSYS");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
