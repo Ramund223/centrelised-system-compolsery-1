@@ -108,7 +108,7 @@ public class MainViewController implements Initializable {
                 System.out.println("Warning teacher is in the gibson!");
                 System.out.println("Logged in as " + userNameField.getText());
                 Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/TeacherView.fxml"));
                 Scene scene = new Scene(root);
                 stage.setTitle("Logged in as " + userNameField.getText());
                 stage.setScene(scene);
