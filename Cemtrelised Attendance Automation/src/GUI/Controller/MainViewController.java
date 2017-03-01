@@ -103,7 +103,23 @@ public class MainViewController implements Initializable {
     {   
         for (Student s : listStudents)
         {
-            if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
+            if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())) && ("Teacher".equals(userNameField.getText())))
+            {
+                System.out.println("Warning teacher is in the gibson!");
+                System.out.println("Logged in as " + userNameField.getText());
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));
+                Scene scene = new Scene(root);
+                stage.setTitle("Logged in as " + userNameField.getText());
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+                userNameField.clear();
+                passwordField.clear();
+                publicMessageLabel.setText("");
+                break;
+            }
+                else if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
             {
                 System.out.println("Logged in!");
                 Stage stage = new Stage();
