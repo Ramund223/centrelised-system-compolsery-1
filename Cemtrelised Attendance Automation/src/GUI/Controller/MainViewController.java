@@ -52,7 +52,7 @@ public class MainViewController implements Initializable {
     
     private Student student;
     
-    private ArrayList<String> userList = new ArrayList<String>();
+//    private ArrayList<String> userList = new ArrayList<String>();
     
     private ObservableList<Student> listStudents;
     
@@ -66,7 +66,7 @@ public class MainViewController implements Initializable {
     {      
          listStudents = UserModel.getInstance().getStudents();
          createUsers = CreateUsers.getInstance();
-         createUsers.createUsers();
+//         createUsers.createUsers();
     }
     
     public static synchronized MainViewController getInstance()
