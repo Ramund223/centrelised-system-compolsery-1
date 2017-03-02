@@ -5,22 +5,18 @@
  */
 package GUI.Controller;
 
+import BLL.AuthenticationCheck;
 import Be.Student;
-import DAL.Users;
 import BLL.CreateUsers;
+import BLL.CurrentUser;
 import GUI.Model.UserModel;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
@@ -28,7 +24,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -62,10 +57,16 @@ public class MainViewController implements Initializable {
     
     private String passwordFieldName;
     
+    private AuthenticationCheck authenticationCheck;
+    
+    private CurrentUser currentUser;
+    
     public MainViewController()
     {      
          listStudents = UserModel.getInstance().getStudents();
          createUsers = CreateUsers.getInstance();
+         currentUser = CurrentUser.getInstance();
+         authenticationCheck = AuthenticationCheck.getInstance();
 //         createUsers.createUsers();
     }
     
@@ -128,67 +129,73 @@ public class MainViewController implements Initializable {
     //user and password combination, and if there is it opens a new window for 
     //students.
     private void signIn()throws IOException
-    {   
-        userNameFieldName = userNameField.getText();
-        passwordFieldName = passwordField.getText();
+    {
+        currentUser.setCurrentUserName(userNameField.getText());
+        currentUser.setCurrentPassword(passwordField.getText());
         
-        for (Student s : listStudents)
-        {
-            if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())) && ("Teacher".equals(userNameField.getText())))
-            {
-                System.out.println("Warning teacher is in the gibson!");
-                System.out.println("Logged in as " + userNameField.getText());
-                Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/TeacherView.fxml"));
-                Scene scene = new Scene(root);
-                stage.setTitle("Logged in as " + userNameField.getText());
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-                userNameField.clear();
-                passwordField.clear();
-                publicMessageLabel.setText("");
-                break;
-            }
-                else if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
-            {
-                System.out.println("Logged in!");
-                Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));
-                Scene scene = new Scene(root);
-                stage.setTitle("Logged in as " + userNameField.getText());
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-                userNameField.clear();
-                passwordField.clear();
-                publicMessageLabel.setText("");
-                break;
-            }
-                else if (userNameField.getText().isEmpty()) 
-            {
-                publicMessageLabel.setText("No Username Input!");
-                break;
-            }
-                else if (passwordField.getText().isEmpty()) 
-            {
-                publicMessageLabel.setText("No Password Input!");
-                break;
-            }
-                else if (s.getUsername().equals(userNameField.getText()) && !s.getPassword().equals(passwordField.getText()))
-            {
-                publicMessageLabel.setText("Wrong Password!");
-                break;
-            }
-                else if (!s.getUsername().equals(userNameField.getText()))
-            {
-                publicMessageLabel.setText("No such user in the database!");
-            }
-            else
-            {
-                //DidNothing
-            }
-        }
+//        System.out.println(currentUser.getCurrentUserName());
+//        userNameFieldName = userNameField.getText();
+//        passwordFieldName = passwordField.getText();
+        
+        authenticationCheck.signIn();
+        
+//        for (Student s : listStudents)
+//        {
+//            if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())) && ("Teacher".equals(userNameField.getText())))
+//            {
+//                System.out.println("Warning teacher is in the gibson!");
+//                System.out.println("Logged in as " + userNameField.getText());
+//                Stage stage = new Stage();
+//                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/TeacherView.fxml"));
+//                Scene scene = new Scene(root);
+//                stage.setTitle("Logged in as " + userNameField.getText());
+//                stage.setScene(scene);
+//                stage.setResizable(false);
+//                stage.show();
+//                userNameField.clear();
+//                passwordField.clear();
+//                publicMessageLabel.setText("");
+//                break;
+//            }
+//                else if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
+//            {
+//                System.out.println("Logged in!");
+//                Stage stage = new Stage();
+//                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));
+//                Scene scene = new Scene(root);
+//                stage.setTitle("Logged in as " + userNameField.getText());
+//                stage.setScene(scene);
+//                stage.setResizable(false);
+//                stage.show();
+//                userNameField.clear();
+//                passwordField.clear();
+//                publicMessageLabel.setText("");
+//                break;
+//            }
+//                else if (userNameField.getText().isEmpty()) 
+//            {
+//                publicMessageLabel.setText("No Username Input!");
+//                break;
+//            }
+//                else if (passwordField.getText().isEmpty()) 
+//            {
+//                publicMessageLabel.setText("No Password Input!");
+//                break;
+//            }
+//                else if (s.getUsername().equals(userNameField.getText()) && !s.getPassword().equals(passwordField.getText()))
+//            {
+//                publicMessageLabel.setText("Wrong Password!");
+//                break;
+//            }
+//                else if (!s.getUsername().equals(userNameField.getText()))
+//            {
+//                publicMessageLabel.setText("No such user in the database!");
+//            }
+//            else
+//            {
+//                //DidNothing
+//            }
+//        }
     }
     
     /**
