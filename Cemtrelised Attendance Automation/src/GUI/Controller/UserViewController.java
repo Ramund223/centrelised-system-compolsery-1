@@ -25,8 +25,7 @@ import javafx.stage.Stage;
 public class UserViewController implements Initializable 
 {
     @FXML
-    private Button closeUser;
-    
+    private Button closeUser;   
     @FXML
     private Label nameLabel;
     @FXML

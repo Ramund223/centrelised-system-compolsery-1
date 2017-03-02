@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@CSS/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@CSS/Style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TeacherViewController">
    <styleClass>
       <String fx:value="backgroundcolor" />
       <String fx:value="coolFont" />
    </styleClass>
+   <children>
+      <TableView fx:id="TableAttedance" prefHeight="400.0" prefWidth="359.0">
+        <columns>
+          <TableColumn fx:id="TableStudent" prefWidth="180.0" text="Student" />
+          <TableColumn fx:id="TablePresent" minWidth="0.0" prefWidth="178.0" text="Present?" />
+        </columns>
+      </TableView>
+   </children>
 </AnchorPane>
