@@ -22,8 +22,6 @@ import javafx.stage.Stage;
 
 public class AuthenticationCheck {
     
-//    private MainViewController mainViewController;
-    
     private static AuthenticationCheck INSTANCE;
     
     private ObservableList<Student> listStudents;
@@ -34,8 +32,6 @@ public class AuthenticationCheck {
     {
         listStudents = UserModel.getInstance().getStudents();
         currentUser = CurrentUser.getInstance();
-        
-//        mainViewController = MainViewController.getInstance();
     }
     
     public static synchronized AuthenticationCheck getInstance()
@@ -49,21 +45,8 @@ public class AuthenticationCheck {
     
     public void signIn() throws IOException
     {
-//        mainViewController = MainViewController.getInstance();
         for (Student s : listStudents)
-        {
-//            System.out.println("heh");
-//            if (s.getUsername().equals(currentUser.getCurrentUserName()))
-//            {
-//                System.out.println("DUr det???");
-//            }
-//            mainViewController = null;
-            
-//            if (s.getUsername().equals(mainViewController.getUserName()))
-//                    {
-//                        System.out.println("works??");
-//                    }
-            
+        {   
             if (s.getUsername().equals(currentUser.getCurrentUserName()) && (s.getPassword().equals(currentUser.getCurrentPassword())) && ("Teacher".equals(currentUser.getCurrentUserName())))
             {
                 System.out.println("works???");
@@ -76,7 +59,6 @@ public class AuthenticationCheck {
                 stage.setScene(scene);
                 stage.setResizable(false);
                 stage.show();
-//                publicMessageLabel.setText("");
                 break;
             }
                 else if (s.getUsername().equals(currentUser.getCurrentUserName()) && (s.getPassword().equals(currentUser.getCurrentPassword())))
@@ -89,35 +71,8 @@ public class AuthenticationCheck {
                 stage.setScene(scene);
                 stage.setResizable(false);
                 stage.show();
-//                publicMessageLabel.setText("");
                 break;
-            }
-                else if (currentUser.getCurrentUserName().isEmpty()) 
-            {
-//                publicMessageLabel.setText("No Username Input!");
-                break;
-            }
-                else if (currentUser.getCurrentPassword().isEmpty()) 
-            {
-//                publicMessageLabel.setText("No Password Input!");
-                break;
-            }
-                else if (s.getUsername().equals(currentUser.getCurrentUserName()) && !s.getPassword().equals(currentUser.getCurrentPassword()))
-            {
-//                publicMessageLabel.setText("Wrong Password!");
-                break;
-            }
-                else if (!s.getUsername().equals(currentUser.getCurrentUserName()))
-            {
-//                publicMessageLabel.setText("No such user in the database!");
-            }
-            else
-            {
-                //DidNothing
             }
         }
     }
-    
-        
-    // MAKE Authcingthign thoudh this to Main viwn contorller -> AucnChenk it check for auth and takes that data from mainview ctrol
 }

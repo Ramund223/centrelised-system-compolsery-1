@@ -16,7 +16,10 @@ import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
@@ -24,6 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -135,8 +139,46 @@ public class MainViewController implements Initializable {
         
         authenticationCheck.signIn();
         
-        userNameField.clear();
-        passwordField.clear();
+        for (Student s : listStudents)
+        {
+        if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())) && ("Teacher".equals(userNameField.getText())))
+            {
+                publicMessageLabel.setText("");
+                userNameField.clear();
+                passwordField.clear();
+                break;
+            }
+                else if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
+            {
+                publicMessageLabel.setText("");
+                userNameField.clear();
+                passwordField.clear();
+                break;
+            }
+                else if (userNameField.getText().isEmpty()) 
+            {
+                publicMessageLabel.setText("No Username Input!");
+                break;
+            }
+                else if (!s.getUsername().equals(userNameField.getText()))
+            {
+                publicMessageLabel.setText("No such user in the database!");
+            }
+                else if (passwordField.getText().isEmpty()) 
+            {
+                publicMessageLabel.setText("No Password Input!");
+                break;
+            }
+                else if (s.getUsername().equals(userNameField.getText()) && !s.getPassword().equals(passwordField.getText()))
+            {
+                publicMessageLabel.setText("Wrong Password!");
+                break;
+            }
+            else
+            {
+                //DidNothing
+            }
+        }
     }
     
     /**
