@@ -48,7 +48,7 @@ public class AuthenticationCheck {
         for (Student s : listStudents)
         {   
 //            if (s.getUsername().equals(currentUser.getCurrentUserName()) && (s.getPassword().equals(currentUser.getCurrentPassword())) && ("Teacher".equals(currentUser.getCurrentUserName())))
-            if (currentUser.getCurrentUserName().equals("Teacher") && (currentUser.getCurrentPassword().equals("teacher")))
+            if (currentUser.getCurrentUserName().equals("t") && (currentUser.getCurrentPassword().equals("t")))
             {
                 System.out.println("Warning teacher is in the gibson!");
                 System.out.println("Logged in as " + currentUser.getCurrentUserName());
@@ -67,7 +67,7 @@ public class AuthenticationCheck {
                 Stage stage = new Stage();
                 Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));
                 Scene scene = new Scene(root);
-                System.out.println("Logged in as " + currentUser.getCurrentUserName());
+                stage.setTitle("Logged in as " + currentUser.getCurrentUserName());
                 stage.setScene(scene);
                 stage.setResizable(false);
                 stage.show();

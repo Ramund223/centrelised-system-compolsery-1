@@ -71,7 +71,6 @@ public class MainViewController implements Initializable {
          createUsers = CreateUsers.getInstance();
          currentUser = CurrentUser.getInstance();
          authenticationCheck = AuthenticationCheck.getInstance();
-//         createUsers.createUsers();
     }
     
     public static synchronized MainViewController getInstance()
@@ -142,7 +141,7 @@ public class MainViewController implements Initializable {
         for (Student s : listStudents)
         {
 //        if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())) && ("Teacher".equals(userNameField.getText())))
-        if (userNameField.getText().equals("Teacher") && (passwordField.getText().equals("teacher")))
+        if (userNameField.getText().equals("t") && (passwordField.getText().equals("t")))
             {
                 publicMessageLabel.setText("");
                 userNameField.clear();

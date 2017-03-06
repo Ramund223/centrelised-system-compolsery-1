@@ -11,7 +11,7 @@
       <String fx:value="coolFont" />
    </styleClass>
    <children>
-      <TableView fx:id="TableAttedance" prefHeight="400.0" prefWidth="359.0">
+      <TableView fx:id="TableAttedance" onMousePressed="#mousePressedOnTableView" prefHeight="400.0" prefWidth="359.0">
         <columns>
           <TableColumn fx:id="TableStudent" prefWidth="180.0" text="Student" />
           <TableColumn fx:id="TablePresent" minWidth="0.0" prefWidth="178.0" text="Present?" />
