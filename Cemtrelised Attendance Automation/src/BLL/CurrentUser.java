@@ -15,6 +15,15 @@ public class CurrentUser
     private static CurrentUser INSTANCE;
     private String currentUserName;
     private String currentPassword;
+    private String currentSelectedUser;
+
+    public String getCurrentSelectedUser() {
+        return currentSelectedUser;
+    }
+
+    public void setCurrentSelectedUser(String currentSelectedUser) {
+        this.currentSelectedUser = currentSelectedUser;
+    }
 
     public String getCurrentUserName() {
         return currentUserName;

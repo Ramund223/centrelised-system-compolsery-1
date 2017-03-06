@@ -11,13 +11,20 @@ package BLL;
  */
 
 import Be.Student;
-import GUI.Controller.MainViewController;
+import GUI.Controller.StudentAttendanceViewController;
+import GUI.Controller.TeacherViewController;
 import GUI.Model.UserModel;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class AuthenticationCheck {
@@ -28,10 +35,21 @@ public class AuthenticationCheck {
     
     private CurrentUser currentUser;
     
+    private UserModel userModel;
+    
+//    private TeacherViewController teacherViewController;
+    
+    private AuthenticationCheck authenticationCheck;
+    
+    @FXML
+    private TableView<Student> tableAttedance;
+    
     public AuthenticationCheck()
     {
+//        teacherViewController = TeacherViewController.getInstance();
         listStudents = UserModel.getInstance().getStudents();
         currentUser = CurrentUser.getInstance();
+        userModel = UserModel.getInstance();
     }
     
     public static synchronized AuthenticationCheck getInstance()
@@ -75,4 +93,37 @@ public class AuthenticationCheck {
             }
         }
     }
+    
+    public void studentAttendanceView() throws IOException
+    {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/StudentAttendanceView.fxml"));
+        Scene scene = new Scene(root);
+        stage.setTitle("Student: " + currentUser.getCurrentUserName());
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show(); 
+    }
+    
+    public void teacherStudentAttendanceView (Student student) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/StudentAttendanceView.fxml"));
+        Parent root = loader.load();
+        StudentAttendanceViewController studentAttendanceViewController = loader.getController();
+        studentAttendanceViewController.setStudent(student);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Student: " + currentUser.getCurrentSelectedUser());
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.show();
+    }
+    
+     /**
+     * Initializes the controller class.
+     */
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        tableAttedance.setItems(userModel.getStudents());
+    }
+    
 }

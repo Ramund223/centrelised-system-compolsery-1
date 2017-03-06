@@ -11,10 +11,10 @@
       <String fx:value="coolFont" />
    </styleClass>
    <children>
-      <TableView fx:id="TableAttedance" onMousePressed="#mousePressedOnTableView" prefHeight="400.0" prefWidth="359.0">
+      <TableView fx:id="tableAttedance" onMousePressed="#mousePressedOnTableView" prefHeight="400.0" prefWidth="359.0">
         <columns>
-          <TableColumn fx:id="TableStudent" prefWidth="180.0" text="Student" />
-          <TableColumn fx:id="TablePresent" minWidth="0.0" prefWidth="178.0" text="Present?" />
+          <TableColumn fx:id="tableStudent" prefWidth="180.0" text="Student" />
+          <TableColumn fx:id="tablePresent" minWidth="0.0" prefWidth="178.0" text="Present?" />
         </columns>
       </TableView>
    </children>

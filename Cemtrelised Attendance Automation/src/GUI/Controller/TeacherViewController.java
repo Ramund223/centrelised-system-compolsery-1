@@ -5,6 +5,8 @@
  */
 package GUI.Controller;
 
+import BLL.AuthenticationCheck;
+import BLL.CurrentUser;
 import Be.Student;
 import GUI.Model.UserModel;
 import java.io.IOException;
@@ -13,15 +15,10 @@ import java.util.ResourceBundle;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -31,12 +28,16 @@ import javafx.stage.Stage;
 public class TeacherViewController implements Initializable {
 
     @FXML
-    private TableView<Student> TableAttedance;
+    private TableView<Student> tableAttedance;
     @FXML
-    private TableColumn<Student, String> TableStudent;
+    private TableColumn<Student, String> tableStudent;
     @FXML
-    private TableColumn<Student, String> TablePresent;
+    private TableColumn<Student, String> tablePresent;
     private UserModel userModel;
+    private AuthenticationCheck authenticationCheck;
+    private CurrentUser currentUser;
+    
+    private static TeacherViewController INSTANCE;
     
     private ObservableList<Student> studentList;
     
@@ -44,31 +45,32 @@ public class TeacherViewController implements Initializable {
     {
         studentList = userModel.getInstance().getStudents();
         userModel = UserModel.getInstance();
+        authenticationCheck = AuthenticationCheck.getInstance();
+        currentUser = CurrentUser.getInstance();
     }
    
+    public static synchronized TeacherViewController getInstance()
+    {
+        if(INSTANCE == null)
+        {
+            INSTANCE = new TeacherViewController();
+        }
+        return INSTANCE;
+    }
+    
     @FXML
     private void mousePressedOnTableView(MouseEvent event) throws IOException
     {
         if(event.isPrimaryButtonDown() && event.getClickCount()==2)
         {
-            Student selectedStudent = TableAttedance.getSelectionModel().getSelectedItem();
-            studentAttendanceView(selectedStudent);
+            currentUser.setCurrentSelectedUser(tableAttedance.getSelectionModel().getSelectedItem().getName());
+            Student selectedStudent = tableAttedance.getSelectionModel().getSelectedItem();
+            authenticationCheck.teacherStudentAttendanceView(selectedStudent);
         }
     }
-    
-    private void studentAttendanceView(Student student) throws IOException
-    {
-        Stage primStage = (Stage)TableAttedance.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/StudentAttendanceView.fxml"));
-        Parent root = loader.load();
-        StudentAttendanceViewController studentAttendanceViewController = loader.getController();
-        studentAttendanceViewController.setStudent(student);
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Student: " + TableAttedance.getSelectionModel().getSelectedItem());
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(primStage);
-        stage.show();
+
+    public TableColumn<Student, String> getTableStudent() {
+        return tableStudent;
     }
 
     /**
@@ -77,8 +79,8 @@ public class TeacherViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        TableAttedance.setItems(userModel.getStudents());
-        TableStudent.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getName()));
+        tableAttedance.setItems(userModel.getStudents());
+        tableStudent.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getName()));
     }    
     
 }

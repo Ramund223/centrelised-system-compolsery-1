@@ -5,6 +5,7 @@
  */
 package GUI.Controller;
 
+import BLL.AuthenticationCheck;
 import Be.Student;
 import GUI.Model.UserModel;
 import java.io.IOException;
@@ -41,9 +42,12 @@ public class UserViewController implements Initializable
     
     private final ObservableList<Student> studentList;
     
+    private AuthenticationCheck authenticationCheck;
+    
     public UserViewController()
     {
         studentList = UserModel.getInstance().getStudents();
+        authenticationCheck = AuthenticationCheck.getInstance();
     }
     
     //This closes the user window window
@@ -57,13 +61,7 @@ public class UserViewController implements Initializable
     @FXML
     private void studentAttendanceView(ActionEvent event) throws IOException
     {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/StudentAttendanceView.fxml"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Student Attendance View");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();   
+        authenticationCheck.studentAttendanceView();
     }
 
     
