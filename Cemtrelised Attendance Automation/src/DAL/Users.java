@@ -34,7 +34,7 @@ public class Users
     //This method creates the students.
     public void createUsers()
     {
-        userModel.createStudent(1, "None", "Teacher", "teacher", "Teacher");
+//        userModel.createStudent(1, "None", "Teacher", "teacher", "Teacher");
         userModel.createStudent(2, "C20", "a", "a", "test");
         userModel.createStudent(3, "C20", "Carlos93", "password", "Carlos Abukat");
         userModel.createStudent(4, "C20", "MagicMike99", "password", "Magic Mike");

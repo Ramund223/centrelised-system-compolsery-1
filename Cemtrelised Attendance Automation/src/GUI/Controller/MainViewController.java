@@ -141,7 +141,8 @@ public class MainViewController implements Initializable {
         
         for (Student s : listStudents)
         {
-        if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())) && ("Teacher".equals(userNameField.getText())))
+//        if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())) && ("Teacher".equals(userNameField.getText())))
+        if (userNameField.getText().equals("Teacher") && (passwordField.getText().equals("teacher")))
             {
                 publicMessageLabel.setText("");
                 userNameField.clear();

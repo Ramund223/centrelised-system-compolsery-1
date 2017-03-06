@@ -47,9 +47,9 @@ public class AuthenticationCheck {
     {
         for (Student s : listStudents)
         {   
-            if (s.getUsername().equals(currentUser.getCurrentUserName()) && (s.getPassword().equals(currentUser.getCurrentPassword())) && ("Teacher".equals(currentUser.getCurrentUserName())))
+//            if (s.getUsername().equals(currentUser.getCurrentUserName()) && (s.getPassword().equals(currentUser.getCurrentPassword())) && ("Teacher".equals(currentUser.getCurrentUserName())))
+            if (currentUser.getCurrentUserName().equals("Teacher") && (currentUser.getCurrentPassword().equals("teacher")))
             {
-                System.out.println("works???");
                 System.out.println("Warning teacher is in the gibson!");
                 System.out.println("Logged in as " + currentUser.getCurrentUserName());
                 Stage stage = new Stage();
