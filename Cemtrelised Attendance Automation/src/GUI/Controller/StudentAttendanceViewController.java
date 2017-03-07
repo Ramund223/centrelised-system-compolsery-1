@@ -94,7 +94,11 @@ public class StudentAttendanceViewController implements Initializable {
 //        System.out.println(System.currentTimeMillis()/86400000-17232);        
 
       
-        
+        //Its take the current time in miliseconds(from aground when the mothos was invented)
+        //and diverde it by the milisecounds it takes for a day to pass and the minus it
+        //with oldDate which is all the days passed since jan 1 1970 and then check
+        //if its the same as newDate which is 0 so when a day passed oldDate is changed to 1
+        //which make the "if" statement true and that makes the newDay boolean true.
         if(System.currentTimeMillis()/86400000-oldDate != newDate)
         {
             newDay = true;
@@ -107,6 +111,9 @@ public class StudentAttendanceViewController implements Initializable {
             System.out.println("true");
         }
         
+        
+        //if newDay is true the student is registred in a arraylist and newDay
+        //is set to false so he can only be registred once a day.
         if(newDay == true)
         {
             attendanceDate.add(currentUser.getCurrentUserName() + " signed in at school on " + date);
