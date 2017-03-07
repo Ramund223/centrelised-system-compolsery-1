@@ -81,6 +81,7 @@ public class TeacherViewController implements Initializable {
     {
         tableAttedance.setItems(userModel.getStudents());
         tableStudent.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getName()));
+        tablePresent.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getPresent()));
     }    
     
 }

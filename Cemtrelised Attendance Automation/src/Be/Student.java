@@ -16,14 +16,16 @@ public class Student
     private String classroom;
     private String username;
     private String password;
+    private String present;
 
-    public Student(String name, int id, String classroom, String username, String password) 
+    public Student(String name, int id, String classroom, String username, String password, String present) 
     {
         this.name = name;
         this.id = id;
         this.classroom = classroom;
         this.username = username;
         this.password = password;
+        this.present = present;
     }
     
     public String getName() 
@@ -74,5 +76,15 @@ public class Student
     public void setPassword(String password) 
     {
         this.password = password;
+    }
+    
+    public String getPresent()
+    {
+        return present;
+    }
+    
+    public void setPresent(String present)
+    {
+        this.present = "nej";
     }
 }
