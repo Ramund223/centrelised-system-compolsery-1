@@ -6,6 +6,7 @@
 package GUI.Controller;
 
 import BLL.AuthenticationCheck;
+import BLL.CurrentUser;
 import Be.Student;
 import GUI.Model.UserModel;
 import java.io.IOException;
@@ -14,14 +15,10 @@ import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -44,10 +41,13 @@ public class UserViewController implements Initializable
     
     private AuthenticationCheck authenticationCheck;
     
+    private CurrentUser currentUser;
+    
     public UserViewController()
     {
         studentList = UserModel.getInstance().getStudents();
         authenticationCheck = AuthenticationCheck.getInstance();
+        currentUser = CurrentUser.getInstance();
     }
     
     //This closes the user window window
@@ -71,7 +71,7 @@ public class UserViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        nameLabel.setText(studentList.get(1).getName());
+        nameLabel.setText(currentUser.getCurrentUserName());
         className.setText(studentList.get(1).getClassroom());
     }    
 }
