@@ -18,6 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * FXML Controller class
@@ -36,17 +38,25 @@ public class StudentAttendanceViewController implements Initializable {
     private CurrentUser currentUser;
     private Student student;
     private Calendar calendar;
-    public int newDate = 0;
-    public int oldDate = 0;
+    public int timeAtNewDay = 0;
+    public long currentTimeInDays;
     public boolean newDay = true;
     public ArrayList<String> attendanceDate;
     public Date date = new Date();
+    public final int dayInMilliseconds = 86400000;
+    public final int startOfSchoolDay = 18000000;
+    public final int endOfSchoolDay = 61200000;
+    public long timeAtStartOfProgram;
+    private static StudentAttendanceViewController INSTANCE;
+    public Timer timer;
     
     public StudentAttendanceViewController() 
     {
         attendanceDate = new ArrayList<String>();
-        oldDate = (int)(System.currentTimeMillis()/86400000);
+//        currentTimeInDays = (int)(System.currentTimeMillis()/86400000);
+        timeAtStartOfProgram = System.currentTimeMillis()/dayInMilliseconds; // Run once at start of program
         currentUser = CurrentUser.getInstance();
+//        timer = new Timer();
     }
     
     public void setStudent(Student student)
@@ -74,6 +84,24 @@ public class StudentAttendanceViewController implements Initializable {
      
     private boolean startUpday = true; 
     
+    public long totalTime;
+    public long currentTime;
+            
+    @FXML
+    private void testButton2(ActionEvent event) throws IOException
+    {
+//        currentTimeInDays = 1;
+        
+        timer.scheduleAtFixedRate(new TimerTask() 
+        {
+            @Override
+            public void run() 
+            {
+                System.out.print("I would be called every 1 second");
+            }
+        }, 0, 1000);
+    }
+    
     @FXML
     private void testButton(ActionEvent event) throws IOException
     {
@@ -100,10 +128,25 @@ public class StudentAttendanceViewController implements Initializable {
        * if its the same as newDate which is 0 so when a day passed oldDate is changed to 1
        * which make the "if" statement true and that makes the newDay boolean true.
        */
-        if(System.currentTimeMillis()/86400000-oldDate != newDate)
+        
+//        timeAtStartOfProgram = System.currentTimeMillis()/dayInMilliseconds; // Run once at start of program
+        currentTimeInDays = System.currentTimeMillis()/dayInMilliseconds;  //Run every secound
+//        System.out.println(currentTimeInDays + "timeInDays");
+        totalTime = currentTimeInDays * dayInMilliseconds;                 //Run every secound
+//        System.out.println(totalTime + "totalTime");
+        currentTime = System.currentTimeMillis()-totalTime;         //Run every secound
+//        System.out.println(currentTime + "currentTime");
+        
+//        if(System.currentTimeMillis()/dayInMilliseconds-currentTimeInDays != timeAtNewDay && currentTime>startOfSchoolDay && currentTime<endOfSchoolDay) //need to check every secound to see if time has passed
+        if(currentTimeInDays - timeAtStartOfProgram != timeAtNewDay)
         {
+//            currentTimeInDays = (int)(System.currentTimeMillis()/dayInMilliseconds);
+//            currentTimeInDays = System.currentTimeMillis()/dayInMilliseconds;          //Run at start of program
+//            totalTime = currentTimeInDays*dayInMilliseconds;
+//            currentTime = System.currentTimeMillis()-totalTime;
+
             newDay = true;
-            oldDate = (int)(System.currentTimeMillis()/86400000);
+            timeAtStartOfProgram = System.currentTimeMillis()/dayInMilliseconds;
             System.out.println("not true");
         }
         else
@@ -116,7 +159,7 @@ public class StudentAttendanceViewController implements Initializable {
          * if newDay is true the student is registred in a arraylist and newDay
          * is set to false so he can only be registred once a day.
          */
-        if(newDay == true)
+        if(newDay == true) //Run everysecound
         {
             attendanceDate.add(currentUser.getCurrentUserName() + " signed in at school on " + date);
             newDay = false;
@@ -126,6 +169,14 @@ public class StudentAttendanceViewController implements Initializable {
             System.out.println("You are already registrered for this day!");
         }
         testLabel.setText(attendanceDate.get(0) + "");
+        
+        
+//        currentTimeInDays = System.currentTimeMillis()/dayInMilliseconds;  //Run every secound
+//        System.out.println(currentTimeInDays + "currentTimeInDays");
+//        totalTime = currentTimeInDays * dayInMilliseconds;                 //Run every secound
+//        System.out.println(totalTime + "totalTime");
+//        currentTime = System.currentTimeMillis()-totalTime;         //Run every secound
+//        System.out.println(currentTime + "currentTime");
         
 //        System.out.println(attendanceDate);
         
@@ -149,6 +200,15 @@ public class StudentAttendanceViewController implements Initializable {
 //        }
     }
     
+    public static synchronized StudentAttendanceViewController getInstance()
+    {
+        if(INSTANCE == null)
+        {
+            INSTANCE = new StudentAttendanceViewController();
+        }
+        return INSTANCE;
+    }
+    
     /**
      * Initializes the controller class.
      */
@@ -156,5 +216,6 @@ public class StudentAttendanceViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) 
     {
         labelInfo();
+        timer = new Timer();
     }    
 }

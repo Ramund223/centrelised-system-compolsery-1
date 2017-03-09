@@ -19,6 +19,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class AuthenticationCheck {
     
@@ -41,6 +43,8 @@ public class AuthenticationCheck {
     
     private AuthenticationCheck authenticationCheck;
     
+    private StudentAttendanceViewController studentAttendanceViewController;
+    
     @FXML
     private TableView<Student> tableAttedance;
     
@@ -50,6 +54,7 @@ public class AuthenticationCheck {
         listStudents = UserModel.getInstance().getStudents();
         currentUser = CurrentUser.getInstance();
         userModel = UserModel.getInstance();
+        studentAttendanceViewController = StudentAttendanceViewController.getInstance();
     }
     
     public static synchronized AuthenticationCheck getInstance()
@@ -99,6 +104,14 @@ public class AuthenticationCheck {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/StudentAttendanceView.fxml"));
         Scene scene = new Scene(root);
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() 
+        {
+            @Override
+            public void handle(WindowEvent we) 
+            {
+                studentAttendanceViewController.timer.cancel();
+            }
+        });
         stage.setTitle("Student: " + currentUser.getCurrentUserName());
         stage.setScene(scene);
         stage.setResizable(false);
@@ -113,6 +126,14 @@ public class AuthenticationCheck {
         studentAttendanceViewController.setStudent(student);
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() 
+        {
+            @Override
+            public void handle(WindowEvent we) 
+            {
+                studentAttendanceViewController.timer.cancel();
+            }
+        });
         stage.setTitle("Student: " + currentUser.getCurrentSelectedUser());
         stage.initModality(Modality.WINDOW_MODAL);
         stage.show();

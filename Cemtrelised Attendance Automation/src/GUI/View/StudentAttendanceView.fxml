@@ -14,5 +14,6 @@
       <Label fx:id="labelName" layoutX="64.0" layoutY="76.0" text="Name" />
       <Label fx:id="testLabel" layoutX="90.0" layoutY="255.0" text="Label" />
       <Button fx:id="testButten" layoutX="64.0" layoutY="312.0" mnemonicParsing="false" onAction="#testButton" text="TestButtan" />
+      <Button fx:id="testButton2" layoutX="300.0" layoutY="315.0" mnemonicParsing="false" onAction="#testButton2" text="TestButton2" />
    </children>
 </AnchorPane>

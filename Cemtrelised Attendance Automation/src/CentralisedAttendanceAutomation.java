@@ -5,6 +5,7 @@
  */
 
 
+import GUI.Controller.StudentAttendanceViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +17,8 @@ import javafx.stage.Stage;
  * @author skole
  */
 public class CentralisedAttendanceAutomation extends Application {
+
+private StudentAttendanceViewController studentAttendanceViewController;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -34,5 +37,4 @@ public class CentralisedAttendanceAutomation extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
 }
