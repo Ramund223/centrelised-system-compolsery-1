@@ -13,7 +13,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="451.0" stylesheets="@CSS/Style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.MainViewController">
     <stylesheets>      
-       <URL value="https://fonts.googleapis.com/css?family=Shadows+Into+Light" />   
+       <URL value="https://fonts.googleapis.com/css?family=Fredoka+One" />   
    </stylesheets>
     <top>
       <ImageView fx:id="logoView" fitHeight="47.0" fitWidth="278.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
