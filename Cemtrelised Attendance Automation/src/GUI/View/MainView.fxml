@@ -23,7 +23,7 @@
       </ImageView>
    </top>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#signInButton" onKeyPressed="#handleEnterPressed" prefHeight="0.0" prefWidth="66.0" text="Sign In" BorderPane.alignment="CENTER" />
+      <Button mnemonicParsing="false" onAction="#signInButton" onKeyPressed="#handleEnterPressed" prefHeight="32.0" prefWidth="74.0" text="Sign In" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
       <AnchorPane prefHeight="178.0" prefWidth="451.0" BorderPane.alignment="CENTER">
