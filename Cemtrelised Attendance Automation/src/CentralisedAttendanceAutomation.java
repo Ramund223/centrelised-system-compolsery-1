@@ -5,12 +5,15 @@
  */
 
 
+import BLL.Time;
 import GUI.Controller.StudentAttendanceViewController;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  *
@@ -18,8 +21,15 @@ import javafx.stage.Stage;
  */
 public class CentralisedAttendanceAutomation extends Application {
 
-private StudentAttendanceViewController studentAttendanceViewController;
+    private StudentAttendanceViewController studentAttendanceViewController;
+    private Time time;
     
+    public CentralisedAttendanceAutomation()
+    {
+        time = Time.getInstance();
+        time.timer();
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("GUI/View/MainView.fxml"));
@@ -27,6 +37,15 @@ private StudentAttendanceViewController studentAttendanceViewController;
         Scene scene = new Scene(root);
         stage.setTitle("AttendanceSYS");
         stage.setResizable(false);
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() 
+        {
+            @Override
+            public void handle(WindowEvent we) 
+            {
+                time.timer.cancel();
+                time.timer.purge();
+            }
+        });
         stage.setScene(scene);
         stage.show();
     }
