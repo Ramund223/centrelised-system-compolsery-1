@@ -36,8 +36,12 @@ public class UserViewController implements Initializable
     private Label className;
     @FXML
     private TableView<Student> TableAttedance;
+    @FXML
+    private Button testButton;
     
     private final ObservableList<Student> studentList;
+    
+    private UserModel userModel;
     
     private AuthenticationCheck authenticationCheck;
     
@@ -46,6 +50,7 @@ public class UserViewController implements Initializable
     public UserViewController()
     {
         studentList = UserModel.getInstance().getStudents();
+        userModel = UserModel.getInstance();
         authenticationCheck = AuthenticationCheck.getInstance();
         currentUser = CurrentUser.getInstance();
     }
@@ -56,6 +61,15 @@ public class UserViewController implements Initializable
     {
         Stage stage = (Stage) closeUser.getScene().getWindow();
         stage.close();
+    }
+    
+    @FXML
+    private void testButton(ActionEvent event) 
+    {
+        studentList.get(1).setPresent(true);
+        studentList.get(2).setPresent(true);
+        userModel.setPresent(true);
+        System.out.println(currentUser.getCurrentUserName() + " is present");
     }
     
     @FXML

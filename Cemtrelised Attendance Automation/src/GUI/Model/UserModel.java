@@ -19,6 +19,8 @@ public class UserModel
     
     public String userName;
     public String password;
+    public boolean present;
+    public int id;
     
 private static UserModel INSTANCE;
     
@@ -30,7 +32,7 @@ private static UserModel INSTANCE;
     }
 
     //This method create the student and add the student to the student observablelist.
-    public void createStudent(int id, String classroom, String username, String password, String name, String present)
+    public void createStudent(int id, String classroom, String username, String password, String name, boolean present)
     {
         Student student = new Student(name, id, classroom, username, password, present);
         studentList.add(student);
@@ -69,5 +71,16 @@ private static UserModel INSTANCE;
     {
         return password;
     }
- 
+    
+    public void setPresent (boolean present)
+    {
+        this.present = present;
+    }
+    
+    public int getId ()
+    {
+        return id;
+    }
+    
+    public void setId ();
 }

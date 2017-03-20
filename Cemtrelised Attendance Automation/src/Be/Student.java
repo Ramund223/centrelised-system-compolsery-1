@@ -16,9 +16,9 @@ public class Student
     private String classroom;
     private String username;
     private String password;
-    private String present;
+    private boolean present;
 
-    public Student(String name, int id, String classroom, String username, String password, String present) 
+    public Student(String name, int id, String classroom, String username, String password, boolean present) 
     {
         this.name = name;
         this.id = id;
@@ -80,11 +80,18 @@ public class Student
     
     public String getPresent()
     {
-        return present;
+        if (present == true)
+        {
+            return "Ja";
+        }
+            else
+        {
+            return "Nej";
+        }    
     }
     
-    public void setPresent(String present)
+    public void setPresent(boolean present)
     {
-        this.present = "nej";
+        this.present = true;
     }
 }
