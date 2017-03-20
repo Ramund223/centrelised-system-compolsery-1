@@ -25,7 +25,7 @@ public class Time
     public final int startOfSchoolDay = 21600000;
     public final int endOfSchoolDay = 64800000;
     public final int oneHourInMilliseconds = 3600000;
-    public int timeAtNewDay = 0;
+    public final int timeAtNewDay = 0;
     public long timeAtStartOfProgram;
     public long totalTime;
     public long currentTime;
@@ -47,6 +47,8 @@ public class Time
         timeAtStartOfProgram = (System.currentTimeMillis() + oneHourInMilliseconds)/dayInMilliseconds;
     }
     
+    // This method gets the instance of the time class and if it does not
+    // exist it creates it
     public static synchronized Time getInstance()
     {
         if(INSTANCE == null)
@@ -56,6 +58,7 @@ public class Time
         return INSTANCE;
     }
    
+    // This method is the timer class which runs every 60 secound.
     public void timer()
     {
         timer.scheduleAtFixedRate(timerTask = new TimerTask() 
@@ -65,9 +68,15 @@ public class Time
                 timeCheck();
                 checkIfNewDay();
             }
-        }, 0, 1000);
+        }, 0, 60000);
     }
     
+    /**
+     This method updates the values of the variables, 
+     currentTimeInDays checks how many days have passed since the 1. january 1970
+     totalTime checks how many milliseconds have passed since 1. january 1970 up to today at 0:00
+     currentTime checks how much time have passed in milliseconds this day only
+    */
     public void timeCheck()
     {
         currentTimeInDays = (System.currentTimeMillis() + oneHourInMilliseconds)/dayInMilliseconds;  //Run every secound
@@ -78,6 +87,11 @@ public class Time
 //        System.out.println(currentTime + " currentTime");
     }
     
+    /**
+     This checks if a new school day have started and if we have just started the program
+     If we just started the program the newDay boolean is set to true.
+     If the time is between 6 am and 6 pm a new school day have started and people can sign in
+    */
     public void checkIfNewDay()
     {
         if (startOfProgram == true && currentTime>startOfSchoolDay && currentTime<endOfSchoolDay)
@@ -102,6 +116,8 @@ public class Time
         }
     }
     
+    
+    // This checks if the newDay boolean is true and if it is the user is set as there that day
 //    public void newDay()
 //    {
 //        if(newDay == true) //Run everysecound
