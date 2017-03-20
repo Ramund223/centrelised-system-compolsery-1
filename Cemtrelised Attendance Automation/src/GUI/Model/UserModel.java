@@ -82,5 +82,8 @@ private static UserModel INSTANCE;
         return id;
     }
     
-    public void setId ();
+    public void setId ()
+    {
+    //
+    }
 }
