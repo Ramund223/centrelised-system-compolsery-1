@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.TilePane?>
+
+<BorderPane prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.StudentPictureBoardController">
+   <center>
+      <ScrollPane fx:id="containerForPostItBoard" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <TilePane fx:id="postItBoard" prefHeight="200.0" prefWidth="200.0" />
+         </content>
+      </ScrollPane>
+   </center>
+   <right>
+      <fx:include source="Sidebar.fxml" />
+   </right>
+   <stylesheets>
+      <URL value="@css/Style.css" />
+      <URL value="https://fonts.googleapis.com/css?family=Amatic+SC" />
+   </stylesheets>
+</BorderPane>
