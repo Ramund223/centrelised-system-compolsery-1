@@ -86,6 +86,7 @@ public class AuthenticationCheck {
             }
                 else if (s.getUsername().equals(currentUser.getCurrentUserName()) && (s.getPassword().equals(currentUser.getCurrentPassword())))
             {
+                currentUser.setId(s.getId());
                 System.out.println("Logged in!");
                 Stage stage = new Stage();
                 Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));

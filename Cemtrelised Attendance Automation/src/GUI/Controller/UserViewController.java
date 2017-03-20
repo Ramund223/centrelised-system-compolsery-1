@@ -53,6 +53,7 @@ public class UserViewController implements Initializable
         userModel = UserModel.getInstance();
         authenticationCheck = AuthenticationCheck.getInstance();
         currentUser = CurrentUser.getInstance();
+        studentList.get(currentUser.getId()-1).setPresent(true);
     }
     
     //This closes the user window window
@@ -61,15 +62,6 @@ public class UserViewController implements Initializable
     {
         Stage stage = (Stage) closeUser.getScene().getWindow();
         stage.close();
-    }
-    
-    @FXML
-    private void testButton(ActionEvent event) 
-    {
-        studentList.get(1).setPresent(true);
-        studentList.get(2).setPresent(true);
-        userModel.setPresent(true);
-        System.out.println(currentUser.getCurrentUserName() + " is present");
     }
     
     @FXML

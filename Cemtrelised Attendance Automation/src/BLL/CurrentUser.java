@@ -16,6 +16,7 @@ public class CurrentUser
     private String currentUserName;
     private String currentPassword;
     private String currentSelectedUser;
+    private int id;
 
     public String getCurrentSelectedUser() {
         return currentSelectedUser;
@@ -40,6 +41,18 @@ public class CurrentUser
     public void setCurrentPassword(String currentPassword) {
         this.currentPassword = currentPassword;
     }
+
+    public int getId() 
+    {
+        return id;
+    }
+
+    public void setId(int id) 
+    {
+        this.id = id;
+    }
+    
+    
     
     public static synchronized CurrentUser getInstance()
     {

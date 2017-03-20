@@ -29,7 +29,6 @@
          <children>
             <Button fx:id="closeUser" mnemonicParsing="false" onAction="#userClose" prefHeight="31.0" prefWidth="306.0" text="Sign Out" />
             <Button mnemonicParsing="false" onAction="#studentAttendanceView" prefHeight="31.0" prefWidth="372.0" text="See Absence" GridPane.columnIndex="1" />
-            <Button fx:id="testButton" mnemonicParsing="false" onAction="#testButton" text="Button" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </bottom>
