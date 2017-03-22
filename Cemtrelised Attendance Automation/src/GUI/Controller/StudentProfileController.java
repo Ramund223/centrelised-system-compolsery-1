@@ -11,6 +11,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+
 
 /**
  * FXML Controller class
@@ -25,7 +27,7 @@ public class StudentProfileController implements Initializable
 
     private StudentProfileModel model;
     @FXML
-    private Label lblPicture;
+    private ImageView lblPicture;
     
 
     public StudentProfileModel getModel()
@@ -36,7 +38,7 @@ public class StudentProfileController implements Initializable
     public void setModel(StudentProfileModel model)
     {
         this.model = model;
-        lblPicture.textProperty().bind(model.textProperty());
+        lblPicture.imageProperty().bind(model.imageProperty());
         lblText.textProperty().bind(model.textProperty());
     }
 

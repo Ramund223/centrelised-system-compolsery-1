@@ -5,6 +5,10 @@
  */
 package Be;
 
+import java.awt.SystemColor;
+import javafx.scene.image.Image;
+
+
 
 
 /**
@@ -13,16 +17,22 @@ package Be;
  */
 public class PostIt
 {
-
-    private String image;
+    
+    private Image image;
 
     private String text;
 
-    public PostIt(String image, String text)
+    public PostIt(Image image, String text)
     {
-        this.image = image;
-        this.text = text;
+        
     }
+
+    public PostIt(Image image, SystemColor text) 
+    {
+        this.text = "test";
+        this.image = image;
+    }
+
 
     /**
      * Get the value of text
@@ -49,7 +59,7 @@ public class PostIt
      *
      * @return the value of titel
      */
-    public String getImage()
+    public Image getImage()
     {
         return image;
     }
@@ -59,7 +69,7 @@ public class PostIt
      *
      * @param image
      */
-    public void setImage(String image)
+    public void setImage(Image image)
     {
         this.image = image;
     }

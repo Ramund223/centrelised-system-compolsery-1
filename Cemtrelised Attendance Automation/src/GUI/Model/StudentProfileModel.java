@@ -6,8 +6,11 @@
 package GUI.Model;
 
 import Be.PostIt;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -16,7 +19,10 @@ import javafx.beans.property.StringProperty;
 public class StudentProfileModel
 {
     
-    private final StringProperty image = new SimpleStringProperty();
+    //private final Image image = new Image("stockphoto.jpg");
+    //ImageView image = new ImageView(new Image(getClass().getResourceAsStream("/stockphoto.jpg")));
+    //private final ImageView image = new ImageView();
+    private final ObjectProperty<javafx.scene.image.Image> image = new SimpleObjectProperty<>();
     private final StringProperty text = new SimpleStringProperty();
     
     private final PostIt postIt;
@@ -49,18 +55,18 @@ public class StudentProfileModel
         return text;
     }
     
-    public String getImage()
+    public Image getImage()
     {
         return image.get();
     }
     
-    public void setImage(String value)
+    public void setImage(Image value)
     {
         image.set(value);
         postIt.setImage(value);
     }
     
-    public StringProperty imageProperty()
+    public ObjectProperty imageProperty()
     {
         return image;
     }

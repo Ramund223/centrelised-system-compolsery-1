@@ -6,6 +6,7 @@
 package DAL;
 
 import Be.PostIt;
+import javafx.scene.image.Image;
 
 
 /**
@@ -15,9 +16,9 @@ import Be.PostIt;
 public class PostItDaoMOCK
 {
 
-    private static final String[] images =
+    private static final Image[] images =
     {
-        
+         
     };
 
     private static final String[] texts =

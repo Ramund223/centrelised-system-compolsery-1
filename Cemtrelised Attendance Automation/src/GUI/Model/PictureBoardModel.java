@@ -6,8 +6,10 @@
 package GUI.Model;
 
 import Be.PostIt;
+import static java.awt.SystemColor.text;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -15,6 +17,7 @@ import javafx.collections.ObservableList;
  */
 public class PictureBoardModel
 {
+    Image image = new Image("/Pictures/stockphoto.jpg", true);
 
     private static PictureBoardModel INSTANCE;
 
@@ -36,7 +39,7 @@ public class PictureBoardModel
 
     public void CreateNewPostIt()
     {
-        allPostIts.add(new StudentProfileModel(new PostIt("Getdgergerverv", "Hello")));
+        allPostIts.add(new StudentProfileModel(new PostIt(image, text)));
      
     }
 
