@@ -36,7 +36,7 @@ public class PictureBoardModel
 
     public void CreateNewPostIt()
     {
-        allPostIts.add(new StudentProfileModel(new PostIt("", "Hello")));
+        allPostIts.add(new StudentProfileModel(new PostIt("Getdgergerverv", "Hello")));
      
     }
 

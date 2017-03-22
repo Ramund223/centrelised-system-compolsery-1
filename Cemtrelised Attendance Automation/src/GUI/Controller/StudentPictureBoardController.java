@@ -83,7 +83,7 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
 
     private Node getPostItView(StudentProfileModel model) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI/View/StudentProfile.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/StudentProfile.fxml"));
         AnchorPane postIt = loader.load();
         StudentProfileController singlePostItController = loader.getController();
         singlePostItController.setModel(model);
@@ -94,5 +94,4 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
     {
         postItBoard.getChildren().remove(c.getFrom(), c.getTo());
     }
-
 }
