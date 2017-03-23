@@ -5,10 +5,14 @@
  */
 package GUI.Controller;
 
+import BLL.CurrentUser;
+import Be.Student;
 import GUI.Model.StudentProfileModel;
+import GUI.Model.UserModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -38,7 +42,16 @@ public class StudentProfileController implements Initializable
     @FXML
     private VBox StudentProfile;
     
-
+    private ObservableList<Student> listStudents;
+    
+    private CurrentUser currentUser;
+    
+    public StudentProfileController()
+    {
+        currentUser = CurrentUser.getInstance();
+        listStudents = UserModel.getInstance().getStudents();
+    }
+    
     public StudentProfileModel getModel()
     {
         return model;
@@ -63,17 +76,32 @@ public class StudentProfileController implements Initializable
     @FXML
     private void MousePressedOnImage(MouseEvent event) throws IOException
     {
-        if(event.isPrimaryButtonDown() && event.getClickCount()==1)
+        currentUser.setCurrentUserName(lblText.getText());
+        for (Student a : listStudents)
         {
+            if(event.isPrimaryButtonDown() && event.getClickCount()==1 && (a.getName().equals(currentUser.getCurrentUserName())))
+            {
+        currentUser.setId(a.getId());
+        System.out.println("Logged in!");
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));
-        
         Scene scene = new Scene(root);
-        stage.setTitle("AttendanceSYS");
-
+        stage.setTitle("Logged in as " + currentUser.getCurrentUserName());
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
+        break;
+            }
+       
         }
     }
     
+    
+    
+    
+    
+    
+    
+   
+        
 }

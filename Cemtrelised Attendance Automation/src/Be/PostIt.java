@@ -24,7 +24,7 @@ public class PostIt
     
     private Image image;
 
-    private String text = "lolcats";
+    private String text = "test";
     
     private ObservableList<Student> listStudents;
 //    private String text = "lolcats";
