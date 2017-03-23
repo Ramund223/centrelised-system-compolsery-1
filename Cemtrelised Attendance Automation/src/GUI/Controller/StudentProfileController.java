@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 
 /**
@@ -28,6 +29,8 @@ public class StudentProfileController implements Initializable
     private StudentProfileModel model;
     @FXML
     private ImageView lblPicture;
+    @FXML
+    private VBox StudentProfile;
     
 
     public StudentProfileModel getModel()
@@ -48,7 +51,7 @@ public class StudentProfileController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
+        
     }    
     
 }

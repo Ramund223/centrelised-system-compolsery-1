@@ -9,8 +9,6 @@ import java.awt.SystemColor;
 import javafx.scene.image.Image;
 
 
-
-
 /**
  *
  * @author pgn
@@ -26,12 +24,14 @@ public class PostIt
     {
         
     }
-
+    
     public PostIt(Image image, SystemColor text) 
     {
         this.text = "test";
         this.image = image;
     }
+
+    
 
 
     /**

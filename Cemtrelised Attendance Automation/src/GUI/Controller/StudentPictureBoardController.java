@@ -46,6 +46,7 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
         //(I do not bind the height because the flowpane should resize to it's content)
         postItBoard.prefWidthProperty().bind(containerForPostItBoard.widthProperty());
         boardModel.getAllPostIts().addListener(this);
+        getStudentsReady();
     }
 
     @Override
@@ -93,5 +94,13 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
     private void removeRemovedPostIts(Change<? extends StudentProfileModel> c)
     {
         postItBoard.getChildren().remove(c.getFrom(), c.getTo());
+    }
+    
+    private void getStudentsReady()
+    {
+        for (int i = 0; i < 10; i++) 
+        {
+            boardModel.CreateNewPostIt();
+        }
     }
 }
