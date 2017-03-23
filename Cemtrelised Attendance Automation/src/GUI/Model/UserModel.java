@@ -8,6 +8,7 @@ package GUI.Model;
 import Be.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -21,6 +22,7 @@ public class UserModel
     public String password;
     public boolean present;
     public int id;
+    public Image image;
     
 private static UserModel INSTANCE;
     
@@ -32,9 +34,9 @@ private static UserModel INSTANCE;
     }
 
     //This method create the student and add the student to the student observablelist.
-    public void createStudent(int id, String classroom, String username, String password, String name, boolean present)
+    public void createStudent(int id, String classroom, String username, String password, String name, boolean present, Image image)
     {
-        Student student = new Student(name, id, classroom, username, password, present);
+        Student student = new Student(name, id, classroom, username, password, present, image);
         studentList.add(student);
     }
     
@@ -85,5 +87,15 @@ private static UserModel INSTANCE;
     public void setId (int id)
     {
         this.id = id;
+    }
+    
+    public Image getImage ()
+    {
+        return image;
+    }
+    
+    public void setImage (Image image)
+    {
+        this.image = image;
     }
 }

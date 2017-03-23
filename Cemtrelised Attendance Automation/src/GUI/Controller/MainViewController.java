@@ -43,8 +43,6 @@ public class MainViewController implements Initializable {
     @FXML
     private TableView<Student> tableView;
     
-    private CreateUsers createUsers;
-    
     private Student student;
     
 //    private ArrayList<String> userList = new ArrayList<String>();
@@ -64,7 +62,6 @@ public class MainViewController implements Initializable {
     public MainViewController()
     {      
          listStudents = UserModel.getInstance().getStudents();
-         createUsers = CreateUsers.getInstance();
          currentUser = CurrentUser.getInstance();
          authenticationCheck = AuthenticationCheck.getInstance();
     }
@@ -181,7 +178,8 @@ public class MainViewController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        createUsers.createUsers();
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        
     }   
 }

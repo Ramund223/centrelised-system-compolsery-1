@@ -5,6 +5,7 @@
  */
 package GUI.Controller;
 
+import BLL.CreateUsers;
 import GUI.Model.PictureBoardModel;
 import GUI.Model.StudentProfileModel;
 import java.io.IOException;
@@ -33,21 +34,25 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
 
     @FXML
     private TilePane postItBoard;
+    
+    private CreateUsers createUsers;
 
     public StudentPictureBoardController()
     {
         boardModel = PictureBoardModel.getInstance();
+        createUsers = CreateUsers.getInstance();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
-        //Bind the width of the flowpane to the width of the scrollpane: 
-        //(I do not bind the height because the flowpane should resize to it's content)
-        postItBoard.prefWidthProperty().bind(containerForPostItBoard.widthProperty());
-        boardModel.getAllPostIts().addListener(this);
-        getStudentsReady();
-    }
+//    @Override
+//    public void initialize(URL url, ResourceBundle rb)
+//    {
+//        //Bind the width of the flowpane to the width of the scrollpane: 
+//        //(I do not bind the height because the flowpane should resize to it's content)
+//        postItBoard.prefWidthProperty().bind(containerForPostItBoard.widthProperty());
+//        boardModel.getAllPostIts().addListener(this);
+//        getStudentsReady();
+////        createUsers = CreateUsers.getInstance();
+//    }
 
     @Override
     public void onChanged(Change<? extends StudentProfileModel> c)
@@ -64,7 +69,6 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
             {
                 //TODO other
             }
-
         }
     }
 
@@ -103,4 +107,16 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
             boardModel.CreateNewPostIt();
         }
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb)
+    {
+        //Bind the width of the flowpane to the width of the scrollpane: 
+        //(I do not bind the height because the flowpane should resize to it's content)
+        postItBoard.prefWidthProperty().bind(containerForPostItBoard.widthProperty());
+        boardModel.getAllPostIts().addListener(this);
+        createUsers.createUsers();
+        getStudentsReady();
+    }
+    
 }

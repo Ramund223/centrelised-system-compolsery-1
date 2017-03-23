@@ -5,6 +5,8 @@
  */
 package Be;
 
+import javafx.scene.image.Image;
+
 /**
  *
  * @author Nicolai
@@ -17,8 +19,9 @@ public class Student
     private String username;
     private String password;
     private boolean present;
+    private Image image;
 
-    public Student(String name, int id, String classroom, String username, String password, boolean present) 
+    public Student(String name, int id, String classroom, String username, String password, boolean present, Image image) 
     {
         this.name = name;
         this.id = id;
@@ -26,6 +29,7 @@ public class Student
         this.username = username;
         this.password = password;
         this.present = present;
+        this.image = image;
     }
     
     public String getName() 
@@ -94,4 +98,15 @@ public class Student
     {
         this.present = true;
     }
+    
+    public String getImage() 
+    {
+        return password;
+    }
+    
+    public void setImage(Image image) 
+    {
+        this.image = image;
+    }
+    
 }

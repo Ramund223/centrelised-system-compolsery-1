@@ -39,11 +39,11 @@ public class TeacherViewController implements Initializable {
     
     private static TeacherViewController INSTANCE;
     
-    private ObservableList<Student> studentList;
+//    private ObservableList<Student> studentList;
     
     public TeacherViewController()
     {
-        studentList = userModel.getInstance().getStudents();
+//        studentList = userModel.getInstance().getStudents();
         userModel = UserModel.getInstance();
         authenticationCheck = AuthenticationCheck.getInstance();
         currentUser = CurrentUser.getInstance();
@@ -83,5 +83,4 @@ public class TeacherViewController implements Initializable {
         tableStudent.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getName()));
         tablePresent.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getPresent()));
     }    
-    
 }

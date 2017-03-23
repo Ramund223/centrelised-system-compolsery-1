@@ -39,7 +39,6 @@ public class AuthenticationCheck {
     
     private UserModel userModel;
     
-//    private TeacherViewController teacherViewController;
     
     private AuthenticationCheck authenticationCheck;
     
@@ -50,7 +49,6 @@ public class AuthenticationCheck {
     
     public AuthenticationCheck()
     {
-//        teacherViewController = TeacherViewController.getInstance();
         listStudents = UserModel.getInstance().getStudents();
         currentUser = CurrentUser.getInstance();
         userModel = UserModel.getInstance();
@@ -105,14 +103,6 @@ public class AuthenticationCheck {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/StudentAttendanceView.fxml"));
         Scene scene = new Scene(root);
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() 
-        {
-            @Override
-            public void handle(WindowEvent we) 
-            {
-                studentAttendanceViewController.timer.cancel();
-            }
-        });
         stage.setTitle("Student: " + currentUser.getCurrentUserName());
         stage.setScene(scene);
         stage.setResizable(false);
@@ -127,14 +117,6 @@ public class AuthenticationCheck {
         studentAttendanceViewController.setStudent(student);
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() 
-        {
-            @Override
-            public void handle(WindowEvent we) 
-            {
-                studentAttendanceViewController.timer.cancel();
-            }
-        });
         stage.setTitle("Student: " + currentUser.getCurrentSelectedUser());
         stage.initModality(Modality.WINDOW_MODAL);
         stage.show();
