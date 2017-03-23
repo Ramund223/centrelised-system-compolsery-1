@@ -5,6 +5,7 @@
  */
 package GUI.Controller;
 
+import BLL.CreateUsers;
 import GUI.Model.PictureBoardModel;
 import GUI.Model.StudentProfileModel;
 import java.io.IOException;
@@ -33,19 +34,13 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
 
     @FXML
     private TilePane postItBoard;
+    
+    private CreateUsers createUsers;
 
     public StudentPictureBoardController()
     {
         boardModel = PictureBoardModel.getInstance();
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
-        //Bind the width of the flowpane to the width of the scrollpane: 
-        //(I do not bind the height because the flowpane should resize to it's content)
-        postItBoard.prefWidthProperty().bind(containerForPostItBoard.widthProperty());
-        boardModel.getAllPostIts().addListener(this);
+        createUsers = CreateUsers.getInstance();
     }
 
     @Override
@@ -93,5 +88,15 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
     private void removeRemovedPostIts(Change<? extends StudentProfileModel> c)
     {
         postItBoard.getChildren().remove(c.getFrom(), c.getTo());
+    }
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb)
+    {
+        //Bind the width of the flowpane to the width of the scrollpane: 
+        //(I do not bind the height because the flowpane should resize to it's content)
+        postItBoard.prefWidthProperty().bind(containerForPostItBoard.widthProperty());
+        boardModel.getAllPostIts().addListener(this);
+        createUsers.createUsers();
     }
 }
