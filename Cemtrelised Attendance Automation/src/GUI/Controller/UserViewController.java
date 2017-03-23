@@ -53,7 +53,7 @@ public class UserViewController implements Initializable
         userModel = UserModel.getInstance();
         authenticationCheck = AuthenticationCheck.getInstance();
         currentUser = CurrentUser.getInstance();
-        studentList.get(currentUser.getId()-1).setPresent(true);
+        studentList.get(currentUser.getId()+1).setPresent(true);
     }
     
     //This closes the user window window

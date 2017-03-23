@@ -18,7 +18,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" />
                </VBox.margin>
             </Label>
-            <ImageView fx:id="lblPicture" fitHeight="241.0" fitWidth="269.0" pickOnBounds="true" preserveRatio="true" styleClass="shadowy" />
+            <ImageView fx:id="lblPicture" fitHeight="241.0" fitWidth="269.0" onMousePressed="#MousePressedOnImage" pickOnBounds="true" preserveRatio="true" styleClass="shadowy" />
          </children>
       </VBox>
    </children>
