@@ -18,7 +18,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 /**
@@ -34,10 +33,6 @@ public class UserViewController implements Initializable
     private Label nameLabel;
     @FXML
     private Label className;
-    @FXML
-    private TableView<Student> TableAttedance;
-    @FXML
-    private Button testButton;
     
     private final ObservableList<Student> studentList;
     
@@ -46,6 +41,8 @@ public class UserViewController implements Initializable
     private AuthenticationCheck authenticationCheck;
     
     private CurrentUser currentUser;
+    @FXML
+    private Label presentLabel;
     
     public UserViewController()
     {
@@ -53,7 +50,6 @@ public class UserViewController implements Initializable
         userModel = UserModel.getInstance();
         authenticationCheck = AuthenticationCheck.getInstance();
         currentUser = CurrentUser.getInstance();
-        studentList.get(currentUser.getId()+1).setPresent(true);
     }
     
     //This closes the user window window
@@ -80,4 +76,11 @@ public class UserViewController implements Initializable
         nameLabel.setText(currentUser.getCurrentUserName());
         className.setText(studentList.get(1).getClassroom());
     }    
+
+    @FXML
+    private void MarkAsPresent(ActionEvent event) 
+    {
+        studentList.get(currentUser.getId()-1).setPresent(true);
+        presentLabel.setText("You are now marked as present");
+    }
 }
