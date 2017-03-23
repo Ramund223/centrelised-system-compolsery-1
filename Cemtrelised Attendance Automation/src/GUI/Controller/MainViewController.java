@@ -184,5 +184,6 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
+        
     }   
 }

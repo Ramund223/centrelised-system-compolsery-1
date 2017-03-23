@@ -58,7 +58,6 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
             {
                 //TODO other
             }
-
         }
     }
 
