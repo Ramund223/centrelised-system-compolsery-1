@@ -25,6 +25,11 @@ public class PostIt
         
     }
     
+//    public PostIt(Image image, String text)
+//    {
+//        
+//    }
+
     public PostIt(Image image, SystemColor text) 
     {
         this.text = "test";
