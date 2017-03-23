@@ -20,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 
@@ -29,7 +30,7 @@ import javafx.scene.layout.TilePane;
  */
 public class StudentPictureBoardController implements Initializable, ListChangeListener<StudentProfileModel>
 {
-
+    Image image = new Image("/Pictures/stockphoto.jpg", true);
     private static StudentPictureBoardController INSTANCE;
     
     private PictureBoardModel boardModel;
@@ -44,7 +45,7 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
 
     private ObservableList<Student> listStudents;
     
-    private int indexNr = 1;
+    public static int indexNr;
     
     public StudentPictureBoardController()
     {
@@ -121,14 +122,10 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
     
     private void getStudentsReady()
     {
-//        for (int i = 0; i < 10; i++) 
-//        {
-//            boardModel.CreateNewPostIt();
-//        }
         for (int i = 0; i < listStudents.size(); i++)
         {
             indexNr = i;
-            System.out.println(listStudents.get(i).getName().toString());
+            System.out.println(listStudents.get(i).getName());
             boardModel.CreateNewPostIt();
             System.out.println(indexNr);
         }
