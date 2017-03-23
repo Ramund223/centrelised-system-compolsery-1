@@ -5,7 +5,12 @@
  */
 package Be;
 
+import GUI.Controller.StudentPictureBoardController;
+import GUI.Model.UserModel;
 import java.awt.SystemColor;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
 
@@ -15,25 +20,32 @@ import javafx.scene.image.Image;
  */
 public class PostIt
 {
+    private StudentPictureBoardController studentPictureBoardController;
     
     private Image image;
 
-    private String text;
-
-    public PostIt(Image image, String text)
-    {
-        
-    }
+    private String text = "lolcats";
     
+    private ObservableList<Student> listStudents;
+//    private String text = "lolcats";
+
 //    public PostIt(Image image, String text)
 //    {
 //        
 //    }
+    private int indexCounter = 0; 
 
-    public PostIt(Image image, SystemColor text) 
+    public PostIt(Image image, SystemColor textSC) 
     {
-        this.text = "test";
+        studentPictureBoardController = StudentPictureBoardController.getInstance();
+        listStudents = UserModel.getInstance().getStudents();
+//        System.out.println(studentPictureBoardController.getIndexNr());
+        this.text = listStudents.get(studentPictureBoardController.getIndexNr()).getName();
+//        this.text = listStudents.get(indexCounter).getName();
+//        this.text = listStudents.get(1).getName();
+//        this.text = text;
         this.image = image;
+//        studentPictureBoardController.setIndexNr(+1);
     }
 
     
@@ -77,6 +89,12 @@ public class PostIt
     public void setImage(Image image)
     {
         this.image = image;
+    }
+    
+    public void initialize(URL url, ResourceBundle rb)
+    {
+        studentPictureBoardController = StudentPictureBoardController.getInstance();
+//        listStudents = UserModel.getInstance().getStudents();
     }
 
 }

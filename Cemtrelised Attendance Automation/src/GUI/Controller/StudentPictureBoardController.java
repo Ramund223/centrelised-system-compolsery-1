@@ -6,12 +6,15 @@
 package GUI.Controller;
 
 import BLL.CreateUsers;
+import Be.Student;
 import GUI.Model.PictureBoardModel;
 import GUI.Model.StudentProfileModel;
+import GUI.Model.UserModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,6 +30,8 @@ import javafx.scene.layout.TilePane;
 public class StudentPictureBoardController implements Initializable, ListChangeListener<StudentProfileModel>
 {
 
+    private static StudentPictureBoardController INSTANCE;
+    
     private PictureBoardModel boardModel;
 
     @FXML
@@ -37,10 +42,15 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
     
     private CreateUsers createUsers;
 
+    private ObservableList<Student> listStudents;
+    
+    private int indexNr = 1;
+    
     public StudentPictureBoardController()
     {
         boardModel = PictureBoardModel.getInstance();
         createUsers = CreateUsers.getInstance();
+        listStudents = UserModel.getInstance().getStudents();
     }
 
 //    @Override
@@ -54,6 +64,15 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
 ////        createUsers = CreateUsers.getInstance();
 //    }
 
+    public static synchronized StudentPictureBoardController getInstance()
+    {
+        if (INSTANCE == null)
+        {
+            INSTANCE = new StudentPictureBoardController();
+        }
+        return INSTANCE;
+    }
+    
     @Override
     public void onChanged(Change<? extends StudentProfileModel> c)
     {
@@ -102,10 +121,28 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
     
     private void getStudentsReady()
     {
-        for (int i = 0; i < 10; i++) 
+//        for (int i = 0; i < 10; i++) 
+//        {
+//            boardModel.CreateNewPostIt();
+//        }
+        for (int i = 0; i < listStudents.size(); i++)
         {
+            indexNr = i;
+            System.out.println(listStudents.get(i).getName().toString());
             boardModel.CreateNewPostIt();
+            System.out.println(indexNr);
         }
+    }
+
+    public void setIndexNr(int indexNr) 
+    {
+        this.indexNr = indexNr;
+    }
+     
+
+    public int getIndexNr() 
+    {
+        return indexNr;
     }
 
     @Override

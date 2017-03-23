@@ -6,6 +6,8 @@
 package GUI.Model;
 
 import Be.PostIt;
+import GUI.Controller.StudentPictureBoardController;
+import java.awt.SystemColor;
 import static java.awt.SystemColor.text;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +25,8 @@ public class PictureBoardModel
 
     private ObservableList<StudentProfileModel> allPostIts;
 
+//    private StudentPictureBoardController studentPictureBoardController;
+    
     public static synchronized PictureBoardModel getInstance()
     {
         if (INSTANCE == null)
@@ -35,6 +39,7 @@ public class PictureBoardModel
     private PictureBoardModel()
     {
         allPostIts = FXCollections.observableArrayList();
+//        studentPictureBoardController = StudentPictureBoardController.getInstance();
     }
 
     public void CreateNewPostIt()
@@ -42,6 +47,12 @@ public class PictureBoardModel
         allPostIts.add(new StudentProfileModel(new PostIt(image, text)));
      
     }
+    
+//    public void CreateNewPostIt()
+//    {
+//        allPostIts.add(new StudentProfileModel(new PostIt(image, text)));
+//     
+//    }
 
     public ObservableList<StudentProfileModel> getAllPostIts()
     {
