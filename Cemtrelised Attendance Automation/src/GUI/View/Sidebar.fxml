@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.SidebarController">
+   <children>
+      <Button mnemonicParsing="false" onAction="#addNewPostIt" styleClass="round-button" text="Add new" />
+      <Button mnemonicParsing="false" onAction="#removeSelectedPostIt" styleClass="round-button" text="Remove" />
+      <Button mnemonicParsing="false" onAction="#TecherLogin" styleClass="round-button" text="Teacher Login" />
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>

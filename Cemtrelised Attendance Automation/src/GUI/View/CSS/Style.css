@@ -17,3 +17,37 @@ and open the template in the editor.
     -fx-font-family: 'Fredoka One', cursive;
     -fx-font-size: 12pt;
 }
+
+.root
+{
+    -fx-font-size: 12pt;
+    -fx-font-family: "Trebuchet MS";
+    /* -fx-base: rgb(110,110,110,255);    */
+}
+
+.big-text 
+{
+    -fx-font-size: 40pt;
+    -fx-font-weight: bold; 
+}
+
+.shadowy {
+    -fx-effect: dropshadow( gaussian , gray , 15 , 0.5 , 5 , 5 );
+}
+
+#post-it 
+{
+    -fx-font-family: 'Amatic SC', cursive;
+    -fx-font-size: 24pt;
+    -fx-background-color: rgb(255,255,0);
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+
+.round-button {
+    -fx-background-radius: 5em; 
+    -fx-min-width: 120px; 
+    -fx-min-height: 120px; 
+    -fx-max-width: 120px; 
+    -fx-max-height: 120px;
+}
