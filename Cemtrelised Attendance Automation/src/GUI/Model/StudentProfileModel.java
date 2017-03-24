@@ -70,5 +70,4 @@ public class StudentProfileModel
     {
         return image;
     }
-    
 }

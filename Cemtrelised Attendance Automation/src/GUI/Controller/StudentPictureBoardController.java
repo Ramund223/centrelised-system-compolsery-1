@@ -125,9 +125,9 @@ public class StudentPictureBoardController implements Initializable, ListChangeL
         for (int i = 0; i < listStudents.size(); i++)
         {
             indexNr = i;
-            System.out.println(listStudents.get(i).getName());
+//            System.out.println(listStudents.get(i).getName());
             boardModel.CreateNewPostIt();
-            System.out.println(indexNr);
+//            System.out.println(indexNr);
         }
     }
 

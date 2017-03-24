@@ -34,7 +34,7 @@
       </GridPane>
    </bottom>
    <left>
-      <ImageView fitHeight="193.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <ImageView fx:id="profilePic" fitHeight="193.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@../../Pictures/stockphoto.jpg" />
          </image>

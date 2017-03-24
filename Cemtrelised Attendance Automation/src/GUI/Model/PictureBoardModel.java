@@ -19,7 +19,7 @@ import javafx.scene.image.Image;
  */
 public class PictureBoardModel
 {
-    Image image = new Image("/Pictures/stockphoto.jpg", true);
+    Image image;
 
     private static PictureBoardModel INSTANCE;
 

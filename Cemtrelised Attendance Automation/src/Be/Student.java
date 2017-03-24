@@ -99,9 +99,9 @@ public class Student
         this.present = true;
     }
     
-    public String getImage() 
+    public Image getImage() 
     {
-        return password;
+        return image;
     }
     
     public void setImage(Image image) 

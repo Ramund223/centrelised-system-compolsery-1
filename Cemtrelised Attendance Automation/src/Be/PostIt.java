@@ -44,7 +44,8 @@ public class PostIt
 //        this.text = listStudents.get(indexCounter).getName();
 //        this.text = listStudents.get(1).getName();
 //        this.text = text;
-        this.image = image;
+//        this.image = image;
+        this.image = listStudents.get(studentPictureBoardController.getIndexNr()).getImage();
 //        studentPictureBoardController.setIndexNr(+1);
     }
 

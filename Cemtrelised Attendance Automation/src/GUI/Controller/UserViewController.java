@@ -18,6 +18,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -43,6 +45,10 @@ public class UserViewController implements Initializable
     private CurrentUser currentUser;
     @FXML
     private Label presentLabel;
+    @FXML
+    private ImageView profilePic;
+    
+    private Image profilePicture;
     
     public UserViewController()
     {
@@ -51,6 +57,15 @@ public class UserViewController implements Initializable
         authenticationCheck = AuthenticationCheck.getInstance();
         currentUser = CurrentUser.getInstance();
     }
+
+    ImageView imageView = new ImageView();
+    
+    public void setProfilePicture()
+    {
+         profilePicture = new Image("/Pictures/" + currentUser.getId() + ".jpg");
+         profilePic.setImage(profilePicture);
+    }
+//    currentUser.getId()
     
     //This closes the user window window
     @FXML
@@ -75,6 +90,7 @@ public class UserViewController implements Initializable
     {
         nameLabel.setText(currentUser.getCurrentUserName());
         className.setText(studentList.get(1).getClassroom());
+        setProfilePicture();
     }    
 
     @FXML

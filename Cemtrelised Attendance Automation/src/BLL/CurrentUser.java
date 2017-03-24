@@ -52,8 +52,6 @@ public class CurrentUser
         this.id = id;
     }
     
-    
-    
     public static synchronized CurrentUser getInstance()
     {
         if(INSTANCE == null)

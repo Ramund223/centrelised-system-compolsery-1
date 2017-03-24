@@ -7,19 +7,13 @@ package GUI.Controller;
 
 import BLL.CurrentUser;
 import Be.Student;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * FXML Controller class
@@ -52,10 +46,6 @@ public class StudentAttendanceViewController implements Initializable {
         labelInfoFromTeacherView();
     }
 
-//    public Student getStudent() {
-//        return student;
-//    }
-    
     private void labelInfo()
     {
         if (!currentUser.getCurrentUserName().equals("t"))
