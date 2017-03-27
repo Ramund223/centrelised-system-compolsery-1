@@ -14,12 +14,12 @@ import javafx.scene.image.Image;
  */
 public class Users 
 {
-    Image image1 = new Image("/Pictures/1.jpg", true);
-    Image image2 = new Image("/Pictures/2.jpg", true);
-    Image image3 = new Image("/Pictures/3.jpg", true);
-    Image image4 = new Image("/Pictures/4.jpg", true);
-    Image image5 = new Image("/Pictures/5.jpg", true);
-    Image image6 = new Image("/Pictures/6.jpg", true);
+    Image image1 = new Image("/Pictures/1.png", true);
+    Image image2 = new Image("/Pictures/2.png", true);
+    Image image3 = new Image("/Pictures/3.png", true);
+    Image image4 = new Image("/Pictures/4.png", true);
+    Image image5 = new Image("/Pictures/5.png", true);
+    Image image6 = new Image("/Pictures/6.png", true);
     
     private static Users INSTANCE;
     

@@ -30,7 +30,7 @@ import javafx.scene.layout.TilePane;
  */
 public class StudentPictureBoardController implements Initializable, ListChangeListener<StudentProfileModel>
 {
-    Image image = new Image("/Pictures/stockphoto.jpg", true);
+//    Image image = new Image("/Pictures/stockphoto.jpg", true);
     private static StudentPictureBoardController INSTANCE;
     
     private PictureBoardModel boardModel;

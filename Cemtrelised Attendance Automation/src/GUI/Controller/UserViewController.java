@@ -62,7 +62,7 @@ public class UserViewController implements Initializable
     
     public void setProfilePicture()
     {
-         profilePicture = new Image("/Pictures/" + currentUser.getId() + ".jpg");
+         profilePicture = new Image("/Pictures/" + currentUser.getId() + ".png");
          profilePic.setImage(profilePicture);
     }
 //    currentUser.getId()
