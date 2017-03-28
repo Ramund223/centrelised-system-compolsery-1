@@ -87,7 +87,7 @@ public class AuthenticationCheck {
                 currentUser.setId(s.getId());
                 System.out.println("Logged in!");
                 Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/StudentView.fxml"));
                 Scene scene = new Scene(root);
                 stage.setTitle("Logged in as " + currentUser.getCurrentUserName());
                 stage.setScene(scene);
