@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.TilePane?>
 
-<BorderPane prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.StudentPictureBoardController">
-   <center>
+<BorderPane prefHeight="500.0" prefWidth="650.0" stylesheets="@CSS/Style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.StudentPictureBoardController">
+   <stylesheets>      
+       <URL value="https://fonts.googleapis.com/css?family=Fredoka+One" />   
+   </stylesheets>
+    <center>
       <ScrollPane fx:id="containerForPostItBoard" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
             <TilePane fx:id="postItBoard" prefHeight="200.0" prefWidth="200.0" />
@@ -16,8 +20,8 @@
    <right>
       <fx:include source="Sidebar.fxml" />
    </right>
-   <stylesheets>
-      <URL value="@css/Style.css" />
-      <URL value="https://fonts.googleapis.com/css?family=Amatic+SC" />
-   </stylesheets>
+   <styleClass>
+      <String fx:value="backgroundcolor" />
+      <String fx:value="coolFont" />
+   </styleClass>
 </BorderPane>
