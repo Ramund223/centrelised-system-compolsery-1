@@ -5,7 +5,7 @@
  */
 package Be;
 
-import GUI.Controller.StudentPictureBoardController;
+import GUI.Controller.MainViewController;
 import GUI.Model.UserModel;
 import java.awt.SystemColor;
 import java.net.URL;
@@ -20,7 +20,7 @@ import javafx.scene.image.Image;
  */
 public class PostIt
 {
-    private StudentPictureBoardController studentPictureBoardController;
+    private MainViewController studentPictureBoardController;
     
     private Image image;
 
@@ -37,7 +37,7 @@ public class PostIt
 
     public PostIt(Image image, SystemColor textSC) 
     {
-        studentPictureBoardController = StudentPictureBoardController.getInstance();
+        studentPictureBoardController = MainViewController.getInstance();
         listStudents = UserModel.getInstance().getStudents();
 //        System.out.println(studentPictureBoardController.getIndexNr());
         this.text = listStudents.get(studentPictureBoardController.getIndexNr()).getName();
@@ -94,7 +94,7 @@ public class PostIt
     
     public void initialize(URL url, ResourceBundle rb)
     {
-        studentPictureBoardController = StudentPictureBoardController.getInstance();
+        studentPictureBoardController = MainViewController.getInstance();
 //        listStudents = UserModel.getInstance().getStudents();
     }
 

@@ -27,7 +27,7 @@ import javafx.stage.Stage;
  *
  * @author skole
  */
-public class UserViewController implements Initializable 
+public class StudentViewController implements Initializable 
 {
     @FXML
     private Button closeUser;   
@@ -50,7 +50,7 @@ public class UserViewController implements Initializable
     
     private Image profilePicture;
     
-    public UserViewController()
+    public StudentViewController()
     {
         studentList = UserModel.getInstance().getStudents();
         userModel = UserModel.getInstance();

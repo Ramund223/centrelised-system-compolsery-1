@@ -22,12 +22,12 @@ import javafx.stage.Stage;
  *
  * @author pgn
  */
-public class SidebarController implements Initializable
+public class MainViewSidebarController implements Initializable
 {
 
     PictureBoardModel boardModel;
 
-    public SidebarController()
+    public MainViewSidebarController()
     {
         boardModel = PictureBoardModel.getInstance();
     }
@@ -57,7 +57,7 @@ public class SidebarController implements Initializable
     private void TecherLogin(ActionEvent event) throws IOException
     {
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/MainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/TeacherLogin.fxml"));
         
         Scene scene = new Scene(root);
         stage.setTitle("AttendanceSYS");

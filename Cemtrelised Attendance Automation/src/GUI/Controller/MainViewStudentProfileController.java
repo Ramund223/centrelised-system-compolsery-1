@@ -30,7 +30,7 @@ import javafx.stage.Stage;
  *
  * @author pgn
  */
-public class StudentProfileController implements Initializable
+public class MainViewStudentProfileController implements Initializable
 {
 
     @FXML
@@ -46,7 +46,7 @@ public class StudentProfileController implements Initializable
     
     private CurrentUser currentUser;
     
-    public StudentProfileController()
+    public MainViewStudentProfileController()
     {
         currentUser = CurrentUser.getInstance();
         listStudents = UserModel.getInstance().getStudents();
@@ -84,7 +84,7 @@ public class StudentProfileController implements Initializable
         currentUser.setId(a.getId());
         System.out.println("Logged in!");
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/UserView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/StudentView.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Logged in as " + currentUser.getCurrentUserName());
         stage.setScene(scene);

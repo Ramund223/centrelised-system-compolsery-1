@@ -8,7 +8,7 @@ package BLL;
 import Be.Student;
 import DAL.Users;
 import GUI.Model.UserModel;
-import GUI.Controller.MainViewController;
+import GUI.Controller.TeacherLoginController;
 import java.io.IOException;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;

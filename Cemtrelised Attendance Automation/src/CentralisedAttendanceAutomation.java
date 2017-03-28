@@ -32,7 +32,7 @@ public class CentralisedAttendanceAutomation extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("GUI/View/StudentPictureBoard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GUI/View/MainView.fxml"));
         
         Scene scene = new Scene(root);
         stage.setTitle("AttendanceSYS");

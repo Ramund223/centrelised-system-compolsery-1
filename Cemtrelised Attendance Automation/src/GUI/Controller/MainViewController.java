@@ -5,181 +5,152 @@
  */
 package GUI.Controller;
 
-import BLL.AuthenticationCheck;
 import BLL.CreateUsers;
-import BLL.CurrentUser;
 import Be.Student;
+import GUI.Model.PictureBoardModel;
+import GUI.Model.StudentProfileModel;
 import GUI.Model.UserModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.TilePane;
 
 /**
- * FXML Controller class
  *
- * @author skole
+ * @author pgn
  */
-public class MainViewController implements Initializable {
-
-    @FXML
-    private ImageView logoView;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private TextField userNameField;
-    @FXML
-    public Label publicMessageLabel;
-    @FXML
-    private TableView<Student> tableView;
-    
-    private Student student;
-    
-//    private ArrayList<String> userList = new ArrayList<String>();
-    
-    private ObservableList<Student> listStudents;
-    
+public class MainViewController implements Initializable, ListChangeListener<StudentProfileModel>
+{
+//    Image image = new Image("/Pictures/stockphoto.jpg", true);
     private static MainViewController INSTANCE;
     
-    private String userNameFieldName;
+    private PictureBoardModel boardModel;
+
+    @FXML
+    private ScrollPane containerForPostItBoard;
+
+    @FXML
+    private TilePane postItBoard;
     
-    private String passwordFieldName;
+    private CreateUsers createUsers;
+
+    private ObservableList<Student> listStudents;
     
-    private AuthenticationCheck authenticationCheck;
-    
-    private CurrentUser currentUser;
+    public static int indexNr;
     
     public MainViewController()
-    {      
-         listStudents = UserModel.getInstance().getStudents();
-         currentUser = CurrentUser.getInstance();
-         authenticationCheck = AuthenticationCheck.getInstance();
+    {
+        boardModel = PictureBoardModel.getInstance();
+        createUsers = CreateUsers.getInstance();
+        listStudents = UserModel.getInstance().getStudents();
     }
-    
+
+//    @Override
+//    public void initialize(URL url, ResourceBundle rb)
+//    {
+//        //Bind the width of the flowpane to the width of the scrollpane: 
+//        //(I do not bind the height because the flowpane should resize to it's content)
+//        postItBoard.prefWidthProperty().bind(containerForPostItBoard.widthProperty());
+//        boardModel.getAllPostIts().addListener(this);
+//        getStudentsReady();
+////        createUsers = CreateUsers.getInstance();
+//    }
+
     public static synchronized MainViewController getInstance()
     {
-        if(INSTANCE == null)
+        if (INSTANCE == null)
         {
             INSTANCE = new MainViewController();
         }
         return INSTANCE;
     }
     
-    public ObservableList<Student> getListStudents()
-    {
-        return listStudents;
-    }
-    
-    public PasswordField getPasswordField()
-    {
-        return passwordField;
-    }
-    
-    public TextField getUserNameField()
-    {
-        return userNameField;
-    }
-    
-    public Label getPublicMessageLabel()
-    {
-        return publicMessageLabel;
-    }
-    
-    //This method use the signIn method when you press the "Enter" key.
-    @FXML
-    public void handleEnterPressed(KeyEvent event) throws IOException
-    {
-        if (event.getCode() == KeyCode.ENTER) 
-        {
-            signIn();
-        }
-    }
-    
-    @FXML
-    private void signInButton(ActionEvent event) throws IOException 
-    {
-        signIn();
-    }
-    
-    public String getUserName()
-    {
-        return userNameFieldName;
-    }
-    
-    public String getPassword()
-    {
-        return passwordFieldName;
-    }
-    
-    //This method is our signIn method which checks if there is user with the
-    //user and password combination, and if there is it opens a new window for 
-    //students.
-    private void signIn()throws IOException
-    {
-        currentUser.setCurrentUserName(userNameField.getText());
-        currentUser.setCurrentPassword(passwordField.getText());
-        
-        authenticationCheck.signIn();
-        
-        for (Student s : listStudents)
-        {
-//        if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())) && ("Teacher".equals(userNameField.getText())))
-        if (userNameField.getText().equals("t") && (passwordField.getText().equals("t")))
-            {
-                publicMessageLabel.setText("");
-                userNameField.clear();
-                passwordField.clear();
-                break;
-            }
-                else if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
-            {
-                publicMessageLabel.setText("");
-                userNameField.clear();
-                passwordField.clear();
-                break;
-            }
-                else if (userNameField.getText().isEmpty()) 
-            {
-                publicMessageLabel.setText("No Username Input!");
-                break;
-            }
-                else if (!s.getUsername().equals(userNameField.getText()))
-            {
-                publicMessageLabel.setText("No such user in the database!");
-            }
-                else if (passwordField.getText().isEmpty()) 
-            {
-                publicMessageLabel.setText("No Password Input!");
-                break;
-            }
-                else if (s.getUsername().equals(userNameField.getText()) && !s.getPassword().equals(passwordField.getText()))
-            {
-                publicMessageLabel.setText("Wrong Password!");
-                break;
-            }
-            else
-            {
-                //DidNothing
-            }
-        }
-    }
-    
-    /**
-     * Initializes the controller class.
-     */
     @Override
-    public void initialize(URL url, ResourceBundle rb) 
+    public void onChanged(Change<? extends StudentProfileModel> c)
     {
-        
-    }   
+        while (c.next())
+        {
+            if (c.wasAdded())
+            {
+                addNewPostItView(c);
+            } else if (c.wasRemoved())
+            {
+                removeRemovedPostIts(c);
+            } else
+            {
+                //TODO other
+            }
+        }
+    }
+
+    private void addNewPostItView(Change<? extends StudentProfileModel> c)
+    {
+        for (StudentProfileModel model : c.getAddedSubList())
+        {
+            try
+            {
+                postItBoard.getChildren().add(getPostItView(model));
+            } catch (IOException ex)
+            {
+                System.out.println("BAD PRACTICE, YOUR DROWNING AN EXCEPTION!!!");
+            }
+        }
+    }
+
+    private Node getPostItView(StudentProfileModel model) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/MainViewStudentProfile.fxml"));
+        AnchorPane postIt = loader.load();
+        MainViewStudentProfileController singlePostItController = loader.getController();
+        singlePostItController.setModel(model);
+        return postIt;
+    }
+
+    private void removeRemovedPostIts(Change<? extends StudentProfileModel> c)
+    {
+        postItBoard.getChildren().remove(c.getFrom(), c.getTo());
+    }
+    
+    private void getStudentsReady()
+    {
+        for (int i = 0; i < listStudents.size(); i++)
+        {
+            indexNr = i;
+//            System.out.println(listStudents.get(i).getName());
+            boardModel.CreateNewPostIt();
+//            System.out.println(indexNr);
+        }
+    }
+
+    public void setIndexNr(int indexNr) 
+    {
+        this.indexNr = indexNr;
+    }
+     
+
+    public int getIndexNr() 
+    {
+        return indexNr;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb)
+    {
+        //Bind the width of the flowpane to the width of the scrollpane: 
+        //(I do not bind the height because the flowpane should resize to it's content)
+        postItBoard.prefWidthProperty().bind(containerForPostItBoard.widthProperty());
+        boardModel.getAllPostIts().addListener(this);
+        createUsers.createUsers();
+        getStudentsReady();
+    }
+    
 }
