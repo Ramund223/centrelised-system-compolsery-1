@@ -24,7 +24,7 @@ public class Time
     public final int dayInMilliseconds = 86400000;
     public final int startOfSchoolDay = 21600000;
     public final int endOfSchoolDay = 64800000;
-    public final int oneHourInMilliseconds = 3600000;
+    public final int oneHourInMilliseconds = 0; // def 3600000
     public final int timeAtNewDay = 0;
     public long timeAtStartOfProgram;
     public long totalTime;
@@ -36,6 +36,8 @@ public class Time
     private CurrentUser currentUser;
     public Date date;
     public TimerTask timerTask;
+    
+    //TODO Summer/Winter time checker
     
     public Time() 
     {

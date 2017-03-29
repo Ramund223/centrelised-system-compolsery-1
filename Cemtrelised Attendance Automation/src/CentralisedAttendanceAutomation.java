@@ -10,6 +10,7 @@ import GUI.Controller.StudentAttendanceViewController;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -37,6 +38,7 @@ public class CentralisedAttendanceAutomation extends Application {
         Scene scene = new Scene(root);
         stage.setTitle("AttendanceSYS");
         stage.setResizable(true);
+        scene.setCursor(Cursor.WAIT);
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() 
         {
             @Override
