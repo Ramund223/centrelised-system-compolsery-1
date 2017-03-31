@@ -141,32 +141,32 @@ public class TeacherLoginController implements Initializable {
                 passwordField.clear();
                 break;
             }
-                else if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
-            {
-                publicMessageLabel.setText("");
-                userNameField.clear();
-                passwordField.clear();
-                break;
-            }
+//                else if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
+//            {
+//                publicMessageLabel.setText("");
+//                userNameField.clear();
+//                passwordField.clear();
+//                break;
+//            }
                 else if (userNameField.getText().isEmpty()) 
             {
                 publicMessageLabel.setText("No Username Input!");
                 break;
             }
-                else if (!s.getUsername().equals(userNameField.getText()))
-            {
-                publicMessageLabel.setText("No such user in the database!");
-            }
+//                else if (!s.getUsername().equals(userNameField.getText()))
+//            {
+//                publicMessageLabel.setText("No such user in the database!");
+//            }
                 else if (passwordField.getText().isEmpty()) 
             {
                 publicMessageLabel.setText("No Password Input!");
                 break;
             }
-                else if (s.getUsername().equals(userNameField.getText()) && !s.getPassword().equals(passwordField.getText()))
-            {
-                publicMessageLabel.setText("Wrong Password!");
-                break;
-            }
+//                else if (s.getUsername().equals(userNameField.getText()) && !s.getPassword().equals(passwordField.getText()))
+//            {
+//                publicMessageLabel.setText("Wrong Password!");
+//                break;
+//            }
             else
             {
                 //DidNothing

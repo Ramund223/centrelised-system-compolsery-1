@@ -82,19 +82,19 @@ public class AuthenticationCheck {
                 stage.show();
                 break;
             }
-                else if (s.getUsername().equals(currentUser.getCurrentUserName()) && (s.getPassword().equals(currentUser.getCurrentPassword())))
-            {
-                currentUser.setId(s.getId());
-                System.out.println("Logged in!");
-                Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/StudentView.fxml"));
-                Scene scene = new Scene(root);
-                stage.setTitle("Logged in as " + currentUser.getCurrentUserName());
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-                break;
-            }
+//                else if (s.getUsername().equals(currentUser.getCurrentUserName()) && (s.getPassword().equals(currentUser.getCurrentPassword())))
+//            {
+//                currentUser.setId(s.getId());
+//                System.out.println("Logged in!");
+//                Stage stage = new Stage();
+//                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/StudentView.fxml"));
+//                Scene scene = new Scene(root);
+//                stage.setTitle("Logged in as " + currentUser.getCurrentUserName());
+//                stage.setScene(scene);
+//                stage.setResizable(false);
+//                stage.show();
+//                break;
+//            }
         }
     }
     

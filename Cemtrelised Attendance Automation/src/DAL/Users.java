@@ -43,11 +43,11 @@ public class Users
     public void createUsers()
     {
 //        userModel.createStudent(0, "None", "Teacher", "teacher", "Teacher");
-        userModel.createStudent(1, "C20", "a", "a", "test", false, image1);
-        userModel.createStudent(2, "C20", "Carlos93", "password", "Carlos Abukat", false, image2);
-        userModel.createStudent(3, "C20", "MagicMike27", "password", "Magic Mike", false, image3);
-        userModel.createStudent(4, "C20", "IceFrog29", "password", "Ice Frog", false, image4);
-        userModel.createStudent(5, "C20", "LøgDrengen99", "password", "Løg Drengen", false, image5);
-        userModel.createStudent(6, "C20", "Treant6", "password", "Treant Six", false, image6);
+        userModel.createStudent(1, "C20", "test", false, image1);
+        userModel.createStudent(2, "C20", "Carlos Abukat", false, image2);
+        userModel.createStudent(3, "C20", "Magic Mike", false, image3);
+        userModel.createStudent(4, "C20", "Ice Frog", false, image4);
+        userModel.createStudent(5, "C20", "Løg Drengen", false, image5);
+        userModel.createStudent(6, "C20", "Treant Six", false, image6);
     }
 }

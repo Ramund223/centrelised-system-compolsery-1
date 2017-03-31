@@ -92,16 +92,6 @@ public class MainViewStudentProfileController implements Initializable
         stage.show();
         break;
             }
-       
         }
-    }
-    
-    
-    
-    
-    
-    
-    
-   
-        
+    }       
 }
