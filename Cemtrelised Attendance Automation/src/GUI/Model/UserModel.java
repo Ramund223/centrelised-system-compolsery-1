@@ -34,9 +34,9 @@ private static UserModel INSTANCE;
     }
 
     //This method create the student and add the student to the student observablelist.
-    public void createStudent(int id, String classroom, String username, String password, String name, boolean present, Image image)
+    public void createStudent(int id, String classroom, String name, boolean present, Image image)
     {
-        Student student = new Student(name, id, classroom, username, password, present, image);
+        Student student = new Student(name, id, classroom, present, image);
         studentList.add(student);
     }
     
@@ -52,26 +52,6 @@ private static UserModel INSTANCE;
     public ObservableList<Student> getStudents()
     {
         return studentList;
-    }
-    
-    public void setUserName(String username) 
-    {
-        this.userName = userName;
-    }
-    
-    public void setPassword(String password) 
-    {
-        this.password = password;
-    }
-    
-    public String getUserName() 
-    {
-        return userName;
-    }
-    
-    public String getPassword() 
-    {
-        return password;
     }
     
     public void setPresent (boolean present)

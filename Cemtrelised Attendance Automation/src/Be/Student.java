@@ -21,13 +21,11 @@ public class Student
     private boolean present;
     private Image image;
 
-    public Student(String name, int id, String classroom, String username, String password, boolean present, Image image) 
+    public Student(String name, int id, String classroom, boolean present, Image image) 
     {
         this.name = name;
         this.id = id;
         this.classroom = classroom;
-        this.username = username;
-        this.password = password;
         this.present = present;
         this.image = image;
     }
@@ -60,26 +58,6 @@ public class Student
     public void setClassroom(String classroom) 
     {
         this.classroom = classroom;
-    }
-    
-    public String getUsername() 
-    {
-        return username;
-    }
-    
-    public void setUsername(String username) 
-    {
-        this.username = username;
-    }
-    
-    public String getPassword() 
-    {
-        return password;
-    }
-    
-    public void setPassword(String password) 
-    {
-        this.password = password;
     }
     
     public String getPresent()

@@ -38,7 +38,6 @@ public class CentralisedAttendanceAutomation extends Application {
         Scene scene = new Scene(root);
         stage.setTitle("AttendanceSYS");
         stage.setResizable(true);
-        scene.setCursor(Cursor.WAIT);
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() 
         {
             @Override
