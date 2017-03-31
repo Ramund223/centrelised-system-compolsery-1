@@ -36,6 +36,7 @@ public class TeacherViewController implements Initializable {
     private UserModel userModel;
     private AuthenticationCheck authenticationCheck;
     private CurrentUser currentUser;
+    private ObservableList<Student> listStudents;
     
     private static TeacherViewController INSTANCE;
     
@@ -47,6 +48,7 @@ public class TeacherViewController implements Initializable {
         userModel = UserModel.getInstance();
         authenticationCheck = AuthenticationCheck.getInstance();
         currentUser = CurrentUser.getInstance();
+        listStudents = UserModel.getInstance().getStudents();
     }
    
     public static synchronized TeacherViewController getInstance()
@@ -61,16 +63,31 @@ public class TeacherViewController implements Initializable {
     @FXML
     private void mousePressedOnTableView(MouseEvent event) throws IOException
     {
-        if(event.isPrimaryButtonDown() && event.getClickCount()==2)
-        {
+            currentUser.setCurrentUserName(tableAttedance.getSelectionModel().getSelectedItem().getName());
             currentUser.setCurrentSelectedUser(tableAttedance.getSelectionModel().getSelectedItem().getName());
-            Student selectedStudent = tableAttedance.getSelectionModel().getSelectedItem();
+            
+            for (Student a : listStudents)
+        {
+            if(event.isPrimaryButtonDown() && event.getClickCount()==2 && (a.getName().equals(currentUser.getCurrentUserName())))
+            {
+            currentUser.setId(a.getId());
+            Student selectedStudent = tableAttedance.getSelectionModel().getSelectedItem();   
             authenticationCheck.teacherStudentAttendanceView(selectedStudent);
+            System.out.println(currentUser.getCurrentUserName());
+            System.out.println(currentUser.getId());
+            }
         }
     }
 
     public TableColumn<Student, String> getTableStudent() {
         return tableStudent;
+    }
+    
+    public void getListReady()
+    {
+        tableAttedance.setItems(userModel.getStudents());
+        tableStudent.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getName()));
+        tablePresent.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getPresent()));
     }
 
     /**
@@ -79,8 +96,6 @@ public class TeacherViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        tableAttedance.setItems(userModel.getStudents());
-        tableStudent.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getName()));
-        tablePresent.setCellValueFactory(value -> new SimpleObjectProperty<>(value.getValue().getPresent()));
+        getListReady();
     }    
 }
