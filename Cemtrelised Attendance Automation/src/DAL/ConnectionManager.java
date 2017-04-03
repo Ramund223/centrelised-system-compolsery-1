@@ -42,10 +42,9 @@ public class ConnectionManager
     {
         return data.getConnection();
     }
-    
-    public static void main(String[] args) throws SQLServerException, SQLException, IOException {
-        ConnectionManager cm = new ConnectionManager();
-        Connection con = cm.getConnection();
-        con.close();
-    }
+//    public static void main(String[] args) throws SQLServerException, SQLException, IOException {
+//        ConnectionManager cm = new ConnectionManager();
+//        Connection con = cm.getConnection();
+//        con.close();
+//    }
 }

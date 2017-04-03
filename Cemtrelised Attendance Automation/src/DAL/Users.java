@@ -5,7 +5,11 @@
  */
 package DAL;
 
+import Be.Student;
 import GUI.Model.UserModel;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 import javafx.scene.image.Image;
 
 /**
@@ -34,10 +38,13 @@ public class Users
     
     public Users()
     {
+        users = new StudentDAO();
         userModel = UserModel.getInstance();
     }
     
     private UserModel userModel;
+    
+    private StudentDAO users;
     
     //This method creates the students.
     public void createUsers()
@@ -49,5 +56,10 @@ public class Users
         userModel.createStudent(4, "C20", "Ice Frog", false, image4);
         userModel.createStudent(5, "C20", "Løg Drengen", false, image5);
         userModel.createStudent(6, "C20", "Treant Six", false, image6);
+    }
+    
+    public List<Student> getUsers() throws SQLException, IOException
+    {
+        return users.getAllStudents();
     }
 }
