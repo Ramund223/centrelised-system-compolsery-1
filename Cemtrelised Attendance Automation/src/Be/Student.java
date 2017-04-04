@@ -15,16 +15,16 @@ public class Student
 {
     private String name;
     private int id;
+    private String school;
     private String classroom;
-    private String username;
-    private String password;
     private boolean present;
     private Image image;
 
-    public Student(String name, int id, String classroom, boolean present, Image image) 
+    public Student(String name, int id, String school, String classroom, boolean present, Image image) 
     {
         this.name = name;
         this.id = id;
+        this.school = school;
         this.classroom = classroom;
         this.present = present;
         this.image = image;
@@ -48,6 +48,16 @@ public class Student
     public void setId(int id) 
     {
         this.id = id;
+    }
+    
+    public String getSchool() 
+    {
+        return school;
+    }
+    
+    public void setSchool(String school) 
+    {
+        this.school = school;
     }
     
     public String getClassroom() 
