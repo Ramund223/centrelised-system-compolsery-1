@@ -43,6 +43,7 @@ public class StudentDAO
                rs.getString("Name");
                rs.getString("School");
                rs.getString("Class");
+               rs.getBoolean("Present");
                rs.getString("Picture");
            }
             return getAllStudents();
