@@ -16,6 +16,7 @@ import GUI.Controller.TeacherViewController;
 import GUI.Model.UserModel;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
@@ -47,7 +48,7 @@ public class AuthenticationCheck {
     @FXML
     private TableView<Student> tableAttedance;
     
-    public AuthenticationCheck()
+    public AuthenticationCheck() throws IOException, SQLException
     {
         listStudents = UserModel.getInstance().getStudents();
         currentUser = CurrentUser.getInstance();
@@ -55,7 +56,7 @@ public class AuthenticationCheck {
         studentAttendanceViewController = StudentAttendanceViewController.getInstance();
     }
     
-    public static synchronized AuthenticationCheck getInstance()
+    public static synchronized AuthenticationCheck getInstance() throws IOException, SQLException
     {
         if(INSTANCE == null)
         {

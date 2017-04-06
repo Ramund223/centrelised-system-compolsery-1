@@ -27,7 +27,7 @@ public class Users
     
     private static Users INSTANCE;
     
-    public static synchronized Users getInstance()
+    public static synchronized Users getInstance() throws IOException, SQLException
     {
         if(INSTANCE == null)
         {
@@ -36,7 +36,7 @@ public class Users
         return INSTANCE;
     }
     
-    public Users()
+    public Users() throws IOException, SQLException
     {
         users = new StudentDAO();
         userModel = UserModel.getInstance();

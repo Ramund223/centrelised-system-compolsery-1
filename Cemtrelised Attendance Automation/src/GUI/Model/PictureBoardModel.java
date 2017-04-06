@@ -31,7 +31,7 @@ public class PictureBoardModel
 
 //    private MainViewController studentPictureBoardController;
     
-    public static synchronized PictureBoardModel getInstance()
+    public static synchronized PictureBoardModel getInstance() throws IOException, SQLException
     {
         if (INSTANCE == null)
         {
@@ -40,7 +40,7 @@ public class PictureBoardModel
         return INSTANCE;
     }
 
-    private PictureBoardModel()
+    private PictureBoardModel() throws IOException, SQLException
     {
         users = new CreateUsers();
         allPostIts = FXCollections.observableArrayList();
@@ -78,7 +78,7 @@ public class PictureBoardModel
     {
         List<Student> students = users.getUsers();
         for (Student student : students) {
-            allPostIts.add(new StudentProfileModel(new PostIt(student.getImage(), student.getName())));   
+//            allPostIts.add(new StudentProfileModel(new PostIt(student.getImage(), student.getName())));   
         }
     }
 

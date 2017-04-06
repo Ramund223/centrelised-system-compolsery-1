@@ -12,6 +12,7 @@ import Be.Student;
 import GUI.Model.UserModel;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -59,14 +60,14 @@ public class TeacherLoginController implements Initializable {
     
     private CurrentUser currentUser;
     
-    public TeacherLoginController()
+    public TeacherLoginController() throws IOException, SQLException
     {      
          listStudents = UserModel.getInstance().getStudents();
          currentUser = CurrentUser.getInstance();
          authenticationCheck = AuthenticationCheck.getInstance();
     }
     
-    public static synchronized TeacherLoginController getInstance()
+    public static synchronized TeacherLoginController getInstance() throws IOException, SQLException
     {
         if(INSTANCE == null)
         {

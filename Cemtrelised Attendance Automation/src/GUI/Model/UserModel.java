@@ -6,6 +6,10 @@
 package GUI.Model;
 
 import Be.Student;
+import DAL.StudentDAO;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.io.IOException;
+import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -28,9 +32,19 @@ private static UserModel INSTANCE;
     
     private final ObservableList<Student> studentList;
 
-    private UserModel() 
+    private StudentDAO studentDAO;
+    
+    private UserModel() throws SQLException, IOException 
     {
-        studentList = FXCollections.observableArrayList();
+        studentDAO = StudentDAO.getInstance();
+//        studentList = FXCollections.observableArrayList();
+//        userModel = FXCollections.observableArrayList(allStudents);
+        studentList = FXCollections.observableArrayList(studentDAO.getAllStudents());
+        
+        if (studentList != null)
+        {
+            System.out.println("tu huh???");
+        }
     }
 
     //This method create the student and add the student to the student observablelist.
@@ -40,7 +54,7 @@ private static UserModel INSTANCE;
         studentList.add(student);
     }
     
-    public static synchronized UserModel getInstance()
+    public static synchronized UserModel getInstance() throws IOException, SQLException
     {
         if(INSTANCE == null)
         {

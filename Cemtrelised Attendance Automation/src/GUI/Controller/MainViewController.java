@@ -50,7 +50,7 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
     
     public static int indexNr;
     
-    public MainViewController()
+    public MainViewController() throws IOException, SQLException
     {
         boardModel = PictureBoardModel.getInstance();
         createUsers = CreateUsers.getInstance();
@@ -68,7 +68,7 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
 ////        createUsers = CreateUsers.getInstance();
 //    }
 
-    public static synchronized MainViewController getInstance()
+    public static synchronized MainViewController getInstance() throws IOException, SQLException
     {
         if (INSTANCE == null)
         {
@@ -162,5 +162,4 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
             Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }

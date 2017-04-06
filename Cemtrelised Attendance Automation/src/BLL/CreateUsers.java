@@ -33,14 +33,14 @@ public class CreateUsers
     
     private Users users;
     
-    public CreateUsers()
+    public CreateUsers() throws IOException, SQLException
     {
         users = new Users();
         createUsers = Users.getInstance();
         listStudents = UserModel.getInstance().getStudents(); 
     }
     
-    public static synchronized CreateUsers getInstance()
+    public static synchronized CreateUsers getInstance() throws IOException, SQLException
     {
         if(INSTANCE == null)
         {
