@@ -21,7 +21,7 @@ import javafx.scene.image.Image;
  */
 public class PictureBoardModel
 {
-    Image image;
+    String image;
 
     private static PictureBoardModel INSTANCE;
 
@@ -78,7 +78,7 @@ public class PictureBoardModel
     {
         List<Student> students = users.getUsers();
         for (Student student : students) {
-//            allPostIts.add(new StudentProfileModel(new PostIt(student.getImage(), student.getName())));   
+            allPostIts.add(new StudentProfileModel(new PostIt(student.getImage(), student.getName())));   
         }
     }
 

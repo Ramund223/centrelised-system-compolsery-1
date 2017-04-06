@@ -40,11 +40,6 @@ private static UserModel INSTANCE;
 //        studentList = FXCollections.observableArrayList();
 //        userModel = FXCollections.observableArrayList(allStudents);
         studentList = FXCollections.observableArrayList(studentDAO.getAllStudents());
-        
-        if (studentList != null)
-        {
-            System.out.println("tu huh???");
-        }
     }
 
     //This method create the student and add the student to the student observablelist.
