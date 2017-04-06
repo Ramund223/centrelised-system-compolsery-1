@@ -20,7 +20,7 @@ public class Student
     private boolean present;
     private String image;
 
-    public Student(String name, int id, String school, String classroom, boolean present, String imageString) 
+    public Student(String name, int id, String school, String classroom, boolean present, String image) 
     {
         this.name = name;
         this.id = id;
