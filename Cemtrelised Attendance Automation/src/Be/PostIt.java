@@ -22,7 +22,7 @@ public class PostIt
 {
     private MainViewController studentPictureBoardController;
     
-    private Image image;
+    private String image;
 
     private String text = "test";
     
@@ -77,7 +77,7 @@ public class PostIt
      *
      * @return the value of titel
      */
-    public Image getImage()
+    public String getImage()
     {
         return image;
     }
@@ -87,7 +87,7 @@ public class PostIt
      *
      * @param image
      */
-    public void setImage(Image image)
+    public void setImage(String image)
     {
         this.image = image;
     }
