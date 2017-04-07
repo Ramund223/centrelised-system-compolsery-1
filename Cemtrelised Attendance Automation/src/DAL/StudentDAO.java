@@ -8,12 +8,10 @@ package DAL;
 import Be.Student;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +27,6 @@ public class StudentDAO
     public List<Student> getAllStudents() throws SQLServerException, SQLException, IOException
     {
         ConnectionManager cm = new ConnectionManager();
-        ArrayList<Student> allStudents = new ArrayList<>();
         try(Connection con = cm.getConnection())
         {
             String sql = "SELECT * FROM Student";
@@ -39,17 +36,14 @@ public class StudentDAO
             while(rs.next())
             {
 //               Student s = new Student("Name", "ID", "Class", true, "Picture");
-                int id = rs.getInt("ID");
-                String name = rs.getString("Name");
-                String school = rs.getString("School");
-                String classRoom = rs.getString("Class");
-                boolean present = rs.getBoolean("Present");
-                String picture = rs.getString("Picture");
-                
-                Student student = new Student(name, id, school, classRoom, present, picture);
-                allStudents.add(student);
+                rs.getInt("ID");
+                rs.getString("Name");
+                rs.getString("School");
+                rs.getString("Class");
+                rs.getBoolean("Present");
+                rs.getString("Picture");
             }
+            return getAllStudents();
         }
-        return allStudents;
     }
 }

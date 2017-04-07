@@ -22,7 +22,7 @@ public class UserModel
     public String password;
     public boolean present;
     public int id;
-    public String image;
+    public Image image;
     
 private static UserModel INSTANCE;
     
@@ -34,7 +34,7 @@ private static UserModel INSTANCE;
     }
 
     //This method create the student and add the student to the student observablelist.
-    public void createStudent(int id, String school, String classroom, String name, boolean present, String image)
+    public void createStudent(int id, String school, String classroom, String name, boolean present, Image image)
     {
         Student student = new Student(name, id, school ,classroom, present, image);
         studentList.add(student);
@@ -69,12 +69,12 @@ private static UserModel INSTANCE;
         this.id = id;
     }
     
-    public String getImage ()
+    public Image getImage ()
     {
         return image;
     }
     
-    public void setImage (String image)
+    public void setImage (Image image)
     {
         this.image = image;
     }
