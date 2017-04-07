@@ -12,10 +12,7 @@ import GUI.Model.StudentProfileModel;
 import GUI.Model.UserModel;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,7 +20,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 
@@ -48,13 +44,12 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
 
     private ObservableList<Student> listStudents;
     
-    public static int indexNr = 0;
-//    public int indexNr = 0;
+    public static int indexNr;
     
-    public MainViewController() throws IOException, SQLException
+    public MainViewController()
     {
         boardModel = PictureBoardModel.getInstance();
-        createUsers = CreateUsers.getInstance();
+//        createUsers = CreateUsers.getInstance();
         listStudents = UserModel.getInstance().getStudents();
     }
 
@@ -69,7 +64,7 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
 ////        createUsers = CreateUsers.getInstance();
 //    }
 
-    public static synchronized MainViewController getInstance() throws IOException, SQLException
+    public static synchronized MainViewController getInstance()
     {
         if (INSTANCE == null)
         {
@@ -125,16 +120,16 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
         postItBoard.getChildren().remove(c.getFrom(), c.getTo());
     }
     
-//    private void getStudentsReady()
-//    {
-//        for (int i = 0; i < listStudents.size(); i++)
-//        {
-//            indexNr = i;
-////            System.out.println(listStudents.get(i).getName());
-//            boardModel.CreateNewPostIt();
-////            System.out.println(indexNr);
-//        }
-//    }
+    private void getStudentsReady()
+    {
+        for (int i = 0; i < listStudents.size(); i++)
+        {
+            indexNr = i;
+//            System.out.println(listStudents.get(i).getName());
+            boardModel.CreateNewPostIt();
+//            System.out.println(indexNr);
+        }
+    }
 
     public void setIndexNr(int indexNr) 
     {
@@ -144,17 +139,6 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
 
     public int getIndexNr() 
     {
-//        if(indexNr != -1)
-//        {
-//            indexNr++;
-//            return indexNr;
-//        }
-//        else
-//        {
-//            return indexNr;
-//        }
-//        indexNr++;
-//        indexNr = indexNr + 1;
         return indexNr;
     }
 
@@ -165,15 +149,7 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
         //(I do not bind the height because the flowpane should resize to it's content)
         postItBoard.prefWidthProperty().bind(containerForPostItBoard.widthProperty());
         boardModel.getAllPostIts().addListener(this);
-        try 
-        {
-            boardModel.loadAllStudents();
-//        createUsers.createUsers();
-//        getStudentsReady();
-        } catch (SQLException ex) {
-            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        createUsers.createUsers();
+        getStudentsReady();
     }
 }

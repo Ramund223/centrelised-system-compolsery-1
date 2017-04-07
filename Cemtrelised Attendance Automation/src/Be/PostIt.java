@@ -8,9 +8,7 @@ package Be;
 import GUI.Controller.MainViewController;
 import GUI.Model.UserModel;
 import java.awt.SystemColor;
-import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -22,9 +20,9 @@ import javafx.scene.image.Image;
  */
 public class PostIt
 {
-    private MainViewController mainViewController;
+    private MainViewController studentPictureBoardController;
     
-    private String image;
+    private Image image;
 
     private String text = "test";
     
@@ -36,26 +34,19 @@ public class PostIt
 //        
 //    }
     private int indexCounter = 0; 
-
-    private static int indexNr = 0;
     
-    public PostIt(String image, String textSC) throws IOException, SQLException 
+    public PostIt(Image image, SystemColor textSC) 
     {
-        mainViewController = MainViewController.getInstance();
+        studentPictureBoardController = MainViewController.getInstance();
         listStudents = UserModel.getInstance().getStudents();
-//        System.out.println(mainViewController.getIndexNr());
-//        this.text = listStudents.get(mainViewController.getIndexNr()).getName();
-        this.text = listStudents.get(indexNr).getName();
+//        System.out.println(studentPictureBoardController.getIndexNr());
+        this.text = listStudents.get(studentPictureBoardController.getIndexNr()).getName();
 //        this.text = listStudents.get(indexCounter).getName();
 //        this.text = listStudents.get(1).getName();
 //        this.text = text;
 //        this.image = image;
-        this.image = listStudents.get(indexNr).getImage();
-//        this.image = listStudents.get(mainViewController.getIndexNr()).getImage();
-//        mainViewController.setIndexNr(+1);
-
-        indexNr = indexNr + 1;
-//        System.out.println(indexNr);
+         this.image = listStudents.get(studentPictureBoardController.getIndexNr()).getImage();
+//        studentPictureBoardController.setIndexNr(+1);
     }
 
     
@@ -86,7 +77,7 @@ public class PostIt
      *
      * @return the value of titel
      */
-    public String getImage()
+    public Image getImage()
     {
         return image;
     }
@@ -96,14 +87,14 @@ public class PostIt
      *
      * @param image
      */
-    public void setImage(String image)
+    public void setImage(Image image)
     {
         this.image = image;
     }
     
-    public void initialize(URL url, ResourceBundle rb) throws IOException, SQLException
+    public void initialize(URL url, ResourceBundle rb)
     {
-        mainViewController = MainViewController.getInstance();
+        studentPictureBoardController = MainViewController.getInstance();
 //        listStudents = UserModel.getInstance().getStudents();
     }
 

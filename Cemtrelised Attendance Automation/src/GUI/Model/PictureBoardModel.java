@@ -7,10 +7,7 @@ package GUI.Model;
 
 import BLL.CreateUsers;
 import Be.PostIt;
-import Be.Student;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
+import static java.awt.SystemColor.text;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -21,21 +18,17 @@ import javafx.scene.image.Image;
  */
 public class PictureBoardModel
 {
-    private String image;
+    Image image;
 
     private static PictureBoardModel INSTANCE;
 
     private ObservableList<StudentProfileModel> allPostIts;
     
     private CreateUsers users;
-    
-//    private Student student;
-    
-    
 
 //    private MainViewController studentPictureBoardController;
     
-    public static synchronized PictureBoardModel getInstance() throws IOException, SQLException
+    public static synchronized PictureBoardModel getInstance()
     {
         if (INSTANCE == null)
         {
@@ -44,18 +37,17 @@ public class PictureBoardModel
         return INSTANCE;
     }
 
-    private PictureBoardModel() throws IOException, SQLException
+    private PictureBoardModel()
     {
-        users = new CreateUsers();
         allPostIts = FXCollections.observableArrayList();
 //        studentPictureBoardController = MainViewController.getInstance();
     }
 
-//    public void CreateNewPostIt()
-//    {
-//        allPostIts.add(new StudentProfileModel(new PostIt(image, text)));
-//     
-//    }
+    public void CreateNewPostIt()
+    {
+        allPostIts.add(new StudentProfileModel(new PostIt(image, text)));
+     
+    }
     
 //    public void CreateNewPostIt()
 //    {
@@ -77,21 +69,4 @@ public class PictureBoardModel
     {
         //TODO Drag n drop!!! Gives you access to the MODEL!!!
     }
-    
-    public void loadAllStudents() throws SQLException, IOException
-    {
-        List<Student> students = users.getUsers();
-        for (Student student : students) 
-        {
-            allPostIts.add(new StudentProfileModel(new PostIt(student.getImage(), student.getName())));   
-        }
-        
-//        for (int i = 0; i < students.size(); i++) 
-//        {
-//            allPostIts.add(new StudentProfileModel(new PostIt(student.getImage(), student.getName())));
-//        }
-        
-//        System.out.println(users.getUsers().toString());
-    }
-
 }

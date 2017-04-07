@@ -5,11 +5,7 @@
  */
 package DAL;
 
-import Be.Student;
 import GUI.Model.UserModel;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 import javafx.scene.image.Image;
 
 /**
@@ -27,7 +23,7 @@ public class Users
     
     private static Users INSTANCE;
     
-    public static synchronized Users getInstance() throws IOException, SQLException
+    public static synchronized Users getInstance()
     {
         if(INSTANCE == null)
         {
@@ -36,30 +32,22 @@ public class Users
         return INSTANCE;
     }
     
-    public Users() throws IOException, SQLException
+    public Users()
     {
-        users = new StudentDAO();
         userModel = UserModel.getInstance();
     }
     
     private UserModel userModel;
     
-    private StudentDAO users;
-    
     //This method creates the students.
     public void createUsers()
     {
-////        userModel.createStudent(0, "None", "Teacher", "teacher", "Teacher");
-//        userModel.createStudent(0, "EASV", "C20", "Test", false, image1);
-//        userModel.createStudent(2, "EASV","C20", "Carlos Abukat", false, image2);
-//        userModel.createStudent(3, "EASV","C20", "Magic Mike", false, image3);
-//        userModel.createStudent(4, "EASV","C20", "Ice Frog", false, image4);
-//        userModel.createStudent(5, "EASV","C20", "Løg Drengen", false, image5);
-//        userModel.createStudent(6, "EASV","C20", "Treant Six", false, image6);
-    }
-    
-    public List<Student> getUsers() throws SQLException, IOException
-    {
-        return users.getAllStudents();
+//        userModel.createStudent(0, "None", "Teacher", "teacher", "Teacher");
+        userModel.createStudent(1, "EASV","C3", "Test", false, image1);
+        userModel.createStudent(2, "EASV","C3", "Carlos Abukat", false, image2);
+        userModel.createStudent(3, "EASV","C3", "Magic Mike", false, image3);
+        userModel.createStudent(4, "EASV","C3", "Ice Frog", false, image4);
+        userModel.createStudent(5, "EASV","C3", "Løg Drengen", false, image5);
+        userModel.createStudent(6, "EASV","C3", "Treant Six", false, image6);
     }
 }

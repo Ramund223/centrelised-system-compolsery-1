@@ -6,10 +6,6 @@
 package GUI.Model;
 
 import Be.Student;
-import DAL.StudentDAO;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
-import java.io.IOException;
-import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -26,30 +22,25 @@ public class UserModel
     public String password;
     public boolean present;
     public int id;
-    public String image;
+    public Image image;
     
 private static UserModel INSTANCE;
     
     private final ObservableList<Student> studentList;
 
-    private StudentDAO studentDAO;
-    
-    private UserModel() throws SQLException, IOException 
+    private UserModel()
     {
-        studentDAO = StudentDAO.getInstance();
-//        studentList = FXCollections.observableArrayList();
-//        userModel = FXCollections.observableArrayList(allStudents);
-        studentList = FXCollections.observableArrayList(studentDAO.getAllStudents());
+        studentList = FXCollections.observableArrayList();
     }
 
     //This method create the student and add the student to the student observablelist.
-    public void createStudent(int id, String school, String classroom, String name, boolean present, String image)
+    public void createStudent(int id, String school, String classroom, String name, boolean present, Image image)
     {
         Student student = new Student(name, id, school ,classroom, present, image);
         studentList.add(student);
     }
     
-    public static synchronized UserModel getInstance() throws IOException, SQLException
+    public static synchronized UserModel getInstance()
     {
         if(INSTANCE == null)
         {
@@ -78,12 +69,12 @@ private static UserModel INSTANCE;
         this.id = id;
     }
     
-    public String getImage ()
+    public Image getImage ()
     {
         return image;
     }
     
-    public void setImage (String image)
+    public void setImage (Image image)
     {
         this.image = image;
     }

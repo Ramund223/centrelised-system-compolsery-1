@@ -10,7 +10,6 @@ import GUI.Controller.StudentAttendanceViewController;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -33,7 +32,7 @@ public class CentralisedAttendanceAutomation extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("GUI/View/MainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/MainView.fxml"));
         
         Scene scene = new Scene(root);
         stage.setTitle("AttendanceSYS");

@@ -12,15 +12,11 @@ package BLL;
 
 import Be.Student;
 import GUI.Controller.StudentAttendanceViewController;
-import GUI.Controller.TeacherViewController;
 import GUI.Model.UserModel;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,7 +24,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 public class AuthenticationCheck {
     
@@ -48,7 +43,7 @@ public class AuthenticationCheck {
     @FXML
     private TableView<Student> tableAttedance;
     
-    public AuthenticationCheck() throws IOException, SQLException
+    public AuthenticationCheck()
     {
         listStudents = UserModel.getInstance().getStudents();
         currentUser = CurrentUser.getInstance();
@@ -56,7 +51,7 @@ public class AuthenticationCheck {
         studentAttendanceViewController = StudentAttendanceViewController.getInstance();
     }
     
-    public static synchronized AuthenticationCheck getInstance() throws IOException, SQLException
+    public static synchronized AuthenticationCheck getInstance()
     {
         if(INSTANCE == null)
         {

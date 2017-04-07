@@ -18,9 +18,9 @@ public class Student
     private String school;
     private String classroom;
     private boolean present;
-    private String image;
+    private Image image;
 
-    public Student(String name, int id, String school, String classroom, boolean present, String image) 
+    public Student(String name, int id, String school, String classroom, boolean present, Image image)
     {
         this.name = name;
         this.id = id;
@@ -87,12 +87,12 @@ public class Student
         this.present = true;
     }
     
-    public String getImage() 
+    public Image getImage() 
     {
         return image;
     }
     
-    public void setImage(String image) 
+    public void setImage(Image image) 
     {
         this.image = image;
     }

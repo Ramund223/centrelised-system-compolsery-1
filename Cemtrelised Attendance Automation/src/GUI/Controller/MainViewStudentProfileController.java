@@ -11,7 +11,6 @@ import GUI.Model.StudentProfileModel;
 import GUI.Model.UserModel;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -47,7 +46,7 @@ public class MainViewStudentProfileController implements Initializable
     
     private CurrentUser currentUser;
     
-    public MainViewStudentProfileController() throws IOException, SQLException
+    public MainViewStudentProfileController()
     {
         currentUser = CurrentUser.getInstance();
         listStudents = UserModel.getInstance().getStudents();

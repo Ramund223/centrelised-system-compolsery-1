@@ -8,9 +8,7 @@ package GUI.Controller;
 import BLL.CurrentUser;
 import Be.Student;
 import GUI.Model.UserModel;
-import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
@@ -38,7 +36,7 @@ public class StudentAttendanceViewController implements Initializable {
     private static StudentAttendanceViewController INSTANCE;
     private TeacherViewController teacherViewController;
     
-    public StudentAttendanceViewController() throws IOException, SQLException 
+    public StudentAttendanceViewController()
     {
         studentList = UserModel.getInstance().getStudents();
         attendanceDate = new ArrayList<String>();
@@ -64,7 +62,7 @@ public class StudentAttendanceViewController implements Initializable {
         labelName.setText("Student Name: " + student.getName());
     }
     
-    public static synchronized StudentAttendanceViewController getInstance() throws IOException, SQLException
+    public static synchronized StudentAttendanceViewController getInstance()
     {
         if(INSTANCE == null)
         {
