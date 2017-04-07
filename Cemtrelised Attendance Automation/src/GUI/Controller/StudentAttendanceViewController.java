@@ -7,14 +7,12 @@ package GUI.Controller;
 
 import BLL.CurrentUser;
 import Be.Student;
-import GUI.Model.UserModel;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 /**
@@ -28,17 +26,16 @@ public class StudentAttendanceViewController implements Initializable {
     private Label labelName;
     @FXML
     private Label testLabel;
-     
-    private final ObservableList<Student> studentList;
+    @FXML
+    private Button testButten;
+    
     private CurrentUser currentUser;
     private Student student;
     public ArrayList<String> attendanceDate;
     private static StudentAttendanceViewController INSTANCE;
-    private TeacherViewController teacherViewController;
     
     public StudentAttendanceViewController() 
     {
-        studentList = UserModel.getInstance().getStudents();
         attendanceDate = new ArrayList<String>();
         currentUser = CurrentUser.getInstance();
     }
@@ -79,10 +76,4 @@ public class StudentAttendanceViewController implements Initializable {
     {
         labelInfo();
     }    
-
-    @FXML
-    private void SetAsPresent(ActionEvent event) 
-    {
-        studentList.get(currentUser.getId()-1).setPresent(true);
-    }
 }
