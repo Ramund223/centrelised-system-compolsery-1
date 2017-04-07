@@ -41,11 +41,11 @@ public class MainViewSidebarController implements Initializable
         
     }
 
-//    @FXML
-//    private void addNewPostIt(ActionEvent event)
-//    {
-//        boardModel.CreateNewPostIt();
-//    }
+    @FXML
+    private void addNewPostIt(ActionEvent event)
+    {
+        boardModel.CreateNewPostIt();
+    }
 
     @FXML
     private void removeSelectedPostIt(ActionEvent event)

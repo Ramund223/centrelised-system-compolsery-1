@@ -12,10 +12,7 @@ import GUI.Model.StudentProfileModel;
 import GUI.Model.UserModel;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -123,16 +120,16 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
         postItBoard.getChildren().remove(c.getFrom(), c.getTo());
     }
     
-//    private void getStudentsReady()
-//    {
-//        for (int i = 0; i < listStudents.size(); i++)
-//        {
-//            indexNr = i;
-////            System.out.println(listStudents.get(i).getName());
-//            boardModel.CreateNewPostIt();
-////            System.out.println(indexNr);
-//        }
-//    }
+    private void getStudentsReady()
+    {
+        for (int i = 0; i < listStudents.size(); i++)
+        {
+            indexNr = i;
+//            System.out.println(listStudents.get(i).getName());
+            boardModel.CreateNewPostIt();
+//            System.out.println(indexNr);
+        }
+    }
 
     public void setIndexNr(int indexNr) 
     {
@@ -152,15 +149,8 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
         //(I do not bind the height because the flowpane should resize to it's content)
         postItBoard.prefWidthProperty().bind(containerForPostItBoard.widthProperty());
         boardModel.getAllPostIts().addListener(this);
-        try {
-            boardModel.loadAllStudents();
-//        createUsers.createUsers();
-//        getStudentsReady();
-        } catch (SQLException ex) {
-            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        createUsers.createUsers();
+        getStudentsReady();
     }
     
 }

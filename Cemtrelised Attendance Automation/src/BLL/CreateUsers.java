@@ -10,8 +10,6 @@ import DAL.Users;
 import GUI.Model.UserModel;
 import GUI.Controller.TeacherLoginController;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,11 +29,8 @@ public class CreateUsers
     
     private ObservableList<Student> listStudents;
     
-    private Users users;
-    
     public CreateUsers()
     {
-        users = new Users();
         createUsers = Users.getInstance();
         listStudents = UserModel.getInstance().getStudents(); 
     }
@@ -52,10 +47,5 @@ public class CreateUsers
     public void createUsers()
     {
         createUsers.createUsers();
-    }
-    
-    public List<Student> getUsers() throws SQLException, IOException
-    {
-        return users.getUsers();
     }
 }

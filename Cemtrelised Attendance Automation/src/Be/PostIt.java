@@ -35,7 +35,7 @@ public class PostIt
 //    }
     private int indexCounter = 0; 
 
-    public PostIt(Image image, String textSC) 
+    public PostIt(Image image, SystemColor textSC) 
     {
         studentPictureBoardController = MainViewController.getInstance();
         listStudents = UserModel.getInstance().getStudents();
