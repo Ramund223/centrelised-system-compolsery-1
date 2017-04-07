@@ -34,9 +34,9 @@ private static UserModel INSTANCE;
     }
 
     //This method create the student and add the student to the student observablelist.
-    public void createStudent(int id, String school, String classroom, String name, boolean present, Image image)
+    public void createStudent(int id, String classroom, String name, boolean present, Image image)
     {
-        Student student = new Student(name, id, school ,classroom, present, image);
+        Student student = new Student(name, id, classroom, present, image);
         studentList.add(student);
     }
     
