@@ -49,13 +49,13 @@ public class Users
     //This method creates the students.
     public void createUsers()
     {
-//        userModel.createStudent(0, "None", "Teacher", "teacher", "Teacher");
-        userModel.createStudent(0, "EASV", "C20", "Test", false, image1);
-        userModel.createStudent(2, "EASV","C20", "Carlos Abukat", false, image2);
-        userModel.createStudent(3, "EASV","C20", "Magic Mike", false, image3);
-        userModel.createStudent(4, "EASV","C20", "Ice Frog", false, image4);
-        userModel.createStudent(5, "EASV","C20", "Løg Drengen", false, image5);
-        userModel.createStudent(6, "EASV","C20", "Treant Six", false, image6);
+////        userModel.createStudent(0, "None", "Teacher", "teacher", "Teacher");
+//        userModel.createStudent(0, "EASV", "C20", "Test", false, image1);
+//        userModel.createStudent(2, "EASV","C20", "Carlos Abukat", false, image2);
+//        userModel.createStudent(3, "EASV","C20", "Magic Mike", false, image3);
+//        userModel.createStudent(4, "EASV","C20", "Ice Frog", false, image4);
+//        userModel.createStudent(5, "EASV","C20", "Løg Drengen", false, image5);
+//        userModel.createStudent(6, "EASV","C20", "Treant Six", false, image6);
     }
     
     public List<Student> getUsers() throws SQLException, IOException
