@@ -37,7 +37,7 @@ public class PostIt
 //    }
     private int indexCounter = 0; 
 
-    public PostIt(String image, String textSC) throws IOException, SQLException 
+    public PostIt(Image image, String textSC) throws IOException, SQLException 
     {
         studentPictureBoardController = MainViewController.getInstance();
         listStudents = UserModel.getInstance().getStudents();
