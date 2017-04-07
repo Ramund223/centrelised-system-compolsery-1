@@ -29,20 +29,23 @@ public class StudentDAO
         ConnectionManager cm = new ConnectionManager();
         try(Connection con = cm.getConnection())
         {
-            String sql = "SELECT * FROM Student";
-            PreparedStatement pstmt = con.prepareStatement(sql);
+            String sql = 
+                "SELECT * FROM Student";
+            PreparedStatement pstmt =
+               con.prepareStatement(sql);
+            
             
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next())
-            {
+           while(rs.next())
+           {
 //               Student s = new Student("Name", "ID", "Class", true, "Picture");
-                rs.getInt("ID");
-                rs.getString("Name");
-                rs.getString("School");
-                rs.getString("Class");
-                rs.getBoolean("Present");
-                rs.getString("Picture");
-            }
+               rs.getInt("ID");
+               rs.getString("Name");
+               rs.getString("School");
+               rs.getString("Class");
+               rs.getBoolean("Present");
+               rs.getString("Picture");
+           }
             return getAllStudents();
         }
     }
