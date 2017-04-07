@@ -11,7 +11,6 @@ import Be.Student;
 import GUI.Model.UserModel;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -51,7 +50,7 @@ public class StudentViewController implements Initializable
     
     private Image profilePicture;
     
-    public StudentViewController() throws IOException, SQLException
+    public StudentViewController()
     {
         studentList = UserModel.getInstance().getStudents();
         userModel = UserModel.getInstance();

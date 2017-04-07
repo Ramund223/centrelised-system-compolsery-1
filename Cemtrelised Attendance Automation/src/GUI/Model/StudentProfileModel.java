@@ -30,7 +30,7 @@ public class StudentProfileModel
     public StudentProfileModel(PostIt postIt)
     {
         this.postIt = postIt;
-//        image.set(postIt.getImage());
+        image.set(postIt.getImage());
         text.set(postIt.getText());
     }
     
@@ -60,9 +60,9 @@ public class StudentProfileModel
         return image.get();
     }
     
-    public void setImage(String value)
+    public void setImage(Image value)
     {
-//        image.set(value);
+        image.set(value);
         postIt.setImage(value);
     }
     

@@ -6,18 +6,15 @@
 package DAL;
 
 import Be.Student;
-import GUI.Controller.MainViewController;
-import GUI.Model.UserModel;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 /**
  *
@@ -28,33 +25,11 @@ public class StudentDAO
 //    String query = "select COF_NAME, SUP_ID, PRICE, " +
 //                   "SALES, TOTAL " +
 //                   "from " + "CS_2016A_21 Attendance" + ".COFFEES";
-    public ArrayList<Student> allStudents = new ArrayList<>();
-    
-//    private UserModel userModel;
-    
-    private static StudentDAO INSTANCE;
-    
-    public StudentDAO()
-    {
-//        userModel = FXCollections.observableArrayList(allStudents);
-//        userModel = UserModel.getInstance();
-    }
-    
-    public static synchronized StudentDAO getInstance()
-    {
-        if (INSTANCE == null)
-        {
-            INSTANCE = new StudentDAO();
-        }
-        return INSTANCE;
-    }
-    
-//    public ObservableList<Student> student = FXCollections.observableArrayList(allStudents);
-//    userModel = FXCollections.observableArrayList(allStudents);
     
     public List<Student> getAllStudents() throws SQLServerException, SQLException, IOException
     {
         ConnectionManager cm = new ConnectionManager();
+        ArrayList<Student> allStudents = new ArrayList<>();
         try(Connection con = cm.getConnection())
         {
             String sql = "SELECT * FROM Student";

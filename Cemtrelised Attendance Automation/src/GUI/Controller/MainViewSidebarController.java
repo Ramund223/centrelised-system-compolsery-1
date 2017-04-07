@@ -8,7 +8,6 @@ package GUI.Controller;
 import GUI.Model.PictureBoardModel;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,7 +27,7 @@ public class MainViewSidebarController implements Initializable
 
     PictureBoardModel boardModel;
 
-    public MainViewSidebarController() throws IOException, SQLException
+    public MainViewSidebarController()
     {
         boardModel = PictureBoardModel.getInstance();
     }

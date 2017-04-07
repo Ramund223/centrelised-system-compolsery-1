@@ -8,9 +8,7 @@ package Be;
 import GUI.Controller.MainViewController;
 import GUI.Model.UserModel;
 import java.awt.SystemColor;
-import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -37,7 +35,7 @@ public class PostIt
 //    }
     private int indexCounter = 0; 
 
-    public PostIt(Image image, String textSC) throws IOException, SQLException 
+    public PostIt(Image image, String textSC) 
     {
         studentPictureBoardController = MainViewController.getInstance();
         listStudents = UserModel.getInstance().getStudents();
@@ -94,7 +92,7 @@ public class PostIt
         this.image = image;
     }
     
-    public void initialize(URL url, ResourceBundle rb) throws IOException, SQLException
+    public void initialize(URL url, ResourceBundle rb)
     {
         studentPictureBoardController = MainViewController.getInstance();
 //        listStudents = UserModel.getInstance().getStudents();

@@ -11,7 +11,6 @@ import Be.Student;
 import GUI.Model.UserModel;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
@@ -43,7 +42,7 @@ public class TeacherViewController implements Initializable {
     
 //    private ObservableList<Student> studentList;
     
-    public TeacherViewController() throws IOException, SQLException
+    public TeacherViewController()
     {
 //        studentList = userModel.getInstance().getStudents();
         userModel = UserModel.getInstance();
@@ -52,7 +51,7 @@ public class TeacherViewController implements Initializable {
         listStudents = UserModel.getInstance().getStudents();
     }
    
-    public static synchronized TeacherViewController getInstance() throws IOException, SQLException
+    public static synchronized TeacherViewController getInstance()
     {
         if(INSTANCE == null)
         {
