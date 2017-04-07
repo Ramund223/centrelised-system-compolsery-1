@@ -65,7 +65,6 @@ public class StudentViewController implements Initializable
          profilePicture = new Image("/Pictures/" + currentUser.getId() + ".png");
          profilePic.setImage(profilePicture);
     }
-//    currentUser.getId()
     
     //This closes the user window window
     @FXML

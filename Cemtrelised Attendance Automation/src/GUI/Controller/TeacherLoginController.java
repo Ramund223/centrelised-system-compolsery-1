@@ -45,8 +45,6 @@ public class TeacherLoginController implements Initializable {
     
     private Student student;
     
-//    private ArrayList<String> userList = new ArrayList<String>();
-    
     private ObservableList<Student> listStudents;
     
     private static TeacherLoginController INSTANCE;
@@ -133,7 +131,6 @@ public class TeacherLoginController implements Initializable {
         
         for (Student s : listStudents)
         {
-//        if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())) && ("Teacher".equals(userNameField.getText())))
         if (userNameField.getText().equals("t") && (passwordField.getText().equals("t")))
             {
                 publicMessageLabel.setText("");
@@ -141,32 +138,16 @@ public class TeacherLoginController implements Initializable {
                 passwordField.clear();
                 break;
             }
-//                else if (s.getUsername().equals(userNameField.getText()) && (s.getPassword().equals(passwordField.getText())))
-//            {
-//                publicMessageLabel.setText("");
-//                userNameField.clear();
-//                passwordField.clear();
-//                break;
-//            }
                 else if (userNameField.getText().isEmpty()) 
             {
                 publicMessageLabel.setText("No Username Input!");
                 break;
             }
-//                else if (!s.getUsername().equals(userNameField.getText()))
-//            {
-//                publicMessageLabel.setText("No such user in the database!");
-//            }
                 else if (passwordField.getText().isEmpty()) 
             {
                 publicMessageLabel.setText("No Password Input!");
                 break;
             }
-//                else if (s.getUsername().equals(userNameField.getText()) && !s.getPassword().equals(passwordField.getText()))
-//            {
-//                publicMessageLabel.setText("Wrong Password!");
-//                break;
-//            }
             else
             {
                 //DidNothing

@@ -109,29 +109,11 @@ public class Time
         
         if (newDay == true)
         {
-//            Date nate = new Date();
-//            System.out.println(nate);
-            
             timeAtStartOfProgram = (System.currentTimeMillis() + 3600000)/dayInMilliseconds;
             
             newDay = false;
         }
     }
-    
-    
-    // This checks if the newDay boolean is true and if it is the user is set as there that day
-//    public void newDay()
-//    {
-//        if(newDay == true) //Run everysecound
-//        {
-//            attendanceDate.add(currentUser.getCurrentUserName() + " signed in at school on " + date);
-//            newDay = false;
-//        }
-//        else
-//        {
-//            System.out.println("You are already registrered for this day!");
-//        }
-//    }
     
     public void initialize(URL url, ResourceBundle rb) 
     {

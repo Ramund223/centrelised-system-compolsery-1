@@ -18,10 +18,6 @@ import javafx.scene.image.Image;
  */
 public class StudentProfileModel
 {
-    
-    //private final Image image = new Image("stockphoto.jpg");
-    //ImageView image = new ImageView(new Image(getClass().getResourceAsStream("/stockphoto.jpg")));
-    //private final ImageView image = new ImageView();
     private final ObjectProperty<javafx.scene.image.Image> image = new SimpleObjectProperty<>();
     private final StringProperty text = new SimpleStringProperty();
     

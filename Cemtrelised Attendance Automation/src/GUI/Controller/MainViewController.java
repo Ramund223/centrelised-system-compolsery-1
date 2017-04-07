@@ -30,7 +30,6 @@ import javafx.scene.layout.TilePane;
  */
 public class MainViewController implements Initializable, ListChangeListener<StudentProfileModel>
 {
-//    Image image = new Image("/Pictures/stockphoto.jpg", true);
     private static MainViewController INSTANCE;
     
     private PictureBoardModel boardModel;
@@ -53,17 +52,6 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
         createUsers = CreateUsers.getInstance();
         listStudents = UserModel.getInstance().getStudents();
     }
-
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb)
-//    {
-//        //Bind the width of the flowpane to the width of the scrollpane: 
-//        //(I do not bind the height because the flowpane should resize to it's content)
-//        postItBoard.prefWidthProperty().bind(containerForPostItBoard.widthProperty());
-//        boardModel.getAllPostIts().addListener(this);
-//        getStudentsReady();
-////        createUsers = CreateUsers.getInstance();
-//    }
 
     public static synchronized MainViewController getInstance()
     {
@@ -125,9 +113,7 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
         for (int i = 0; i < listStudents.size(); i++)
         {
             indexNr = i;
-//            System.out.println(listStudents.get(i).getName());
             boardModel.CreateNewPostIt();
-//            System.out.println(indexNr);
         }
     }
 

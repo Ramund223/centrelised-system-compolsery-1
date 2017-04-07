@@ -25,8 +25,6 @@ public class PictureBoardModel
 
     private ObservableList<StudentProfileModel> allPostIts;
 
-//    private MainViewController studentPictureBoardController;
-    
     public static synchronized PictureBoardModel getInstance()
     {
         if (INSTANCE == null)
@@ -39,7 +37,6 @@ public class PictureBoardModel
     private PictureBoardModel()
     {
         allPostIts = FXCollections.observableArrayList();
-//        studentPictureBoardController = MainViewController.getInstance();
     }
 
     public void CreateNewPostIt()
@@ -48,12 +45,6 @@ public class PictureBoardModel
      
     }
     
-//    public void CreateNewPostIt()
-//    {
-//        allPostIts.add(new StudentProfileModel(new PostIt(image, text)));
-//     
-//    }
-
     public ObservableList<StudentProfileModel> getAllPostIts()
     {
         return allPostIts;

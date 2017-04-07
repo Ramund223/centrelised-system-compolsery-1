@@ -29,13 +29,11 @@ public class ConnectionManager
         Properties properties = new Properties();
         properties.load(new FileReader(configFile));
         
-        
         data = new SQLServerDataSource();
         data.setServerName(properties.getProperty("SERVER"));
         data.setDatabaseName(properties.getProperty("DATABASE"));
         data.setUser(properties.getProperty("USER"));
         data.setPassword(properties.getProperty("PASSWORD"));
-       
     }
     
     public Connection getConnection() throws SQLServerException

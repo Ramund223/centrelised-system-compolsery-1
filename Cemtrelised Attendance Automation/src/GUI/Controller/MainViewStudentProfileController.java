@@ -64,15 +64,6 @@ public class MainViewStudentProfileController implements Initializable
         lblText.textProperty().bind(model.textProperty());
     }
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
-        
-    }    
-
     @FXML
     private void MousePressedOnImage(MouseEvent event) throws IOException
     {
@@ -81,17 +72,23 @@ public class MainViewStudentProfileController implements Initializable
         {
             if(event.isPrimaryButtonDown() && event.getClickCount()==1 && (a.getName().equals(currentUser.getCurrentUserName())))
             {
-        currentUser.setId(a.getId());
-        System.out.println("Logged in!");
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/StudentView.fxml"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Logged in as " + currentUser.getCurrentUserName());
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
-        break;
+                currentUser.setId(a.getId());
+                System.out.println("Logged in!");
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/StudentView.fxml"));
+                Scene scene = new Scene(root);
+                stage.setTitle("Logged in as " + currentUser.getCurrentUserName());
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+                break;
             }
         }
     }       
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) 
+    {
+        
+    }
 }

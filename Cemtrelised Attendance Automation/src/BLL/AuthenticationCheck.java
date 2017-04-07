@@ -39,7 +39,6 @@ public class AuthenticationCheck {
     
     private UserModel userModel;
     
-    
     private AuthenticationCheck authenticationCheck;
     
     private StudentAttendanceViewController studentAttendanceViewController;
@@ -68,7 +67,6 @@ public class AuthenticationCheck {
     {
         for (Student s : listStudents)
         {   
-//            if (s.getUsername().equals(currentUser.getCurrentUserName()) && (s.getPassword().equals(currentUser.getCurrentPassword())) && ("Teacher".equals(currentUser.getCurrentUserName())))
             if (currentUser.getCurrentUserName().equals("t") && (currentUser.getCurrentPassword().equals("t")))
             {
                 System.out.println("Warning teacher is in the gibson!");
@@ -82,19 +80,6 @@ public class AuthenticationCheck {
                 stage.show();
                 break;
             }
-//                else if (s.getUsername().equals(currentUser.getCurrentUserName()) && (s.getPassword().equals(currentUser.getCurrentPassword())))
-//            {
-//                currentUser.setId(s.getId());
-//                System.out.println("Logged in!");
-//                Stage stage = new Stage();
-//                Parent root = FXMLLoader.load(getClass().getResource("/GUI/View/StudentView.fxml"));
-//                Scene scene = new Scene(root);
-//                stage.setTitle("Logged in as " + currentUser.getCurrentUserName());
-//                stage.setScene(scene);
-//                stage.setResizable(false);
-//                stage.show();
-//                break;
-//            }
         }
     }
     

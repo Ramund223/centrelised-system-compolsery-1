@@ -28,7 +28,6 @@ public class StudentAttendanceViewController implements Initializable {
     private Label labelName;
     @FXML
     private Label testLabel;
-     
     private final ObservableList<Student> studentList;
     private CurrentUser currentUser;
     private Student student;

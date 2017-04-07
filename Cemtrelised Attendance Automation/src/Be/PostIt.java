@@ -27,26 +27,15 @@ public class PostIt
     private String text = "test";
     
     private ObservableList<Student> listStudents;
-//    private String text = "lolcats";
 
-//    public PostIt(Image image, String text)
-//    {
-//        
-//    }
     private int indexCounter = 0; 
 
     public PostIt(Image image, SystemColor textSC) 
     {
         studentPictureBoardController = MainViewController.getInstance();
         listStudents = UserModel.getInstance().getStudents();
-//        System.out.println(studentPictureBoardController.getIndexNr());
         this.text = listStudents.get(studentPictureBoardController.getIndexNr()).getName();
-//        this.text = listStudents.get(indexCounter).getName();
-//        this.text = listStudents.get(1).getName();
-//        this.text = text;
-//        this.image = image;
         this.image = listStudents.get(studentPictureBoardController.getIndexNr()).getImage();
-//        studentPictureBoardController.setIndexNr(+1);
     }
 
     
@@ -95,7 +84,6 @@ public class PostIt
     public void initialize(URL url, ResourceBundle rb)
     {
         studentPictureBoardController = MainViewController.getInstance();
-//        listStudents = UserModel.getInstance().getStudents();
     }
 
 }
