@@ -109,8 +109,8 @@ public class Time
         
         if (newDay == true)
         {
-            Date nate = new Date();
-            System.out.println(nate);
+//            Date nate = new Date();
+//            System.out.println(nate);
             
             timeAtStartOfProgram = (System.currentTimeMillis() + 3600000)/dayInMilliseconds;
             
