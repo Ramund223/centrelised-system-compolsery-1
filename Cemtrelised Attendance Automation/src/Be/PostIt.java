@@ -22,7 +22,7 @@ import javafx.scene.image.Image;
  */
 public class PostIt
 {
-    private MainViewController mainViewController;
+    private MainViewController studentPictureBoardController;
     
     private String image;
 
@@ -37,25 +37,18 @@ public class PostIt
 //    }
     private int indexCounter = 0; 
 
-    private static int indexNr = 0;
-    
     public PostIt(String image, String textSC) throws IOException, SQLException 
     {
-        mainViewController = MainViewController.getInstance();
+        studentPictureBoardController = MainViewController.getInstance();
         listStudents = UserModel.getInstance().getStudents();
-//        System.out.println(mainViewController.getIndexNr());
-//        this.text = listStudents.get(mainViewController.getIndexNr()).getName();
-        this.text = listStudents.get(indexNr).getName();
+//        System.out.println(studentPictureBoardController.getIndexNr());
+        this.text = listStudents.get(studentPictureBoardController.getIndexNr()).getName();
 //        this.text = listStudents.get(indexCounter).getName();
 //        this.text = listStudents.get(1).getName();
 //        this.text = text;
 //        this.image = image;
-        this.image = listStudents.get(indexNr).getImage();
-//        this.image = listStudents.get(mainViewController.getIndexNr()).getImage();
-//        mainViewController.setIndexNr(+1);
-
-        indexNr = indexNr + 1;
-//        System.out.println(indexNr);
+        this.image = listStudents.get(studentPictureBoardController.getIndexNr()).getImage();
+//        studentPictureBoardController.setIndexNr(+1);
     }
 
     
@@ -103,7 +96,7 @@ public class PostIt
     
     public void initialize(URL url, ResourceBundle rb) throws IOException, SQLException
     {
-        mainViewController = MainViewController.getInstance();
+        studentPictureBoardController = MainViewController.getInstance();
 //        listStudents = UserModel.getInstance().getStudents();
     }
 

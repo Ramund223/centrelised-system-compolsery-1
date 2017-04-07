@@ -21,17 +21,13 @@ import javafx.scene.image.Image;
  */
 public class PictureBoardModel
 {
-    private String image;
+    String image;
 
     private static PictureBoardModel INSTANCE;
 
     private ObservableList<StudentProfileModel> allPostIts;
     
     private CreateUsers users;
-    
-//    private Student student;
-    
-    
 
 //    private MainViewController studentPictureBoardController;
     
@@ -81,17 +77,9 @@ public class PictureBoardModel
     public void loadAllStudents() throws SQLException, IOException
     {
         List<Student> students = users.getUsers();
-        for (Student student : students) 
-        {
+        for (Student student : students) {
             allPostIts.add(new StudentProfileModel(new PostIt(student.getImage(), student.getName())));   
         }
-        
-//        for (int i = 0; i < students.size(); i++) 
-//        {
-//            allPostIts.add(new StudentProfileModel(new PostIt(student.getImage(), student.getName())));
-//        }
-        
-//        System.out.println(users.getUsers().toString());
     }
 
 }

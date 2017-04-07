@@ -48,8 +48,7 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
 
     private ObservableList<Student> listStudents;
     
-    public static int indexNr = 0;
-//    public int indexNr = 0;
+    public static int indexNr;
     
     public MainViewController() throws IOException, SQLException
     {
@@ -103,10 +102,9 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
             try
             {
                 postItBoard.getChildren().add(getPostItView(model));
-            } 
-            catch (IOException ex)
+            } catch (IOException ex)
             {
-                //
+                System.out.println("BAD PRACTICE, YOUR DROWNING AN EXCEPTION!!!");
             }
         }
     }
@@ -144,17 +142,6 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
 
     public int getIndexNr() 
     {
-//        if(indexNr != -1)
-//        {
-//            indexNr++;
-//            return indexNr;
-//        }
-//        else
-//        {
-//            return indexNr;
-//        }
-//        indexNr++;
-//        indexNr = indexNr + 1;
         return indexNr;
     }
 
@@ -165,8 +152,7 @@ public class MainViewController implements Initializable, ListChangeListener<Stu
         //(I do not bind the height because the flowpane should resize to it's content)
         postItBoard.prefWidthProperty().bind(containerForPostItBoard.widthProperty());
         boardModel.getAllPostIts().addListener(this);
-        try 
-        {
+        try {
             boardModel.loadAllStudents();
 //        createUsers.createUsers();
 //        getStudentsReady();
